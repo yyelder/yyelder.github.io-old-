@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>categories | Hexo</title>
+  <title>4.go处理文件 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="categories | Hexo">
+  <meta name="description" content="4.go处理文件 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -496,19 +496,27 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-4.go处理文件" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">categories</h1>
+        <h1 class="article-title">4.go处理文件</h1>
     
     <div class="article-meta">
         
         
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="GO笔记1">GO笔记1</a>
+            
+        </span>
         
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-07-23 21:01:08'>2021-07-23 20:45</time>
+            发布时间 : <time class="date" title='最后更新: 2021-07-28 19:12:10'>2021-07-28 19:10</time>
         
     </div>
     <div class="article-meta">
@@ -530,7 +538,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%8E%B7%E5%BE%97%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF3%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">1.获得文件信息3种方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%B7%A8%E7%A3%81%E7%9B%98%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-text">2.跨磁盘移动文件</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -546,7 +554,161 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="1-获得文件信息3种方式"><a href="#1-获得文件信息3种方式" class="headerlink" title="1.获得文件信息3种方式"></a>1.获得文件信息3种方式</h2><p>一、获取当前目录下的文件或目录信息(不包含多级子目录)</p>
+<pre><code class="go">package main
+import (
+    &quot;fmt&quot;
+    &quot;io/ioutil&quot;
+    &quot;log&quot;
+    &quot;os&quot;
+)
+func main() &#123;
+    pwd, _ := os.Getwd()
+    //获取文件或目录相关信息
+    fileInfoList, err := ioutil.ReadDir(pwd)
+    if err != nil &#123;
+        log.Fatal(err)
+    &#125;
+    fmt.Println(len(fileInfoList))
+    for i := range fileInfoList &#123;
+        fmt.Println(fileInfoList[i].Name()) //打印当前文件或目录下的文件或目录名
+    &#125;
+
+&#125;
+</code></pre>
+<p>二、获取当前目录下的文件或目录名(不包含多级子目录)</p>
+<pre><code class="go">package main
+import (
+    &quot;fmt&quot;
+    //&quot;io/ioutil&quot;
+    &quot;log&quot;
+    &quot;os&quot;
+    &quot;path/filepath&quot;
+)
+func main() &#123;
+    pwd, _ := os.Getwd()
+
+    //获取当前目录下的文件或目录名(包含路径)
+    filepathNames, err := filepath.Glob(filepath.Join(pwd, &quot;*&quot;))
+    if err != nil &#123;
+        log.Fatal(err)
+    &#125;
+    for i := range filepathNames &#123;
+        fmt.Println(filepathNames[i]) //打印path
+    &#125;
+
+&#125;
+</code></pre>
+<p>三、获取当前文件或目录下的所有文件或目录信息(包括子目录)</p>
+<pre><code class="go">package main
+
+import (
+    &quot;fmt&quot;
+    //&quot;io/ioutil&quot;
+    //&quot;log&quot;
+    &quot;os&quot;
+    &quot;path/filepath&quot;
+)
+func main() &#123;
+    pwd, _ := os.Getwd()
+    //获取当前目录下的所有文件或目录信息
+    filepath.Walk(pwd, func(path string, info os.FileInfo, err error) error &#123;
+        fmt.Println(path)        //打印path信息
+        fmt.Println(info.Name()) //打印文件或目录名
+        return nil
+    &#125;)
+&#125;
+</code></pre>
+<p>2.重写Listfunc函数获得包括子目录的信息</p>
+<pre><code class="go">// filelist.go
+package main
+
+import (
+    //&quot;flag&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+    &quot;path/filepath&quot;
+    &quot;strings&quot;
+)
+
+var (
+    ostype = os.Getenv(&quot;GOOS&quot;) // 获取系统类型
+)
+
+var listfile []string //获取文件列表
+
+func Listfunc(path string, f os.FileInfo, err error) error &#123;
+    var strRet string
+    strRet, _ = os.Getwd()
+    //ostype := os.Getenv(&quot;GOOS&quot;) // windows, linux
+
+    if ostype == &quot;windows&quot; &#123;
+        strRet += &quot;\\&quot;
+    &#125; else if ostype == &quot;linux&quot; &#123;
+        strRet += &quot;/&quot;
+    &#125;
+
+    if f == nil &#123;
+        return err
+    &#125;
+    if f.IsDir() &#123;
+        return nil
+    &#125;
+    strRet += path //+ &quot;\r\n&quot;
+
+    //用strings.HasSuffix(src, suffix)//判断src中是否包含 suffix结尾
+    ok := strings.HasSuffix(strRet, &quot;.go&quot;)
+    if ok &#123;
+
+        listfile = append(listfile, strRet) //将目录push到listfile []string中
+    &#125;
+    //fmt.Println(ostype) // print ostype
+    fmt.Println(strRet) //list the file
+
+    return nil
+&#125;
+func getFileList(path string) string &#123;
+    //var strRet string
+    err := filepath.Walk(path, Listfunc) //
+
+    if err != nil &#123;
+        fmt.Printf(&quot;filepath.Walk() returned %v\n&quot;, err)
+    &#125;
+
+    return &quot; &quot;
+&#125;
+func ListFileFunc(p []string) &#123;
+    for index, value := range p &#123;
+        fmt.Println(&quot;Index = &quot;, index, &quot;Value = &quot;, value)
+    &#125;
+&#125;
+func main() &#123;
+    //flag.Parse()
+    //root := flag.Arg(0)
+    //fmt.Println()
+    var listpath string
+    fmt.Scanf(&quot;%s&quot;, &amp;listpath)
+    getFileList(listpath)
+    ListFileFunc(listfile)
+    //getFileList(root)
+
+&#125;
+</code></pre>
+<h2 id="2-跨磁盘移动文件"><a href="#2-跨磁盘移动文件" class="headerlink" title="2.跨磁盘移动文件"></a>2.跨磁盘移动文件</h2><pre><code class="go">func movefile(oldpath, newpath string) error &#123; //跨卷移动os.rename 无法跨卷
+    from, err := syscall.UTF16PtrFromString(oldpath)
+    if err != nil &#123;
+        return err
+    &#125;
+    to, err := syscall.UTF16PtrFromString(newpath)
+    if err != nil &#123;
+        return err
+    &#125;
+    return syscall.MoveFile(from, to)//windows API
+
+&#125;
+//err = movefile(&quot;./hello.md&quot;, &quot;D:\\hexoBlog\\source\\_posts\\&quot;+filenamesub+&quot;.md&quot;)//重命名  并移动 跨卷
+</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
