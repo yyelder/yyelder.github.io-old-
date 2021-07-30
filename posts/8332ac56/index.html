@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MysqlZIP安装 | ElderBlog</title>
+  <title>我家nas安装 | ElderBlog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="MysqlZIP安装 | ElderBlog">
+  <meta name="description" content="我家nas安装 | ElderBlog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -447,9 +447,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-MysqlZIP安装" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-我家nas安装" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">MysqlZIP安装</h1>
+        <h1 class="article-title">我家nas安装</h1>
     
     <div class="article-meta">
         
@@ -459,7 +459,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Mysql">Mysql</a>
+            <a  data-rel="nas">nas</a>
             
         </span>
         
@@ -472,7 +472,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:1.3k</span>
+        <span>字数:636</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -491,7 +491,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%EF%BC%8C%E5%AE%89%E8%A3%85"><span class="toc-text">一，安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E9%85%8D%E7%BD%AEmy-ini"><span class="toc-text">1.1配置my.ini</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">1.2.初始化数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%EF%BC%8C%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A0%81%E5%92%8C%E5%AF%86%E7%A0%81%E8%AE%A4%E8%AF%81%E6%8F%92%E4%BB%B6"><span class="toc-text">二，更改密码和密码认证插件</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%88%B1%E5%BF%AB"><span class="toc-text">一、爱快</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%A4%96%E7%BD%91"><span class="toc-text">内外网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DHCP"><span class="toc-text">DHCP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81lede"><span class="toc-text">二、lede</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-text">接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%BE%A4%E6%99%96"><span class="toc-text">三、群晖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81kodi"><span class="toc-text">四、kodi</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -507,140 +507,60 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　　或直接下载：<a target="_blank" rel="noopener" href="https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip">https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip</a></p>
-<h2 id="一，安装"><a href="#一，安装" class="headerlink" title="一，安装"></a>一，安装</h2><p>　　比如我的安装目录是：C:\Program Files\MySQL</p>
-<h2 id="1-1配置my-ini"><a href="#1-1配置my-ini" class="headerlink" title="1.1配置my.ini"></a>1.1配置my.ini</h2><p>​        我们发现解压后的目录并没有my.ini文件，没关系可以自行创建。在安装根目录下添加 my.ini，比如我这里是：C:\Program Files\MySQL\my.ini，写入基本配置：</p>
-<pre><code>[mysqld]
-# 设置3306端口
-port=3306
-# 设置mysql的安装目录
-basedir=C:\Program Files\MySQL\MySQL8
-# 设置mysql数据库的数据的存放目录
-datadir=E:\Program Files\MySQL\Data
-# 允许最大连接数
-max_connections=200
-# 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
-max_connect_errors=10
-# 服务端使用的字符集默认为UTF8
-character-set-server=utf8
-# 创建新表时将使用的默认存储引擎
-default-storage-engine=INNODB
-# 默认使用“mysql_native_password”插件认证
-default_authentication_plugin=mysql_native_password
-[mysql]
-# 设置mysql客户端默认字符集
-default-character-set=utf8
-[client]
-# 设置mysql客户端连接服务端时默认使用的端口
-port=3306
-default-character-set=utf8
+        <h2 id="一、爱快"><a href="#一、爱快" class="headerlink" title="一、爱快"></a>一、爱快</h2><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210717083846653.png" alt="image-20210717083846653"></p>
+<h3 id="内外网"><a href="#内外网" class="headerlink" title="内外网"></a>内外网</h3><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210717084115542.png" alt="image-20210717084115542"></p>
+<h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210717084044520.png" alt="image-20210717084044520"></p>
+<h2 id="二、lede"><a href="#二、lede" class="headerlink" title="二、lede"></a>二、lede</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接下来三张图都在lan里配置  先选择lan接口，如第三张图  其次配置第二张，其次强制</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210717084226670.png" alt="image-20210717084226670"></p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210717084415274.png" alt="image-20210717084415274"></p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210717084245892.png"></p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210717084011925.png" alt="image-20210717084011925"></p>
+<h2 id="三、群晖"><a href="#三、群晖" class="headerlink" title="三、群晖"></a>三、群晖</h2><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210717083929376.png" alt="image-20210717083929376"></p>
+<h2 id="四、kodi"><a href="#四、kodi" class="headerlink" title="四、kodi"></a>四、kodi</h2><pre><code>apt-get update  //检测更新
+//安装所需程序：
+apt-get install xorg xinit xfce4 lightdm kodi kodi-repository-kodi i965-va-driver -y 
+//创建kodi用户
+useradd -m kodi -s /bin/bash -d /home/kodi
+//修改文件
+/etc/lightdm/lightdm.conf
 </code></pre>
-<p>注意，里面的 basedir 是我本地的安装目录，datadir 是我数据库数据文件要存放的位置，各项配置需要根据自己的环境进行配置。</p>
-<p>查看所有的配置项，可参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html">https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html</a></p>
-<h2 id="1-2-初始化数据库"><a href="#1-2-初始化数据库" class="headerlink" title="1.2.初始化数据库"></a>1.2.初始化数据库</h2><p>进入bin安装目录 </p>
-<pre><code>mysqld --initialize --console
+<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/image-20210718125825514.png" alt="image-20210718125825514"></p>
+<p>修改lightdm.conf</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210718125904443.png" alt="image-20210718125904443"></p>
+<p><strong>中文问题，去ADD-ONS里面装中文的语言</strong></p>
+<p>Kodi显示乱码是因为字体不正确导致。在【<strong>Skin</strong>】皮肤设置里面找到【<strong>Fonts</strong>】字体设置，将【<strong>SKin default</strong>】默认字体改成【<strong>Arial based】</strong>字体就可以解决了</p>
+<p><strong>解决Kodi播放无声问题</strong></p>
+<pre><code>apt-get install alsa-untils //安装alsa工具包
+alsamixer 进入音量控制工具
 </code></pre>
-<p><img src="C:/Users/Elder/AppData/Roaming/Typora/typora-user-images/image-20210724232012925.png" alt="image-20210724232012925"></p>
-<p>得到初始用户名和密码  root@localhost: (%I&lt;(49r9Ekh</p>
-<p>要是你手贱，关快了，或者没记住，那也没事，删掉初始化的 datadir 目录，再执行一遍初始化命令，又会重新生成的。当然，也可以使用安全工具，强制改密码，用什么方法，自己随意。</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html">https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html</a></p>
-<pre><code>mysqld --install [服务名] 或者 .\mysqld --install
+<p>参考  <a target="_blank" rel="noopener" href="https://post.smzdm.com/p/ag827pzw/">https://post.smzdm.com/p/ag827pzw/</a></p>
+<p>​        <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ge41147B9">https://www.bilibili.com/video/BV1Ge41147B9</a></p>
+<p>便试着按下了F9(减小音量) F10(增大音量)，问题解决了</p>
+<p>在PVE安装的时候硬盘选项</p>
+<pre><code>PVE的安装程序会创建一个名为“pve”的卷组（VG），并在其上分别创建名为root、data和swap的逻辑卷（LV）。这些卷的大小可以通过以下方式控制：
+
+安装程序创建一个名为pve的卷组（VG），以及名为root，data和swap的其他逻辑卷（LV）。这些卷的大小可以通过设置参数来控制大小：
+
+hdsize：定义要使用的硬盘（HD）的总体大小。在安装时可以预留一部分的磁盘空间，这样可节省硬盘上的可用空间做进一步分区（例如可用于LVM存储的同一硬盘上另外的PV和VG）。
+swapsize：定义交换空间（swap）的大小。默认值是已安装内存的大小，最小为4 GB，最大为8 GB。其最大限制值不能为“hdsize”的八分之一。
+maxroot：定义存储操作系统的根卷（/root）的最大大小。其最大限制为“hdsize”的四分之一。
+maxvz：定义数据卷（data）的最大大小。其实际大小可以按照下面方式来计算：
+datasize = hdsize - rootsize - swapsize - minfree
+minfree：定义划分LVM卷组“pve”后剩余的可用空间量。当可用存储空间超过128GB时，其默认值为16GB，否则将使用“hdsize”的八分之一。
+需要注意的是，LVM需要VG中的可用空间来创建快照，而lvmthin快照则不需要
 </code></pre>
-<p>如果出现</p>
-<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/20210724233107.png"></p>
-<p>使用win+Q搜索cmd，右键“用管理员身份打开cmd命令</p>
-<p>后面的服务名可以不写，默认的名字为 mysql。当然，如果你的电脑上需要安装多个MySQL服务，就可以用不同的名字区分了，比如 mysql5 和 mysql8。</p>
-<pre><code>安装完成之后，就可以通过命令net start mysql启动MySQL的服务了。
+<pre><code>111 hdsize
+5  swapsize
+60 maxroot
+40 maxvz
+30 minfree
 </code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234135.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html">https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html</a></p>
-<h2 id="二，更改密码和密码认证插件"><a href="#二，更改密码和密码认证插件" class="headerlink" title="二，更改密码和密码认证插件"></a>二，更改密码和密码认证插件</h2><p>在MySQL安装目录的 bin 目录下执行命令：</p>
-<pre><code>mysql -u root -p
+<p>1.free 查看剩余空间</p>
+<pre><code>free
 </code></pre>
-<p>　　这时候会提示输入密码，记住了上面第1.3步安装时的密码，填入即可登录成功，进入MySQL命令模式。</p>
-<p>在MySQL8.0.4以前，执行</p>
-<p>SET PASSWORD=PASSWORD(‘[修改的密码]’);<br>就可以更改密码，但是MySQL8.0.4开始，这样默认是不行的。因为之前，MySQL的密码认证插件是“mysql_native_password”，而现在使用的是“caching_sha2_password”。</p>
-<p>　　因为当前有很多数据库工具和链接包都不支持“caching_sha2_password”，为了方便，我暂时还是改回了“mysql_native_password”认证插件。</p>
-<p>修改用户密码，在MySQL中执行命令：</p>
-<pre><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;新密码&#39;;
-</code></pre>
-<p>修改密码验证插件，同时修改密码。</p>
-<p>　　如果想默认使用“mysql_native_password”插件认证，可以在配置文件中配置default_authentication_plugin项。</p>
-<p><strong>[mysqld]</strong><br><strong>default_authentication_plugin=mysql_native_password</strong></p>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234609.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password">https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password</a></p>
-<p>　　到此，安装部署就完成了。官方说测试速度MySQL8比5快两倍。</p>
-<p>　　可以用 命令查看一下默认安装的数据库：</p>
-<pre><code>show databases;
-
-use mysql;
-
-show tables;
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.01 sec)
-
-mysql&gt;
-</code></pre>
-<p>看到默认初始化了mysql数据库，其中user表里面存储MySQL用户信息。我们可以看一下默认MySQL用户：</p>
-<p> select user,host,authentication_string from mysql.user;</p>
-<pre><code>mysql&gt; select user,host,authentication_string from mysql.user;
-+------------------+-----------+-------------------------------------------+
-| user             | host      | authentication_string                     |
-+------------------+-----------+-------------------------------------------+
-| mysql.infoschema | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.session    | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.sys        | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| root             | localhost | *27C237A977F4F44D3F551F1A673BE14DFD232961 |
-+------------------+-----------+-------------------------------------------+
-4 rows in set (0.00 sec)
-
-mysql&gt;
-</code></pre>
-<pre><code>管理员root的host是localhost，代表仅限localhost登录访问。如果要允许开放其他ip登录，则需要添加新的host。如果要允许所有ip访问，可以直接修改成“%”
-
-创建用户：
-
-CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;;
-
-#(需要注意：mysql8.0加密方式修改了)
-#检查用户
-
-select user, host, plugin, authentication_string from user\G;
-
-授权远程数据库
-
-#授权所有权限
-GRANT ALL PRIVILEGES ON *.* TO &#39;xxh&#39;@&#39;%&#39;；
-#授权基本的查询修改权限，按需求设置
-GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON *.* TO &#39;xxh&#39;@&#39;%&#39;;
-
-查看用户权限
-show grants for &#39;xxh&#39;@&#39;%&#39;;
-
- 
-
-示例：
-mysql&gt; use mysql;
-Database changed
-mysql&gt; CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;; #创建用户(注意：mysql8.0加密方式修改了)
-Query OK, 0 rows affected (0.07 sec)
-mysql&gt;
-</code></pre>
-<p>查看密码加密方式：</p>
-<pre><code>select user, host, plugin, authentication_string from user;
-</code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724235136.png"></p>
-<p>另外，如果需要新增账户，或者本机以外的其他人访问MySQL则还需要设置内置账户的host，具体可以参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sos-blue/p/6852945.html">MySQL创建用户与授权</a></p>
-<p>参考链接</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiongzaiqiren/p/8970203.html">https://www.cnblogs.com/xiongzaiqiren/p/8970203.html</a></p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210716215150441.png" alt="image-20210716215150441"></p>
+<p>2.对local对应的逻辑卷pve/root进行在线扩容</p>
+<p># lvextend -l +100%FREE -r pve/root</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>

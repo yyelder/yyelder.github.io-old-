@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MysqlZIP安装 | ElderBlog</title>
+  <title>hexo安装文档 | ElderBlog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="MysqlZIP安装 | ElderBlog">
+  <meta name="description" content="hexo安装文档 | ElderBlog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -447,9 +447,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-MysqlZIP安装" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-hexo安装文档" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">MysqlZIP安装</h1>
+        <h1 class="article-title">hexo安装文档</h1>
     
     <div class="article-meta">
         
@@ -459,7 +459,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Mysql">Mysql</a>
+            <a  data-rel="hexo">hexo</a>
             
         </span>
         
@@ -472,7 +472,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:1.3k</span>
+        <span>字数:685</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -491,7 +491,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%EF%BC%8C%E5%AE%89%E8%A3%85"><span class="toc-text">一，安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E9%85%8D%E7%BD%AEmy-ini"><span class="toc-text">1.1配置my.ini</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">1.2.初始化数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%EF%BC%8C%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A0%81%E5%92%8C%E5%AF%86%E7%A0%81%E8%AE%A4%E8%AF%81%E6%8F%92%E4%BB%B6"><span class="toc-text">二，更改密码和密码认证插件</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85"><span class="toc-text">1.安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E6%9B%B4%E6%96%B0"><span class="toc-text">1.1更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E7%A6%81%E7%94%A8-hexo-%E8%87%AA%E5%B8%A6%E7%9A%84%E9%AB%98%E4%BA%AE"><span class="toc-text">1.2禁用 hexo 自带的高亮</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0%E7%A7%81%E5%AF%86%E6%96%87%E7%AB%A0"><span class="toc-text">2.实现私密文章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-text">2.1安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E4%B8%BB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6MyWeb-config-yml%E6%96%87%E6%9C%AB%E6%B7%BB%E5%8A%A0"><span class="toc-text">2.2主配置文件MyWeb\_config.yml文末添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3%E6%96%87%E7%AB%A0Front-matter%E4%B8%AD%E5%8A%A0%E4%B8%8Apassword-123456%E5%8D%B3%E5%8F%AF%EF%BC%9A"><span class="toc-text">2.3文章Front-matter中加上password: 123456即可：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0Tags"><span class="toc-text">3.添加Tags</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%9E%E7%8E%B0%E6%B0%B8%E4%B9%85%E9%93%BE%E6%8E%A5%E5%8C%96"><span class="toc-text">4.实现永久链接化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C"><span class="toc-text">运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A6%96%E5%85%88"><span class="toc-text">1.首先</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%85%B6%E6%AC%A1"><span class="toc-text">2.其次</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BAT-%E6%89%B9%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC"><span class="toc-text">BAT 批处理脚本</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -507,140 +507,115 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　　或直接下载：<a target="_blank" rel="noopener" href="https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip">https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip</a></p>
-<h2 id="一，安装"><a href="#一，安装" class="headerlink" title="一，安装"></a>一，安装</h2><p>　　比如我的安装目录是：C:\Program Files\MySQL</p>
-<h2 id="1-1配置my-ini"><a href="#1-1配置my-ini" class="headerlink" title="1.1配置my.ini"></a>1.1配置my.ini</h2><p>​        我们发现解压后的目录并没有my.ini文件，没关系可以自行创建。在安装根目录下添加 my.ini，比如我这里是：C:\Program Files\MySQL\my.ini，写入基本配置：</p>
-<pre><code>[mysqld]
-# 设置3306端口
-port=3306
-# 设置mysql的安装目录
-basedir=C:\Program Files\MySQL\MySQL8
-# 设置mysql数据库的数据的存放目录
-datadir=E:\Program Files\MySQL\Data
-# 允许最大连接数
-max_connections=200
-# 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
-max_connect_errors=10
-# 服务端使用的字符集默认为UTF8
-character-set-server=utf8
-# 创建新表时将使用的默认存储引擎
-default-storage-engine=INNODB
-# 默认使用“mysql_native_password”插件认证
-default_authentication_plugin=mysql_native_password
-[mysql]
-# 设置mysql客户端默认字符集
-default-character-set=utf8
-[client]
-# 设置mysql客户端连接服务端时默认使用的端口
-port=3306
-default-character-set=utf8
+        <pre><code>---
+title: ESP32课件
+top: 
+password: 
+categories:
+  - 单片机
+tags:
+  - null
+abbrlink: a642292e
+date: 2021-07-23 11:41:48
+---
 </code></pre>
-<p>注意，里面的 basedir 是我本地的安装目录，datadir 是我数据库数据文件要存放的位置，各项配置需要根据自己的环境进行配置。</p>
-<p>查看所有的配置项，可参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html">https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html</a></p>
-<h2 id="1-2-初始化数据库"><a href="#1-2-初始化数据库" class="headerlink" title="1.2.初始化数据库"></a>1.2.初始化数据库</h2><p>进入bin安装目录 </p>
-<pre><code>mysqld --initialize --console
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><pre><code>git clone https://github.com/yelog/hexo-theme-3-hexo.git themes/3-hexo
 </code></pre>
-<p><img src="C:/Users/Elder/AppData/Roaming/Typora/typora-user-images/image-20210724232012925.png" alt="image-20210724232012925"></p>
-<p>得到初始用户名和密码  root@localhost: (%I&lt;(49r9Ekh</p>
-<p>要是你手贱，关快了，或者没记住，那也没事，删掉初始化的 datadir 目录，再执行一遍初始化命令，又会重新生成的。当然，也可以使用安全工具，强制改密码，用什么方法，自己随意。</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html">https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html</a></p>
-<pre><code>mysqld --install [服务名] 或者 .\mysqld --install
+<h3 id="1-1更新"><a href="#1-1更新" class="headerlink" title="1.1更新"></a>1.1更新</h3><pre><code>cd themes/3-hexo
+git pull
 </code></pre>
-<p>如果出现</p>
-<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/20210724233107.png"></p>
-<p>使用win+Q搜索cmd，右键“用管理员身份打开cmd命令</p>
-<p>后面的服务名可以不写，默认的名字为 mysql。当然，如果你的电脑上需要安装多个MySQL服务，就可以用不同的名字区分了，比如 mysql5 和 mysql8。</p>
-<pre><code>安装完成之后，就可以通过命令net start mysql启动MySQL的服务了。
+<h3 id="1-2禁用-hexo-自带的高亮"><a href="#1-2禁用-hexo-自带的高亮" class="headerlink" title="1.2禁用 hexo 自带的高亮"></a>1.2禁用 hexo 自带的高亮</h3><pre><code>highlight:
+enable: false
 </code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234135.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html">https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html</a></p>
-<h2 id="二，更改密码和密码认证插件"><a href="#二，更改密码和密码认证插件" class="headerlink" title="二，更改密码和密码认证插件"></a>二，更改密码和密码认证插件</h2><p>在MySQL安装目录的 bin 目录下执行命令：</p>
-<pre><code>mysql -u root -p
+<p>更多参考</p>
+<p><a target="_blank" rel="noopener" href="https://yelog.org/2017/03/23/3-hexo-instruction/">https://yelog.org/2017/03/23/3-hexo-instruction/</a></p>
+<h2 id="2-实现私密文章"><a href="#2-实现私密文章" class="headerlink" title="2.实现私密文章"></a>2.实现私密文章</h2><h3 id="2-1安装插件"><a href="#2-1安装插件" class="headerlink" title="2.1安装插件"></a>2.1安装插件</h3><pre><code>npm install hexo-blog-encrypt --save
 </code></pre>
-<p>　　这时候会提示输入密码，记住了上面第1.3步安装时的密码，填入即可登录成功，进入MySQL命令模式。</p>
-<p>在MySQL8.0.4以前，执行</p>
-<p>SET PASSWORD=PASSWORD(‘[修改的密码]’);<br>就可以更改密码，但是MySQL8.0.4开始，这样默认是不行的。因为之前，MySQL的密码认证插件是“mysql_native_password”，而现在使用的是“caching_sha2_password”。</p>
-<p>　　因为当前有很多数据库工具和链接包都不支持“caching_sha2_password”，为了方便，我暂时还是改回了“mysql_native_password”认证插件。</p>
-<p>修改用户密码，在MySQL中执行命令：</p>
-<pre><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;新密码&#39;;
+<h3 id="2-2主配置文件MyWeb-config-yml文末添加"><a href="#2-2主配置文件MyWeb-config-yml文末添加" class="headerlink" title="2.2主配置文件MyWeb\_config.yml文末添加"></a>2.2主配置文件<code>MyWeb\_config.yml</code>文末添加</h3><pre><code># 文章加密
+encrypt:
+  enable: true
+  abstract: 这是一篇加密文章，内容可能是个人情感宣泄或者收费技术。如果你非常好奇，请与我联系。
+  message: 输入密码，查看文章。
 </code></pre>
-<p>修改密码验证插件，同时修改密码。</p>
-<p>　　如果想默认使用“mysql_native_password”插件认证，可以在配置文件中配置default_authentication_plugin项。</p>
-<p><strong>[mysqld]</strong><br><strong>default_authentication_plugin=mysql_native_password</strong></p>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234609.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password">https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password</a></p>
-<p>　　到此，安装部署就完成了。官方说测试速度MySQL8比5快两倍。</p>
-<p>　　可以用 命令查看一下默认安装的数据库：</p>
-<pre><code>show databases;
-
-use mysql;
-
-show tables;
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.01 sec)
-
-mysql&gt;
+<h3 id="2-3文章Front-matter中加上password-123456即可："><a href="#2-3文章Front-matter中加上password-123456即可：" class="headerlink" title="2.3文章Front-matter中加上password: 123456即可："></a>2.3文章Front-matter中加上<code>password: 123456</code>即可：</h3><pre><code>---
+title: Hello World
+abbrlink: 3eeb
+password: 123456
+---
 </code></pre>
-<p>看到默认初始化了mysql数据库，其中user表里面存储MySQL用户信息。我们可以看一下默认MySQL用户：</p>
-<p> select user,host,authentication_string from mysql.user;</p>
-<pre><code>mysql&gt; select user,host,authentication_string from mysql.user;
-+------------------+-----------+-------------------------------------------+
-| user             | host      | authentication_string                     |
-+------------------+-----------+-------------------------------------------+
-| mysql.infoschema | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.session    | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.sys        | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| root             | localhost | *27C237A977F4F44D3F551F1A673BE14DFD232961 |
-+------------------+-----------+-------------------------------------------+
-4 rows in set (0.00 sec)
-
-mysql&gt;
+<p>自定义提示语：</p>
+<pre><code>---
+title: Hello World
+abbrlink: 3eeb
+password: 123456
+abstract: 密码：123456
+message: 看不到吧，hhhh，不告诉你密码是123456
+---
 </code></pre>
-<pre><code>管理员root的host是localhost，代表仅限localhost登录访问。如果要允许开放其他ip登录，则需要添加新的host。如果要允许所有ip访问，可以直接修改成“%”
-
-创建用户：
-
-CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;;
-
-#(需要注意：mysql8.0加密方式修改了)
-#检查用户
-
-select user, host, plugin, authentication_string from user\G;
-
-授权远程数据库
-
-#授权所有权限
-GRANT ALL PRIVILEGES ON *.* TO &#39;xxh&#39;@&#39;%&#39;；
-#授权基本的查询修改权限，按需求设置
-GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON *.* TO &#39;xxh&#39;@&#39;%&#39;;
-
-查看用户权限
-show grants for &#39;xxh&#39;@&#39;%&#39;;
-
- 
-
-示例：
-mysql&gt; use mysql;
-Database changed
-mysql&gt; CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;; #创建用户(注意：mysql8.0加密方式修改了)
-Query OK, 0 rows affected (0.07 sec)
-mysql&gt;
+<p>如果需要加密其他东西</p>
+<pre><code>在任何需要加密的地方加上一句：
+&lt;% if (post.encrypt == true) &#123; %&gt;style=&quot;display:none&quot; &lt;% &#125; %&gt;
 </code></pre>
-<p>查看密码加密方式：</p>
-<pre><code>select user, host, plugin, authentication_string from user;
+<h2 id="3-添加Tags"><a href="#3-添加Tags" class="headerlink" title="3.添加Tags"></a>3.添加Tags</h2><p>修改 3-hexo/source/js/script.js文件</p>
+<p>修改 3-hexo/source/css/_partial/nav-left.styl  第16行  margin 30px auto 15px</p>
+<p>在366行左右添加一个else if</p>
+<pre><code class="js">else if(val === &quot;#&quot;)&#123;
+        $(&quot;.nav-right nav a&quot;).css(&quot;display&quot;, &quot;none&quot;);
+        $(&quot;.nav-right .tags-list&quot;).show()
+    &#125;
 </code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724235136.png"></p>
-<p>另外，如果需要新增账户，或者本机以外的其他人访问MySQL则还需要设置内置账户的host，具体可以参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sos-blue/p/6852945.html">MySQL创建用户与授权</a></p>
+<h2 id="4-实现永久链接化"><a href="#4-实现永久链接化" class="headerlink" title="4.实现永久链接化"></a>4.实现永久链接化</h2><p>安装  <a target="_blank" rel="noopener" href="https://github.com/Rozbo/hexo-abbrlink">https://github.com/Rozbo/hexo-abbrlink</a></p>
+<pre><code>npm install hexo-abbrlink --save
+</code></pre>
+<p>站点配置文件(_config.yml)里:  注意有没有重复定义permalink</p>
+<pre><code># abbrlink config
+permalink: posts/:abbrlink/
+abbrlink:
+  alg: crc32      #support crc16(default) and crc32
+  rep: hex        #support dec(default) and hex
+  drafts: false   #(true)Process draft,(false)Do not process draft. false(default) 
+  # Generate categories from directory-tree
+  # depth: the max_depth of directory-tree you want to generate, should &gt; 0
+  auto_category:
+     enable: true  #true(default)
+     depth:        #3(default)
+     over_write: false 
+  auto_title: false #enable auto title, it can auto fill the title by path
+  auto_date: false #enable auto date, it can auto fill the date by time today
+  force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
+</code></pre>
+<p>使用<code>hexo g</code> 会自动在你的文章中加上<code>abbrlink: fbf5310d</code></p>
+<p>部署  gumugwen.github.io</p>
 <p>参考链接</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiongzaiqiren/p/8970203.html">https://www.cnblogs.com/xiongzaiqiren/p/8970203.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1755885">https://cloud.tencent.com/developer/article/1755885</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html</a></p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>配置package.json</p>
+<pre><code class="go">&quot;scripts&quot;: &#123;
+    &quot;build&quot;: &quot;hexo generate&quot;,
+    &quot;clean&quot;: &quot;hexo clean&quot;,
+    &quot;deploy&quot;: &quot;hexo clean &amp;&amp; hexo g -d&quot;,
+    &quot;server&quot;: &quot;hexo server&quot;,
+    &quot;start&quot;: &quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;
+  &#125;
+</code></pre>
+<p>如果写完一个blog的时候</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210728213604231.png" alt="image-20210728213604231"></p>
+<h2 id="1-首先"><a href="#1-首先" class="headerlink" title="1.首先"></a>1.首先</h2><p>运行myfileBlogToHexo_Post.exe  将写的blog文档添加hexo可使用的抬头  初始化目录和标签</p>
+<p>如果<strong>目录和文件 加   #开头</strong>则被排除在外</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210728213822225.png" alt="image-20210728213822225"></p>
+<h2 id="2-其次"><a href="#2-其次" class="headerlink" title="2.其次"></a>2.其次</h2><p>进入hexo项目<img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210728214002491.png" alt="image-20210728214002491"></p>
+<p>先清除  后发布到github</p>
+<pre><code class="vue">npm run deploy
+</code></pre>
+<p>如果是本地调试</p>
+<pre><code>npm start
+</code></pre>
+<h1 id="BAT-批处理脚本"><a href="#BAT-批处理脚本" class="headerlink" title="BAT 批处理脚本"></a>BAT 批处理脚本</h1><pre><code>cd /d d:\hexoBlog
+npm run deploy
+pause
+start explorer d:\hexoBlog
+</code></pre>
+<p>参考链接 <a target="_blank" rel="noopener" href="https://blog.csdn.net/whorus1/article/details/86646552">https://blog.csdn.net/whorus1/article/details/86646552</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>

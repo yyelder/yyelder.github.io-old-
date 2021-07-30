@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MysqlZIP安装 | ElderBlog</title>
+  <title>3.go学习笔记blog | ElderBlog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="MysqlZIP安装 | ElderBlog">
+  <meta name="description" content="3.go学习笔记blog | ElderBlog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -447,9 +447,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-MysqlZIP安装" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-3.go学习笔记blog" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">MysqlZIP安装</h1>
+        <h1 class="article-title">3.go学习笔记blog</h1>
     
     <div class="article-meta">
         
@@ -459,7 +459,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Mysql">Mysql</a>
+            <a  data-rel="GO笔记">GO笔记</a> > 
+            
+            <a  data-rel="GO笔记&lt;---&gt;学习blog">学习blog</a>
             
         </span>
         
@@ -472,7 +474,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:1.3k</span>
+        <span>字数:128</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -491,7 +493,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%EF%BC%8C%E5%AE%89%E8%A3%85"><span class="toc-text">一，安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E9%85%8D%E7%BD%AEmy-ini"><span class="toc-text">1.1配置my.ini</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">1.2.初始化数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%EF%BC%8C%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A0%81%E5%92%8C%E5%AF%86%E7%A0%81%E8%AE%A4%E8%AF%81%E6%8F%92%E4%BB%B6"><span class="toc-text">二，更改密码和密码认证插件</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5"><span class="toc-text">数据库连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gin%E6%A1%86%E6%9E%B6"><span class="toc-text">gin框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85"><span class="toc-text">1.安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8C%85"><span class="toc-text">使用的包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-viper"><span class="toc-text">1.viper</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -507,140 +509,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　　或直接下载：<a target="_blank" rel="noopener" href="https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip">https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip</a></p>
-<h2 id="一，安装"><a href="#一，安装" class="headerlink" title="一，安装"></a>一，安装</h2><p>　　比如我的安装目录是：C:\Program Files\MySQL</p>
-<h2 id="1-1配置my-ini"><a href="#1-1配置my-ini" class="headerlink" title="1.1配置my.ini"></a>1.1配置my.ini</h2><p>​        我们发现解压后的目录并没有my.ini文件，没关系可以自行创建。在安装根目录下添加 my.ini，比如我这里是：C:\Program Files\MySQL\my.ini，写入基本配置：</p>
-<pre><code>[mysqld]
-# 设置3306端口
-port=3306
-# 设置mysql的安装目录
-basedir=C:\Program Files\MySQL\MySQL8
-# 设置mysql数据库的数据的存放目录
-datadir=E:\Program Files\MySQL\Data
-# 允许最大连接数
-max_connections=200
-# 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
-max_connect_errors=10
-# 服务端使用的字符集默认为UTF8
-character-set-server=utf8
-# 创建新表时将使用的默认存储引擎
-default-storage-engine=INNODB
-# 默认使用“mysql_native_password”插件认证
-default_authentication_plugin=mysql_native_password
-[mysql]
-# 设置mysql客户端默认字符集
-default-character-set=utf8
-[client]
-# 设置mysql客户端连接服务端时默认使用的端口
-port=3306
-default-character-set=utf8
+        <p>categories: </p>
+<ul>
+<li>GO笔记</li>
+<li>blog学习1<br>top:<br>password:<br>abstract:<br>message:<br>tags:</li>
+</ul>
+<hr>
+<h2 id="数据库连接"><a href="#数据库连接" class="headerlink" title="数据库连接"></a>数据库连接</h2><pre><code class="go">go get -u github.com/jinzhu/gorm
 </code></pre>
-<p>注意，里面的 basedir 是我本地的安装目录，datadir 是我数据库数据文件要存放的位置，各项配置需要根据自己的环境进行配置。</p>
-<p>查看所有的配置项，可参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html">https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html</a></p>
-<h2 id="1-2-初始化数据库"><a href="#1-2-初始化数据库" class="headerlink" title="1.2.初始化数据库"></a>1.2.初始化数据库</h2><p>进入bin安装目录 </p>
-<pre><code>mysqld --initialize --console
+<p>引入mysql</p>
+<pre><code class="go">go get github.com/go-sql-driver/mysql
 </code></pre>
-<p><img src="C:/Users/Elder/AppData/Roaming/Typora/typora-user-images/image-20210724232012925.png" alt="image-20210724232012925"></p>
-<p>得到初始用户名和密码  root@localhost: (%I&lt;(49r9Ekh</p>
-<p>要是你手贱，关快了，或者没记住，那也没事，删掉初始化的 datadir 目录，再执行一遍初始化命令，又会重新生成的。当然，也可以使用安全工具，强制改密码，用什么方法，自己随意。</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html">https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html</a></p>
-<pre><code>mysqld --install [服务名] 或者 .\mysqld --install
+<p>在main.go 导入</p>
+<h2 id="gin框架"><a href="#gin框架" class="headerlink" title="gin框架"></a>gin框架</h2><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><pre><code>go get -u github.com/gin-gonic/gin
 </code></pre>
-<p>如果出现</p>
-<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/20210724233107.png"></p>
-<p>使用win+Q搜索cmd，右键“用管理员身份打开cmd命令</p>
-<p>后面的服务名可以不写，默认的名字为 mysql。当然，如果你的电脑上需要安装多个MySQL服务，就可以用不同的名字区分了，比如 mysql5 和 mysql8。</p>
-<pre><code>安装完成之后，就可以通过命令net start mysql启动MySQL的服务了。
+<h2 id="使用的包"><a href="#使用的包" class="headerlink" title="使用的包"></a>使用的包</h2><h3 id="1-viper"><a href="#1-viper" class="headerlink" title="1.viper"></a>1.viper</h3><pre><code>go get github.com/spf13/viper
 </code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234135.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html">https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html</a></p>
-<h2 id="二，更改密码和密码认证插件"><a href="#二，更改密码和密码认证插件" class="headerlink" title="二，更改密码和密码认证插件"></a>二，更改密码和密码认证插件</h2><p>在MySQL安装目录的 bin 目录下执行命令：</p>
-<pre><code>mysql -u root -p
+<p>初始化+使用</p>
+<pre><code class="go">func InitConfig() &#123;
+    workDir, _ := os.Getwd()
+    viper.SetConfigName(&quot;application&quot;)
+    viper.SetConfigType(&quot;yml&quot;)
+    viper.AddConfigPath(workDir + &quot;/config&quot;)
+    err := viper.ReadInConfig()
+    if err != nil &#123;
+        panic(err)
+    &#125;
+&#125;
+//viper.GetString(&quot;server.port&quot;)
 </code></pre>
-<p>　　这时候会提示输入密码，记住了上面第1.3步安装时的密码，填入即可登录成功，进入MySQL命令模式。</p>
-<p>在MySQL8.0.4以前，执行</p>
-<p>SET PASSWORD=PASSWORD(‘[修改的密码]’);<br>就可以更改密码，但是MySQL8.0.4开始，这样默认是不行的。因为之前，MySQL的密码认证插件是“mysql_native_password”，而现在使用的是“caching_sha2_password”。</p>
-<p>　　因为当前有很多数据库工具和链接包都不支持“caching_sha2_password”，为了方便，我暂时还是改回了“mysql_native_password”认证插件。</p>
-<p>修改用户密码，在MySQL中执行命令：</p>
-<pre><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;新密码&#39;;
+<p>生成exe</p>
+<pre><code>go build -o main.exe main.go 【指定生成main.exe执行文件】
 </code></pre>
-<p>修改密码验证插件，同时修改密码。</p>
-<p>　　如果想默认使用“mysql_native_password”插件认证，可以在配置文件中配置default_authentication_plugin项。</p>
-<p><strong>[mysqld]</strong><br><strong>default_authentication_plugin=mysql_native_password</strong></p>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234609.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password">https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password</a></p>
-<p>　　到此，安装部署就完成了。官方说测试速度MySQL8比5快两倍。</p>
-<p>　　可以用 命令查看一下默认安装的数据库：</p>
-<pre><code>show databases;
-
-use mysql;
-
-show tables;
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.01 sec)
-
-mysql&gt;
-</code></pre>
-<p>看到默认初始化了mysql数据库，其中user表里面存储MySQL用户信息。我们可以看一下默认MySQL用户：</p>
-<p> select user,host,authentication_string from mysql.user;</p>
-<pre><code>mysql&gt; select user,host,authentication_string from mysql.user;
-+------------------+-----------+-------------------------------------------+
-| user             | host      | authentication_string                     |
-+------------------+-----------+-------------------------------------------+
-| mysql.infoschema | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.session    | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.sys        | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| root             | localhost | *27C237A977F4F44D3F551F1A673BE14DFD232961 |
-+------------------+-----------+-------------------------------------------+
-4 rows in set (0.00 sec)
-
-mysql&gt;
-</code></pre>
-<pre><code>管理员root的host是localhost，代表仅限localhost登录访问。如果要允许开放其他ip登录，则需要添加新的host。如果要允许所有ip访问，可以直接修改成“%”
-
-创建用户：
-
-CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;;
-
-#(需要注意：mysql8.0加密方式修改了)
-#检查用户
-
-select user, host, plugin, authentication_string from user\G;
-
-授权远程数据库
-
-#授权所有权限
-GRANT ALL PRIVILEGES ON *.* TO &#39;xxh&#39;@&#39;%&#39;；
-#授权基本的查询修改权限，按需求设置
-GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON *.* TO &#39;xxh&#39;@&#39;%&#39;;
-
-查看用户权限
-show grants for &#39;xxh&#39;@&#39;%&#39;;
-
- 
-
-示例：
-mysql&gt; use mysql;
-Database changed
-mysql&gt; CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;; #创建用户(注意：mysql8.0加密方式修改了)
-Query OK, 0 rows affected (0.07 sec)
-mysql&gt;
-</code></pre>
-<p>查看密码加密方式：</p>
-<pre><code>select user, host, plugin, authentication_string from user;
-</code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724235136.png"></p>
-<p>另外，如果需要新增账户，或者本机以外的其他人访问MySQL则还需要设置内置账户的host，具体可以参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sos-blue/p/6852945.html">MySQL创建用户与授权</a></p>
-<p>参考链接</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiongzaiqiren/p/8970203.html">https://www.cnblogs.com/xiongzaiqiren/p/8970203.html</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
