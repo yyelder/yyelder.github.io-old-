@@ -3413,7 +3413,7 @@ var Gitment =
                     }, options);
 
                     this.state.user.isLoggingIn = true;
-                    _utils.http.post('https://auth.baixiaotu.cc', {
+                    _utils.http.post('https://yajunw.com/2019/09/08/hexo/', {
                         code: code,
                         client_id: client_id,
                         client_secret: client_secret
