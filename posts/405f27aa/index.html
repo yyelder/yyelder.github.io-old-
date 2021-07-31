@@ -7,12 +7,12 @@
   <meta name="description" content="esp课件 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="http://example.com/categories/index.html">
 <meta property="og:site_name" content="月夜魂归的博客">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-07-21T12:36:25.000Z">
-<meta property="article:modified_time" content="2021-07-21T12:36:25.552Z">
+<meta property="article:published_time" content="2021-07-23T12:45:38.000Z">
+<meta property="article:modified_time" content="2021-07-23T13:01:08.183Z">
 <meta property="article:author" content="Elder">
 <meta name="twitter:card" content="summary">
 
@@ -480,7 +480,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-07-31 17:24:29'>2020-07-30 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2021-07-31 17:24:35'>2020-07-30 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -499,6 +499,17 @@
             </span>
         </span>
         
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
         
     </div>
     
@@ -1345,6 +1356,27 @@ void loop() &#123;
 
 
 
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '002e068ba9d636261197',
+            clientSecret: 'f41ea522d8e13a48b161764b3191585ee75938e6',
+            repo: 'gumugwen.github.io',
+            owner: 'gumugwen',
+            admin: ['yelog'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
 
 
 
