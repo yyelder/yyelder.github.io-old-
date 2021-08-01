@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>5.blog实现用户中间件 | 月夜魂归的博客</title>
+  <title>1.blog实现用户注册 | 月夜魂归的博客</title>
   <meta name="keywords" content=" goblog ">
-  <meta name="description" content="5.blog实现用户中间件 | 月夜魂归的博客">
+  <meta name="description" content="1.blog实现用户注册 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -503,9 +503,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-5.blog实现用户中间件" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-1.blog实现用户注册" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">5.blog实现用户中间件</h1>
+        <h1 class="article-title">1.blog实现用户注册</h1>
     
     <div class="article-meta">
         
@@ -532,12 +532,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-08-01 19:28:31'>2021-08-01 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2021-08-01 19:28:31'>2021-07-31 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:286</span>
+        <span>字数:433</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -556,7 +556,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">1.中间件</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C"><span class="toc-text">实现用户注册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5"><span class="toc-text">1.数据库连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-gin%E6%A1%86%E6%9E%B6"><span class="toc-text">2.gin框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AE%89%E8%A3%85"><span class="toc-text">2.1.安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8C%85"><span class="toc-text">使用的包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-viper"><span class="toc-text">1.viper</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81"><span class="toc-text">程序代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96viper"><span class="toc-text">一、初始化viper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">二、初始化数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-text">三、生成随机数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%96%B0%E5%BB%BA%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9E%8B"><span class="toc-text">四、新建用户模型</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -572,48 +572,97 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-中间件"><a href="#1-中间件" class="headerlink" title="1.中间件"></a>1.中间件</h2><p>中间件主要是用来作为路由上配置的润滑剂</p>
-<p>1.1使用</p>
-<pre><code class="go">r.GET(&quot;/api/auth/info&quot;,middleware.AuthMiddleware(), controller.Info)
+        <h1 id="实现用户注册"><a href="#实现用户注册" class="headerlink" title="实现用户注册"></a>实现用户注册</h1><h2 id="1-数据库连接"><a href="#1-数据库连接" class="headerlink" title="1.数据库连接"></a>1.数据库连接</h2><pre><code class="go">go get -u github.com/jinzhu/gorm
 </code></pre>
-<p>1.2定义</p>
-<p>通过获取浏览器 的Authorization参数 来解析token数据里面的用户信息，并将信息写入上下文，然后info路由就可以获取用户信息</p>
-<pre><code class="go">func AuthMiddleware() gin.HandlerFunc &#123;
-    return func(ctx *gin.Context) &#123;
-        //获取authorization header
-        tokenString := ctx.GetHeader(&quot;Authorization&quot;)
-
-        //验证 tokenString 格式
-        if tokenString == &quot;&quot;|| !strings.HasPrefix(tokenString,&quot;Bearer &quot;) &#123;
-            ctx.JSON(http.StatusUnauthorized,gin.H&#123;&quot;code&quot;:401,&quot;msg&quot;:&quot;权限不足&quot;&#125;)
-            ctx.Abort()
-            return
-        &#125;
-        tokenString = tokenString[7:]  //截取token
-        //更具tokenString  解析出token  claims
-        token,claims,err :=common.ParseToken(tokenString)
-        if err!=nil || !token.Valid&#123;
-            ctx.JSON(http.StatusUnauthorized,gin.H&#123;&quot;code&quot;:401,&quot;msg&quot;:&quot;权限不足&quot;&#125;)
-            ctx.Abort()
-            return
-        &#125;
-        //验证通过后获取claims-》token中的Userid
-        userId :=claims.UserId
-        DB := common.GetDB()
-        var user model.User
-        DB.First(&amp;user,userId)
-        
-        //用户不存在
-        if user.ID == 0 &#123;
-            ctx.JSON(http.StatusUnauthorized,gin.H&#123;&quot;code&quot;:401,&quot;msg&quot;:&quot;权限不足&quot;&#125;)
-            ctx.Abort()
-            return
-        &#125;
-        //用户存在 将user 信息写入上下文
-        ctx.Set(&quot;user&quot;,user)
-        ctx.Next()
-
+<p>引入mysql</p>
+<pre><code class="go">go get github.com/go-sql-driver/mysql
+</code></pre>
+<p>在main.go 导入</p>
+<h2 id="2-gin框架"><a href="#2-gin框架" class="headerlink" title="2.gin框架"></a>2.gin框架</h2><h3 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1.安装"></a>2.1.安装</h3><pre><code>go get -u github.com/gin-gonic/gin
+</code></pre>
+<pre><code class="go">func main() &#123;
+    r := gin.Default()
+    r.GET(&quot;/ping&quot;, func(c *gin.Context) &#123;
+        c.JSON(200, gin.H&#123;
+            &quot;message&quot;: &quot;pong&quot;,
+        &#125;)
+    &#125;)
+    r.Run() // listen and serve on 0.0.0.0:8080
+&#125;
+</code></pre>
+<h2 id="使用的包"><a href="#使用的包" class="headerlink" title="使用的包"></a>使用的包</h2><h3 id="1-viper"><a href="#1-viper" class="headerlink" title="1.viper"></a>1.viper</h3><pre><code>go get github.com/spf13/viper
+</code></pre>
+<p>初始化+使用</p>
+<pre><code class="go">func InitConfig() &#123;
+    workDir, _ := os.Getwd()
+    viper.SetConfigName(&quot;application&quot;)
+    viper.SetConfigType(&quot;yml&quot;)
+    viper.AddConfigPath(workDir + &quot;/config&quot;)
+    err := viper.ReadInConfig()
+    if err != nil &#123;
+        panic(err)
     &#125;
+&#125;
+//viper.GetString(&quot;server.port&quot;)
+</code></pre>
+<p>生成exe</p>
+<pre><code>go build -o main.exe main.go 【指定生成main.exe执行文件】
+</code></pre>
+<h2 id="程序代码"><a href="#程序代码" class="headerlink" title="程序代码"></a>程序代码</h2><h2 id="一、初始化viper"><a href="#一、初始化viper" class="headerlink" title="一、初始化viper"></a>一、初始化viper</h2><pre><code class="go">func InitConfig() &#123;
+   workDir, _ := os.Getwd()
+   viper.SetConfigName(&quot;application&quot;)
+   viper.SetConfigType(&quot;yml&quot;)
+   viper.AddConfigPath(workDir + &quot;/config&quot;)
+   err := viper.ReadInConfig()
+   if err != nil &#123;
+      panic(err)
+   &#125;
+&#125;
+</code></pre>
+<h2 id="二、初始化数据库"><a href="#二、初始化数据库" class="headerlink" title="二、初始化数据库"></a>二、初始化数据库</h2><pre><code class="go">func InitDB() *gorm.DB &#123;
+    driverName := viper.GetString(&quot;datasource.driverName&quot;)
+    host := viper.GetString(&quot;datasource.host&quot;)
+    port := viper.GetString(&quot;datasource.port&quot;)
+    database := viper.GetString(&quot;datasource.database&quot;)
+    username := viper.GetString(&quot;datasource.username&quot;)
+    password := viper.GetString(&quot;datasource.password&quot;)
+    charset := viper.GetString(&quot;datasource.charset&quot;)
+    loc := viper.GetString(&quot;datasource.loc&quot;)
+    args := fmt.Sprintf(&quot;%s:%s@tcp(%s:%s)/%s?charset=%s&amp;parseTime=true&amp;loc=%s&quot;,
+        username,
+        password,
+        host,
+        port,
+        database,
+        charset,
+        url.QueryEscape(loc))
+    db, err := gorm.Open(driverName, args)
+
+    if err != nil &#123;
+        panic(&quot;filed to connect database,err:&quot; + err.Error())
+    &#125;
+    //testhah
+    db.AutoMigrate(&amp;model.User&#123;&#125;)
+    DB = db
+    return db
+&#125;
+</code></pre>
+<h2 id="三、生成随机数"><a href="#三、生成随机数" class="headerlink" title="三、生成随机数"></a>三、生成随机数</h2><pre><code class="go">func RandString(n int) string &#123;
+   var letters = []byte(&quot;zxcvbnmasdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP&quot;)
+   result :=make([]byte,n)
+
+   rand.Seed(time.Now().Unix())  //秒级时间戳
+   for i :=range result&#123;
+      result[i] = letters[rand.Intn(len(letters))]
+   &#125;
+   return string(result)
+&#125;
+</code></pre>
+<h2 id="四、新建用户模型"><a href="#四、新建用户模型" class="headerlink" title="四、新建用户模型"></a>四、新建用户模型</h2><pre><code class="go">type User struct &#123;
+   gorm.Model
+   Name      string `gorm:&quot;type:varchar(20);not null&quot;`
+   Telephone string `gorm:&quot;type:varchar(110);not null;unique&quot;`
+   Password  string `gorm:&quot;size:255;not null&quot;`
 &#125;
 </code></pre>
 
