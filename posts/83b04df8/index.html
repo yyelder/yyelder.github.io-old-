@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>4.go处理文件 | 月夜魂归的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="4.go处理文件 | 月夜魂归的博客">
+  <title>2.blog 项目重构 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" goblog ">
+  <meta name="description" content="2.blog 项目重构 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -495,9 +495,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-4.go处理文件" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-2.blog 项目重构" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">4.go处理文件</h1>
+        <h1 class="article-title">2.blog 项目重构</h1>
     
     <div class="article-meta">
         
@@ -507,20 +507,29 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="GO笔记">GO笔记</a>
+            <a  data-rel="GO笔记">GO笔记</a> > 
+            
+            <a  data-rel="GO笔记&lt;---&gt;学习blog">学习blog</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">goblog</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-08-01 19:26:47'>2021-08-01 19:26</time>
+            发布时间 : <time class="date" title='最后更新: 2021-08-01 19:26:47'>2021-08-01 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:664</span>
+        <span>字数:516</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -539,7 +548,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%8E%B7%E5%BE%97%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF3%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">1.获得文件信息3种方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%B7%A8%E7%A3%81%E7%9B%98%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-text">2.跨磁盘移动文件</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-main-go"><span class="toc-text">1.main.go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-database-go"><span class="toc-text">2.database.go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-router-go"><span class="toc-text">3.router.go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-UserController-go"><span class="toc-text">4.UserController.go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-user-go"><span class="toc-text">4.user.go</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -555,159 +564,126 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-获得文件信息3种方式"><a href="#1-获得文件信息3种方式" class="headerlink" title="1.获得文件信息3种方式"></a>1.获得文件信息3种方式</h2><p>一、获取当前目录下的文件或目录信息(不包含多级子目录)</p>
-<pre><code class="go">package main
-import (
-    &quot;fmt&quot;
-    &quot;io/ioutil&quot;
-    &quot;log&quot;
-    &quot;os&quot;
-)
-func main() &#123;
-    pwd, _ := os.Getwd()
-    //获取文件或目录相关信息
-    fileInfoList, err := ioutil.ReadDir(pwd)
+        <p>重构完成截图</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210801103449181.png" alt="image-20210801103449181"></p>
+<p>向下逐层调用</p>
+<h2 id="1-main-go"><a href="#1-main-go" class="headerlink" title="1.main.go"></a>1.main.go</h2><pre><code class="go">func InitConfig() &#123;
+    workDir, _ := os.Getwd()
+    viper.SetConfigName(&quot;application&quot;)
+    viper.SetConfigType(&quot;yml&quot;)
+    viper.AddConfigPath(workDir + &quot;/config&quot;)
+    err := viper.ReadInConfig()
     if err != nil &#123;
-        log.Fatal(err)
+        panic(err)
     &#125;
-    fmt.Println(len(fileInfoList))
-    for i := range fileInfoList &#123;
-        fmt.Println(fileInfoList[i].Name()) //打印当前文件或目录下的文件或目录名
-    &#125;
+&#125;
 
+func main()  &#123;
+    InitConfig()
+    db := common.InitDB()
+    defer db.Close()
+
+    r :=gin.Default()
+    r = router.CollectRoute(r)
+    panic(r.Run())
 &#125;
 </code></pre>
-<p>二、获取当前目录下的文件或目录名(不包含多级子目录)</p>
-<pre><code class="go">package main
-import (
-    &quot;fmt&quot;
-    //&quot;io/ioutil&quot;
-    &quot;log&quot;
-    &quot;os&quot;
-    &quot;path/filepath&quot;
-)
-func main() &#123;
-    pwd, _ := os.Getwd()
+<h2 id="2-database-go"><a href="#2-database-go" class="headerlink" title="2.database.go"></a>2.database.go</h2><pre><code class="go">
+var DB *gorm.DB
 
-    //获取当前目录下的文件或目录名(包含路径)
-    filepathNames, err := filepath.Glob(filepath.Join(pwd, &quot;*&quot;))
+func InitDB() *gorm.DB &#123;
+    driverName := viper.GetString(&quot;datasource.driverName&quot;)
+    host := viper.GetString(&quot;datasource.host&quot;)
+    port := viper.GetString(&quot;datasource.port&quot;)
+    database := viper.GetString(&quot;datasource.database&quot;)
+    username := viper.GetString(&quot;datasource.username&quot;)
+    password := viper.GetString(&quot;datasource.password&quot;)
+    charset := viper.GetString(&quot;datasource.charset&quot;)
+    loc := viper.GetString(&quot;datasource.loc&quot;)
+    args := fmt.Sprintf(&quot;%s:%s@tcp(%s:%s)/%s?charset=%s&amp;parseTime=true&amp;loc=%s&quot;,
+        username,
+        password,
+        host,
+        port,
+        database,
+        charset,
+        url.QueryEscape(loc))
+    db, err := gorm.Open(driverName, args)
+
     if err != nil &#123;
-        log.Fatal(err)
+        panic(&quot;filed to connect database,err:&quot; + err.Error())
     &#125;
-    for i := range filepathNames &#123;
-        fmt.Println(filepathNames[i]) //打印path
-    &#125;
+    //testhah
+    db.AutoMigrate(&amp;model.User&#123;&#125;)
+    DB = db
+    return db
+&#125;
 
+func GetDB() *gorm.DB &#123;
+    return DB
 &#125;
 </code></pre>
-<p>三、获取当前文件或目录下的所有文件或目录信息(包括子目录)</p>
-<pre><code class="go">package main
+<h2 id="3-router-go"><a href="#3-router-go" class="headerlink" title="3.router.go"></a>3.router.go</h2><pre><code class="go">func CollectRoute(r *gin.Engine) *gin.Engine &#123;
+    r.POST(&quot;/api/auth/register&quot;, controller.Register)
 
-import (
-    &quot;fmt&quot;
-    //&quot;io/ioutil&quot;
-    //&quot;log&quot;
-    &quot;os&quot;
-    &quot;path/filepath&quot;
-)
-func main() &#123;
-    pwd, _ := os.Getwd()
-    //获取当前目录下的所有文件或目录信息
-    filepath.Walk(pwd, func(path string, info os.FileInfo, err error) error &#123;
-        fmt.Println(path)        //打印path信息
-        fmt.Println(info.Name()) //打印文件或目录名
-        return nil
+    return r
+&#125;
+</code></pre>
+<h2 id="4-UserController-go"><a href="#4-UserController-go" class="headerlink" title="4.UserController.go"></a>4.UserController.go</h2><pre><code class="go">func Register(ctx *gin.Context) &#123;
+    DB :=common.DB
+    //获取参数
+    name :=ctx.PostForm(&quot;name&quot;)
+    telephone := ctx.PostForm(&quot;telephone&quot;)
+    password := ctx.PostForm(&quot;password&quot;)
+    //数据验证
+    if len(telephone)!=11 &#123;
+        ctx.JSON(http.StatusUnprocessableEntity,gin.H&#123;&quot;code&quot;:422,&quot;msg&quot;:&quot;手机号必须为11位&quot;&#125;)
+        return
+    &#125;
+    if len(password) &lt;6 &#123;
+        ctx.JSON(http.StatusUnprocessableEntity,gin.H&#123;&quot;code&quot;:422,&quot;msg&quot;:&quot;密码不能小于6位&quot;&#125;)
+        return
+    &#125;
+    //如果名称没有传 则给一个10位的字符串
+    if len(name) == 0 &#123;
+        name = util.RandString(10)
+    &#125;
+    log.Println(name,telephone,password)
+    //判断手机号是否存在
+    if isTelephoneExist(DB,telephone) == true &#123;
+        ctx.JSON(http.StatusUnprocessableEntity,gin.H&#123;&quot;code&quot;:422,&quot;msg&quot;:&quot;手机号已经存在&quot;&#125;)
+        return
+    &#125;
+    //创建用户
+    newUser :=model.User&#123;
+        Name :name,
+        Telephone: telephone,
+        Password: password,
+    &#125;
+    DB.Create(&amp;newUser)
+
+    //返回结果
+
+    ctx.JSON(200,gin.H&#123;
+        &quot;msg&quot;:&quot;注册成功&quot;,
     &#125;)
 &#125;
-</code></pre>
-<p>2.重写Listfunc函数获得包括子目录的信息</p>
-<pre><code class="go">// filelist.go
-package main
 
-import (
-    //&quot;flag&quot;
-    &quot;fmt&quot;
-    &quot;os&quot;
-    &quot;path/filepath&quot;
-    &quot;strings&quot;
-)
-
-var (
-    ostype = os.Getenv(&quot;GOOS&quot;) // 获取系统类型
-)
-
-var listfile []string //获取文件列表
-
-func Listfunc(path string, f os.FileInfo, err error) error &#123;
-    var strRet string
-    strRet, _ = os.Getwd()
-    //ostype := os.Getenv(&quot;GOOS&quot;) // windows, linux
-
-    if ostype == &quot;windows&quot; &#123;
-        strRet += &quot;\\&quot;
-    &#125; else if ostype == &quot;linux&quot; &#123;
-        strRet += &quot;/&quot;
+func isTelephoneExist(db *gorm.DB,telephone string) bool &#123;
+    var user model.User
+    db.Where(&quot;telephone = ?&quot;,telephone).First(&amp;user)
+    if user.ID != 0 &#123;
+        return true
     &#125;
-
-    if f == nil &#123;
-        return err
-    &#125;
-    if f.IsDir() &#123;
-        return nil
-    &#125;
-    strRet += path //+ &quot;\r\n&quot;
-
-    //用strings.HasSuffix(src, suffix)//判断src中是否包含 suffix结尾
-    ok := strings.HasSuffix(strRet, &quot;.go&quot;)
-    if ok &#123;
-
-        listfile = append(listfile, strRet) //将目录push到listfile []string中
-    &#125;
-    //fmt.Println(ostype) // print ostype
-    fmt.Println(strRet) //list the file
-
-    return nil
-&#125;
-func getFileList(path string) string &#123;
-    //var strRet string
-    err := filepath.Walk(path, Listfunc) //
-
-    if err != nil &#123;
-        fmt.Printf(&quot;filepath.Walk() returned %v\n&quot;, err)
-    &#125;
-
-    return &quot; &quot;
-&#125;
-func ListFileFunc(p []string) &#123;
-    for index, value := range p &#123;
-        fmt.Println(&quot;Index = &quot;, index, &quot;Value = &quot;, value)
-    &#125;
-&#125;
-func main() &#123;
-    //flag.Parse()
-    //root := flag.Arg(0)
-    //fmt.Println()
-    var listpath string
-    fmt.Scanf(&quot;%s&quot;, &amp;listpath)
-    getFileList(listpath)
-    ListFileFunc(listfile)
-    //getFileList(root)
-
+    return false
 &#125;
 </code></pre>
-<h2 id="2-跨磁盘移动文件"><a href="#2-跨磁盘移动文件" class="headerlink" title="2.跨磁盘移动文件"></a>2.跨磁盘移动文件</h2><pre><code class="go">func movefile(oldpath, newpath string) error &#123; //跨卷移动os.rename 无法跨卷
-    from, err := syscall.UTF16PtrFromString(oldpath)
-    if err != nil &#123;
-        return err
-    &#125;
-    to, err := syscall.UTF16PtrFromString(newpath)
-    if err != nil &#123;
-        return err
-    &#125;
-    return syscall.MoveFile(from, to)//windows API
-
+<h2 id="4-user-go"><a href="#4-user-go" class="headerlink" title="4.user.go"></a>4.user.go</h2><pre><code class="go">type User struct &#123;
+    gorm.Model
+    Name      string `gorm:&quot;type:varchar(20);not null&quot;`
+    Telephone string `gorm:&quot;type:varchar(110);not null;unique&quot;`
+    Password  string `gorm:&quot;size:255;not null&quot;`
 &#125;
-//err = movefile(&quot;./hello.md&quot;, &quot;D:\\hexoBlog\\source\\_posts\\&quot;+filenamesub+&quot;.md&quot;)//重命名  并移动 跨卷
 </code></pre>
 
       

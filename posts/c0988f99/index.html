@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>4.go处理文件 | 月夜魂归的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="4.go处理文件 | 月夜魂归的博客">
+  <title>5.blog实现用户中间件 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" goblog ">
+  <meta name="description" content="5.blog实现用户中间件 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -495,9 +495,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-4.go处理文件" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-5.blog实现用户中间件" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">4.go处理文件</h1>
+        <h1 class="article-title">5.blog实现用户中间件</h1>
     
     <div class="article-meta">
         
@@ -507,20 +507,29 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="GO笔记">GO笔记</a>
+            <a  data-rel="GO笔记">GO笔记</a> > 
+            
+            <a  data-rel="GO笔记&lt;---&gt;学习blog">学习blog</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">goblog</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-08-01 19:26:47'>2021-08-01 19:26</time>
+            发布时间 : <time class="date" title='最后更新: 2021-08-01 19:26:47'>2021-08-01 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:664</span>
+        <span>字数:286</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -539,7 +548,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%8E%B7%E5%BE%97%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF3%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">1.获得文件信息3种方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%B7%A8%E7%A3%81%E7%9B%98%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-text">2.跨磁盘移动文件</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">1.中间件</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -555,159 +564,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-获得文件信息3种方式"><a href="#1-获得文件信息3种方式" class="headerlink" title="1.获得文件信息3种方式"></a>1.获得文件信息3种方式</h2><p>一、获取当前目录下的文件或目录信息(不包含多级子目录)</p>
-<pre><code class="go">package main
-import (
-    &quot;fmt&quot;
-    &quot;io/ioutil&quot;
-    &quot;log&quot;
-    &quot;os&quot;
-)
-func main() &#123;
-    pwd, _ := os.Getwd()
-    //获取文件或目录相关信息
-    fileInfoList, err := ioutil.ReadDir(pwd)
-    if err != nil &#123;
-        log.Fatal(err)
-    &#125;
-    fmt.Println(len(fileInfoList))
-    for i := range fileInfoList &#123;
-        fmt.Println(fileInfoList[i].Name()) //打印当前文件或目录下的文件或目录名
-    &#125;
-
-&#125;
+        <h2 id="1-中间件"><a href="#1-中间件" class="headerlink" title="1.中间件"></a>1.中间件</h2><p>中间件主要是用来作为路由上配置的润滑剂</p>
+<p>1.1使用</p>
+<pre><code class="go">r.GET(&quot;/api/auth/info&quot;,middleware.AuthMiddleware(), controller.Info)
 </code></pre>
-<p>二、获取当前目录下的文件或目录名(不包含多级子目录)</p>
-<pre><code class="go">package main
-import (
-    &quot;fmt&quot;
-    //&quot;io/ioutil&quot;
-    &quot;log&quot;
-    &quot;os&quot;
-    &quot;path/filepath&quot;
-)
-func main() &#123;
-    pwd, _ := os.Getwd()
+<p>1.2定义</p>
+<p>通过获取浏览器 的Authorization参数 来解析token数据里面的用户信息，并将信息写入上下文，然后info路由就可以获取用户信息</p>
+<pre><code class="go">func AuthMiddleware() gin.HandlerFunc &#123;
+    return func(ctx *gin.Context) &#123;
+        //获取authorization header
+        tokenString := ctx.GetHeader(&quot;Authorization&quot;)
 
-    //获取当前目录下的文件或目录名(包含路径)
-    filepathNames, err := filepath.Glob(filepath.Join(pwd, &quot;*&quot;))
-    if err != nil &#123;
-        log.Fatal(err)
-    &#125;
-    for i := range filepathNames &#123;
-        fmt.Println(filepathNames[i]) //打印path
-    &#125;
+        //验证 tokenString 格式
+        if tokenString == &quot;&quot;|| !strings.HasPrefix(tokenString,&quot;Bearer &quot;) &#123;
+            ctx.JSON(http.StatusUnauthorized,gin.H&#123;&quot;code&quot;:401,&quot;msg&quot;:&quot;权限不足&quot;&#125;)
+            ctx.Abort()
+            return
+        &#125;
+        tokenString = tokenString[7:]  //截取token
+        //更具tokenString  解析出token  claims
+        token,claims,err :=common.ParseToken(tokenString)
+        if err!=nil || !token.Valid&#123;
+            ctx.JSON(http.StatusUnauthorized,gin.H&#123;&quot;code&quot;:401,&quot;msg&quot;:&quot;权限不足&quot;&#125;)
+            ctx.Abort()
+            return
+        &#125;
+        //验证通过后获取claims-》token中的Userid
+        userId :=claims.UserId
+        DB := common.GetDB()
+        var user model.User
+        DB.First(&amp;user,userId)
+        
+        //用户不存在
+        if user.ID == 0 &#123;
+            ctx.JSON(http.StatusUnauthorized,gin.H&#123;&quot;code&quot;:401,&quot;msg&quot;:&quot;权限不足&quot;&#125;)
+            ctx.Abort()
+            return
+        &#125;
+        //用户存在 将user 信息写入上下文
+        ctx.Set(&quot;user&quot;,user)
+        ctx.Next()
 
-&#125;
-</code></pre>
-<p>三、获取当前文件或目录下的所有文件或目录信息(包括子目录)</p>
-<pre><code class="go">package main
-
-import (
-    &quot;fmt&quot;
-    //&quot;io/ioutil&quot;
-    //&quot;log&quot;
-    &quot;os&quot;
-    &quot;path/filepath&quot;
-)
-func main() &#123;
-    pwd, _ := os.Getwd()
-    //获取当前目录下的所有文件或目录信息
-    filepath.Walk(pwd, func(path string, info os.FileInfo, err error) error &#123;
-        fmt.Println(path)        //打印path信息
-        fmt.Println(info.Name()) //打印文件或目录名
-        return nil
-    &#125;)
-&#125;
-</code></pre>
-<p>2.重写Listfunc函数获得包括子目录的信息</p>
-<pre><code class="go">// filelist.go
-package main
-
-import (
-    //&quot;flag&quot;
-    &quot;fmt&quot;
-    &quot;os&quot;
-    &quot;path/filepath&quot;
-    &quot;strings&quot;
-)
-
-var (
-    ostype = os.Getenv(&quot;GOOS&quot;) // 获取系统类型
-)
-
-var listfile []string //获取文件列表
-
-func Listfunc(path string, f os.FileInfo, err error) error &#123;
-    var strRet string
-    strRet, _ = os.Getwd()
-    //ostype := os.Getenv(&quot;GOOS&quot;) // windows, linux
-
-    if ostype == &quot;windows&quot; &#123;
-        strRet += &quot;\\&quot;
-    &#125; else if ostype == &quot;linux&quot; &#123;
-        strRet += &quot;/&quot;
-    &#125;
-
-    if f == nil &#123;
-        return err
-    &#125;
-    if f.IsDir() &#123;
-        return nil
-    &#125;
-    strRet += path //+ &quot;\r\n&quot;
-
-    //用strings.HasSuffix(src, suffix)//判断src中是否包含 suffix结尾
-    ok := strings.HasSuffix(strRet, &quot;.go&quot;)
-    if ok &#123;
-
-        listfile = append(listfile, strRet) //将目录push到listfile []string中
-    &#125;
-    //fmt.Println(ostype) // print ostype
-    fmt.Println(strRet) //list the file
-
-    return nil
-&#125;
-func getFileList(path string) string &#123;
-    //var strRet string
-    err := filepath.Walk(path, Listfunc) //
-
-    if err != nil &#123;
-        fmt.Printf(&quot;filepath.Walk() returned %v\n&quot;, err)
-    &#125;
-
-    return &quot; &quot;
-&#125;
-func ListFileFunc(p []string) &#123;
-    for index, value := range p &#123;
-        fmt.Println(&quot;Index = &quot;, index, &quot;Value = &quot;, value)
     &#125;
 &#125;
-func main() &#123;
-    //flag.Parse()
-    //root := flag.Arg(0)
-    //fmt.Println()
-    var listpath string
-    fmt.Scanf(&quot;%s&quot;, &amp;listpath)
-    getFileList(listpath)
-    ListFileFunc(listfile)
-    //getFileList(root)
-
-&#125;
-</code></pre>
-<h2 id="2-跨磁盘移动文件"><a href="#2-跨磁盘移动文件" class="headerlink" title="2.跨磁盘移动文件"></a>2.跨磁盘移动文件</h2><pre><code class="go">func movefile(oldpath, newpath string) error &#123; //跨卷移动os.rename 无法跨卷
-    from, err := syscall.UTF16PtrFromString(oldpath)
-    if err != nil &#123;
-        return err
-    &#125;
-    to, err := syscall.UTF16PtrFromString(newpath)
-    if err != nil &#123;
-        return err
-    &#125;
-    return syscall.MoveFile(from, to)//windows API
-
-&#125;
-//err = movefile(&quot;./hello.md&quot;, &quot;D:\\hexoBlog\\source\\_posts\\&quot;+filenamesub+&quot;.md&quot;)//重命名  并移动 跨卷
 </code></pre>
 
       
