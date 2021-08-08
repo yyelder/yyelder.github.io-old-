@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>VsCode | 月夜魂归的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="VsCode | 月夜魂归的博客">
+  <title>12.Go重构代码 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" goblog ">
+  <meta name="description" content="12.Go重构代码 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -573,9 +573,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-VsCode" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-12.Go重构代码" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">VsCode</h1>
+        <h1 class="article-title">12.Go重构代码</h1>
     
     <div class="article-meta">
         
@@ -585,20 +585,29 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="开发工具">开发工具</a>
+            <a  data-rel="GO笔记">GO笔记</a> > 
+            
+            <a  data-rel="GO笔记&lt;---&gt;学习blog">学习blog</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">goblog</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-08-08 13:57:10'>2021-08-08 13:57</time>
+            发布时间 : <time class="date" title='最后更新: 2021-08-08 13:57:10'>2021-08-06 14:49</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:91</span>
+        <span>字数:765</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -617,7 +626,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6"><span class="toc-text">扩展插件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E5%A4%B9%E8%AE%BE%E7%BD%AE-Material-Icon-Theme"><span class="toc-text">1.文件夹设置  Material Icon Theme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BB%E9%A2%98-escook-theme"><span class="toc-text">2.主题  escook-theme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83-ESLint-%E6%AF%94%E5%A6%82%E7%BC%A9%E8%BF%9Bindent%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">3.代码规范 ESLint  比如缩进indent的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Vetur-vue%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%8F%92%E4%BB%B6"><span class="toc-text">4.Vetur  vue代码格式化插件</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81"><span class="toc-text">1.实现自动进行数据验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0controller%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81%E6%8A%BD%E5%8F%96repository"><span class="toc-text">2.实现controller公共代码抽取repository</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -633,11 +642,163 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="扩展插件"><a href="#扩展插件" class="headerlink" title="扩展插件"></a>扩展插件</h1><h2 id="1-文件夹设置-Material-Icon-Theme"><a href="#1-文件夹设置-Material-Icon-Theme" class="headerlink" title="1.文件夹设置  Material Icon Theme"></a>1.文件夹设置  Material Icon Theme</h2><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210802141530960.png" alt="image-20210802141530960"></p>
-<h2 id="2-主题-escook-theme"><a href="#2-主题-escook-theme" class="headerlink" title="2.主题  escook-theme"></a>2.主题  escook-theme</h2><h2 id="3-代码规范-ESLint-比如缩进indent的配置"><a href="#3-代码规范-ESLint-比如缩进indent的配置" class="headerlink" title="3.代码规范 ESLint  比如缩进indent的配置"></a>3.代码规范 ESLint  比如缩进indent的配置</h2><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210802141725267.png" alt="image-20210802141725267"></p>
-<h2 id="4-Vetur-vue代码格式化插件"><a href="#4-Vetur-vue代码格式化插件" class="headerlink" title="4.Vetur  vue代码格式化插件"></a>4.Vetur  vue代码格式化插件</h2><p> 在设置搜索  format 里勾选保存格式化代码  </p>
-<p>在设置设置    JS部分不格式化代码 选择none  因为安装了ESLint    </p>
-<p>在设置设置  html  选择js-beautify -html</p>
+        <p>添加Vo包</p>
+<h2 id="1-实现自动进行数据验证"><a href="#1-实现自动进行数据验证" class="headerlink" title="1.实现自动进行数据验证"></a>1.实现自动进行数据验证</h2><p>示例如下：</p>
+<pre><code class="go">type CreateCategoryRequest struct &#123;
+   Name string `json:&quot;name&quot; binding:&quot;required&quot;`
+&#125;
+</code></pre>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210806145037315.png" alt="image-20210806145037315"></p>
+<p>修改验证方式Bind-》ShowBind</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210806145836076.png" alt="image-20210806145836076"></p>
+<h2 id="2-实现controller公共代码抽取repository"><a href="#2-实现controller公共代码抽取repository" class="headerlink" title="2.实现controller公共代码抽取repository"></a>2.实现controller公共代码抽取repository</h2><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210806222617558.png" alt="image-20210806222617558"></p>
+<pre><code class="go">//controller层重构
+type ICategoryController interface &#123;
+    RestController
+&#125;
+
+type CategoryController struct &#123;
+    Repository repository.CategoryRepository
+&#125;
+
+func NewCateGoryController() ICategoryController &#123;
+    repository :=repository.NewCategoryRespository()
+    repository.DB.AutoMigrate(model.Category&#123;&#125;)
+
+    return CategoryController&#123;Repository:repository&#125;
+&#125;
+
+func (c CategoryController) Create(ctx *gin.Context) &#123;
+
+    var requestCategory vo.CreateCategoryRequest
+    if err := ctx.ShouldBind(&amp;requestCategory);err!=nil&#123;
+        response.Fail(ctx,nil,&quot;数据验证错误,分类名称必填&quot;)
+        return
+    &#125;
+    category,err :=c.Repository.Create(requestCategory.Name)
+    if err!=nil &#123;
+        response.Fail(ctx,nil,&quot;创建失败&quot;)
+        return
+    &#125;
+    response.Success(ctx,gin.H&#123;&quot;category&quot;:category&#125;,&quot;创建成功&quot;)
+&#125;
+
+func (c CategoryController) Update(ctx *gin.Context) &#123;
+
+    var requestCategory vo.CreateCategoryRequest
+    if err := ctx.ShouldBind(&amp;requestCategory);err!=nil&#123;
+        response.Fail(ctx,nil,&quot;数据验证错误,分类名称必填&quot;)
+        return
+    &#125;
+    //获取path中的参数
+    categoryId,_ := strconv.Atoi(ctx.Params.ByName(&quot;id&quot;))
+
+
+    updateCategory,err :=c.Repository.SelectById(categoryId)
+    if err!=nil&#123;
+        response.Fail(ctx,nil,&quot;分类不存在&quot;)
+        return
+    &#125;
+    //更新分类有三种方式传参 1. map  2. struct 3.  name:value
+    category,err :=c.Repository.Update(*updateCategory,requestCategory.Name)
+    if err !=nil&#123;
+        panic(err)
+    &#125;
+
+    response.Success(ctx,gin.H&#123;&quot;category&quot;:category&#125;,&quot;修改成功&quot;)
+
+&#125;
+
+func (c CategoryController) Show(ctx *gin.Context) &#123;
+    categoryId,_ :=strconv.Atoi(ctx.Params.ByName(&quot;id&quot;))
+
+    category,err :=c.Repository.SelectById(categoryId)
+
+    if err!=nil &#123;
+        response.Fail(ctx,nil,&quot;分类不存在&quot;)
+        return
+    &#125;
+    response.Success(ctx,gin.H&#123;&quot;category&quot;:category&#125;,&quot;修改成功&quot;)
+&#125;
+
+func (c CategoryController) Delete(ctx *gin.Context) &#123;
+    categoryId,_ :=strconv.Atoi(ctx.Params.ByName(&quot;id&quot;))
+    err :=c.Repository.DeleteById(categoryId)
+
+    if err!=nil &#123;
+        response.Fail(ctx,nil,&quot;分类不存在&quot;)
+        return
+    &#125;
+
+    response.Success(ctx,nil,&quot;删除成功&quot;)
+&#125;
+</code></pre>
+<p>repository主要和数据库交互，所以定义操作数据库的代码，实现分离</p>
+<pre><code class="go">//repositor层
+//type ICategoryController interface &#123;  //接口继承增删改查
+//    Create(name string)(*model.Category, error)
+//    Update(category model.Category,name string)(*model.Category, error)
+//    SelectById(id int) (*model.Category, error)
+//    DeleteById(id int) error
+//&#125;
+type CategoryRepository struct &#123;  //定义结构体，结构体拥有DB，可以传DB给函数，并调用
+    DB *gorm.DB
+&#125;
+
+func NewCategoryRespository() CategoryRepository &#123;//函数实例化的时候传DB给结构体
+    return CategoryRepository&#123;DB: common.GetDB()&#125;
+&#125;
+func (c CategoryRepository) Create(name string) (*model.Category, error) &#123;
+    category :=model.Category&#123;
+        Name:     name,
+    &#125;
+    if err :=c.DB.Create(&amp;category).Error;err!=nil &#123;
+        return nil,err
+    &#125;
+    return &amp;category,nil
+&#125;
+
+func (c CategoryRepository) Update(category model.Category,name string) (*model.Category, error) &#123;
+    if err:=c.DB.Model(&amp;category).Update(&quot;name&quot;,name).Error;err!=nil &#123;
+        return nil,err
+    &#125;
+    return &amp;category,nil
+&#125;
+
+func (c CategoryRepository) SelectById(id int) (*model.Category, error) &#123;
+    var category model.Category
+    if err :=c.DB.First(&amp;category,id).Error;err != nil &#123;
+        return nil,err
+    &#125;
+    return &amp;category,nil
+&#125;
+
+func (c CategoryRepository) DeleteById(id int) error &#123;
+    //var category model.Category
+    if err :=c.DB.Delete(model.Category&#123;&#125;,id).Error;err!=nil &#123;
+        return err
+    &#125;
+    return nil
+&#125;
+</code></pre>
+<p>3.实现错误后台错误反馈给前端（有问题，以后继续考虑）</p>
+<pre><code class="go">//获得后台的错误信息，拦截并返回给前端
+func RecoveryMiddleware() gin.HandlerFunc &#123;
+    return func(ctx *gin.Context) &#123;
+        defer func() &#123;
+            if err := recover(); err != nil &#123;
+                response.Fail(ctx, nil,fmt.Sprint(err))
+                fmt.Sprint(err)
+            &#125;
+
+        &#125;()
+
+        ctx.Next()
+    &#125;
+&#125;
+//在路由里使用
+r.Use(middleware.CORSMiddleware(),middleware.RecoveryMiddleware())
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>

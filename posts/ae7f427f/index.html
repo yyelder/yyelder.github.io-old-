@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>VsCode | 月夜魂归的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="VsCode | 月夜魂归的博客">
+  <title>11.Go语言Time时间修改格式 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" goblog ">
+  <meta name="description" content="11.Go语言Time时间修改格式 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -573,9 +573,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-VsCode" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-11.Go语言Time时间修改格式" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">VsCode</h1>
+        <h1 class="article-title">11.Go语言Time时间修改格式</h1>
     
     <div class="article-meta">
         
@@ -585,20 +585,29 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="开发工具">开发工具</a>
+            <a  data-rel="GO笔记">GO笔记</a> > 
+            
+            <a  data-rel="GO笔记&lt;---&gt;学习blog">学习blog</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">goblog</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-08-08 13:57:10'>2021-08-08 13:57</time>
+            发布时间 : <time class="date" title='最后更新: 2021-08-08 13:57:10'>2021-08-06 10:25</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:91</span>
+        <span>字数:188</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -617,7 +626,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6"><span class="toc-text">扩展插件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E5%A4%B9%E8%AE%BE%E7%BD%AE-Material-Icon-Theme"><span class="toc-text">1.文件夹设置  Material Icon Theme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BB%E9%A2%98-escook-theme"><span class="toc-text">2.主题  escook-theme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83-ESLint-%E6%AF%94%E5%A6%82%E7%BC%A9%E8%BF%9Bindent%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">3.代码规范 ESLint  比如缩进indent的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Vetur-vue%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%8F%92%E4%BB%B6"><span class="toc-text">4.Vetur  vue代码格式化插件</span></a></li></ol></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -633,11 +642,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="扩展插件"><a href="#扩展插件" class="headerlink" title="扩展插件"></a>扩展插件</h1><h2 id="1-文件夹设置-Material-Icon-Theme"><a href="#1-文件夹设置-Material-Icon-Theme" class="headerlink" title="1.文件夹设置  Material Icon Theme"></a>1.文件夹设置  Material Icon Theme</h2><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210802141530960.png" alt="image-20210802141530960"></p>
-<h2 id="2-主题-escook-theme"><a href="#2-主题-escook-theme" class="headerlink" title="2.主题  escook-theme"></a>2.主题  escook-theme</h2><h2 id="3-代码规范-ESLint-比如缩进indent的配置"><a href="#3-代码规范-ESLint-比如缩进indent的配置" class="headerlink" title="3.代码规范 ESLint  比如缩进indent的配置"></a>3.代码规范 ESLint  比如缩进indent的配置</h2><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210802141725267.png" alt="image-20210802141725267"></p>
-<h2 id="4-Vetur-vue代码格式化插件"><a href="#4-Vetur-vue代码格式化插件" class="headerlink" title="4.Vetur  vue代码格式化插件"></a>4.Vetur  vue代码格式化插件</h2><p> 在设置搜索  format 里勾选保存格式化代码  </p>
-<p>在设置设置    JS部分不格式化代码 选择none  因为安装了ESLint    </p>
-<p>在设置设置  html  选择js-beautify -html</p>
+        <pre><code class="go">const timeFormat = &quot;2006-01-02 15:04:05&quot;
+const timezone = &quot;Asia/Shanghai&quot;
+
+type Time time.Time
+
+func (t Time) MarshalJSON() ([]byte, error) &#123;
+    b := make([]byte, 0, len(timeFormat)+2)
+    b = append(b, &#39;&quot;&#39;)
+    b = time.Time(t).AppendFormat(b, timeFormat)
+    b = append(b, &#39;&quot;&#39;)
+    return b, nil
+&#125;
+
+func (t *Time) UnmarshalJSON(data []byte) (err error) &#123;
+    now, err := time.ParseInLocation(`&quot;`+timeFormat+`&quot;`, string(data), time.Local)
+    *t = Time(now)
+    return
+&#125;
+
+func (t Time) String() string &#123;
+    return time.Time(t).Format(timeFormat)
+&#125;
+
+func (t Time) local() time.Time &#123;
+    loc, _ := time.LoadLocation(timezone)
+    return time.Time(t).In(loc)
+&#125;
+
+func (t Time) Value() (driver.Value, error) &#123;
+    var zeroTime time.Time
+    var ti = time.Time(t)
+    if ti.UnixNano() == zeroTime.UnixNano() &#123;
+        return nil, nil
+    &#125;
+    return ti, nil
+&#125;
+
+func (t *Time) Scan(v interface&#123;&#125;) error &#123;
+    value, ok := v.(time.Time)
+    if ok &#123;
+        *t = Time(value)
+        return nil
+    &#125;
+    return fmt.Errorf(&quot;can not convert %v to timestamp&quot;, v)
+&#125;
+</code></pre>
+<p>在模型里使用</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>

@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>VsCode | 月夜魂归的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="VsCode | 月夜魂归的博客">
+  <title>10.实现文章分类 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" goblog ">
+  <meta name="description" content="10.实现文章分类 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -573,9 +573,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-VsCode" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-10.实现文章分类" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">VsCode</h1>
+        <h1 class="article-title">10.实现文章分类</h1>
     
     <div class="article-meta">
         
@@ -585,20 +585,29 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="开发工具">开发工具</a>
+            <a  data-rel="GO笔记">GO笔记</a> > 
+            
+            <a  data-rel="GO笔记&lt;---&gt;学习blog">学习blog</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">goblog</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-08-08 13:57:10'>2021-08-08 13:57</time>
+            发布时间 : <time class="date" title='最后更新: 2021-08-08 13:57:10'>2021-08-06 08:21</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:91</span>
+        <span>字数:421</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -617,7 +626,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6"><span class="toc-text">扩展插件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E5%A4%B9%E8%AE%BE%E7%BD%AE-Material-Icon-Theme"><span class="toc-text">1.文件夹设置  Material Icon Theme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BB%E9%A2%98-escook-theme"><span class="toc-text">2.主题  escook-theme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83-ESLint-%E6%AF%94%E5%A6%82%E7%BC%A9%E8%BF%9Bindent%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">3.代码规范 ESLint  比如缩进indent的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Vetur-vue%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%8F%92%E4%BB%B6"><span class="toc-text">4.Vetur  vue代码格式化插件</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-RestController%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-text">1.RestController接口实现增删改查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BB%A7%E6%89%BF%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%B9%B6%E5%AE%9E%E7%8E%B0%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-text">2.继承增删改查接口，并实现控制器</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -633,11 +642,85 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="扩展插件"><a href="#扩展插件" class="headerlink" title="扩展插件"></a>扩展插件</h1><h2 id="1-文件夹设置-Material-Icon-Theme"><a href="#1-文件夹设置-Material-Icon-Theme" class="headerlink" title="1.文件夹设置  Material Icon Theme"></a>1.文件夹设置  Material Icon Theme</h2><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210802141530960.png" alt="image-20210802141530960"></p>
-<h2 id="2-主题-escook-theme"><a href="#2-主题-escook-theme" class="headerlink" title="2.主题  escook-theme"></a>2.主题  escook-theme</h2><h2 id="3-代码规范-ESLint-比如缩进indent的配置"><a href="#3-代码规范-ESLint-比如缩进indent的配置" class="headerlink" title="3.代码规范 ESLint  比如缩进indent的配置"></a>3.代码规范 ESLint  比如缩进indent的配置</h2><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210802141725267.png" alt="image-20210802141725267"></p>
-<h2 id="4-Vetur-vue代码格式化插件"><a href="#4-Vetur-vue代码格式化插件" class="headerlink" title="4.Vetur  vue代码格式化插件"></a>4.Vetur  vue代码格式化插件</h2><p> 在设置搜索  format 里勾选保存格式化代码  </p>
-<p>在设置设置    JS部分不格式化代码 选择none  因为安装了ESLint    </p>
-<p>在设置设置  html  选择js-beautify -html</p>
+        <h2 id="1-RestController接口实现增删改查"><a href="#1-RestController接口实现增删改查" class="headerlink" title="1.RestController接口实现增删改查"></a>1.RestController接口实现增删改查</h2><pre><code class="go">type RestController interface &#123;
+    Create(ctx *gin.Context)
+    Update(ctx *gin.Context)
+    Show(ctx *gin.Context)
+    Delete(ctx *gin.Context)
+&#125;
+</code></pre>
+<h2 id="2-继承增删改查接口，并实现控制器"><a href="#2-继承增删改查接口，并实现控制器" class="headerlink" title="2.继承增删改查接口，并实现控制器"></a>2.继承增删改查接口，并实现控制器</h2><pre><code class="go">type ICategoryController interface &#123;  //接口继承增删改查
+    RestController
+&#125;
+
+type CategoryController struct &#123; //新结构体继承DB
+    DB *gorm.DB
+&#125;
+//函数获取DB并返回给CategoryController   继承ICategoryController  ，接口获得DB
+func NewCateGoryController() ICategoryController &#123; 
+    db :=common.GetDB()
+    db.AutoMigrate(model.Category&#123;&#125;)
+
+    return CategoryController&#123;DB:db&#125;
+&#125;
+
+func (c CategoryController) Create(ctx *gin.Context) &#123;
+    var requestCategory model.Category
+    ctx.Bind(&amp;requestCategory)
+    if requestCategory.Name == &quot;&quot; &#123;
+        response.Fail(ctx,nil,&quot;数据验证错误&quot;)
+        return
+    &#125;
+    c.DB.Create(&amp;requestCategory)
+    response.Success(ctx,gin.H&#123;&quot;category&quot;:requestCategory&#125;,&quot;创建成功&quot;)
+&#125;
+
+func (c CategoryController) Update(ctx *gin.Context) &#123;
+    var requestCategory model.Category
+    ctx.Bind(&amp;requestCategory)
+
+    if requestCategory.Name == &quot;&quot; &#123;
+        response.Fail(ctx,nil,&quot;数据验证错误,分类名称必填&quot;)
+    &#125;
+    //获取path中的参数
+    categoryId,_ := strconv.Atoi(ctx.Params.ByName(&quot;id&quot;))
+
+    var updateCategory model.Category
+
+    if c.DB.First(&amp;updateCategory,categoryId).RecordNotFound()&#123;
+        response.Fail(ctx,nil,&quot;分类不存在&quot;)
+        return
+    &#125;
+    //更新分类有三种方式传参 1. map  2. struct 3.  name:value
+
+    c.DB.Model(&amp;updateCategory).Update(&quot;name&quot;,requestCategory.Name)
+
+    response.Success(ctx,gin.H&#123;&quot;category&quot;:updateCategory&#125;,&quot;修改成功&quot;)
+
+&#125;
+
+func (c CategoryController) Show(ctx *gin.Context) &#123;
+    categoryId,_ :=strconv.Atoi(ctx.Params.ByName(&quot;id&quot;))
+    var showCategory model.Category
+
+    if c.DB.First(&amp;showCategory,categoryId).RecordNotFound() &#123;
+        response.Fail(ctx,nil,&quot;分类不存在&quot;)
+        return
+    &#125;
+    response.Success(ctx,gin.H&#123;&quot;category&quot;:showCategory&#125;,&quot;修改成功&quot;)
+&#125;
+
+func (c CategoryController) Delete(ctx *gin.Context) &#123;
+    categoryId,_ :=strconv.Atoi(ctx.Params.ByName(&quot;id&quot;))
+    if err := c.DB.Delete(model.Category&#123;&#125;,categoryId).Error;err!=nil &#123;
+        response.Fail(ctx,nil,&quot;删除失败，请重试&quot;)
+        return
+    &#125;
+
+    response.Success(ctx,nil,&quot;删除成功&quot;)
+
+&#125;
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
