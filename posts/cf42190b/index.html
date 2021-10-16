@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>4.blog实现JWT认证 | 月夜魂归的博客</title>
-  <meta name="keywords" content=" goblog ">
-  <meta name="description" content="4.blog实现JWT认证 | 月夜魂归的博客">
+  <title>go语言练习 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" Go ">
+  <meta name="description" content="go语言练习 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -872,11 +872,13 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-4.blog实现JWT认证" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-go语言练习" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">4.blog实现JWT认证</h1>
+        <h1 class="article-title">go语言练习</h1>
     
     <div class="article-meta">
+        
+        <span class="top"><a>置顶</a></span>
         
         
         
@@ -884,9 +886,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="GO笔记">GO笔记</a> > 
-            
-            <a  data-rel="GO笔记&lt;---&gt;学习blog">学习blog</a>
+            <a  data-rel="GO笔记">GO笔记</a>
             
         </span>
         
@@ -894,19 +894,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color2">goblog</a>
+            <a class="color3">Go</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-10-16 23:02:56'>2021-08-01 15:22</time>
+            发布时间 : <time class="date" title='最后更新: 2021-10-16 23:02:56'>2021-10-16 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:177</span>
+        <span>字数:409</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -925,7 +925,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85JWT"><span class="toc-text">安装JWT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jwt%E5%8A%A0%E5%AF%86"><span class="toc-text">jwt加密</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E4%B8%80%E3%80%81%E5%AE%9E%E7%8E%B0%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-text">练习一、实现学生信息的增删改查</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -941,42 +941,93 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="安装JWT"><a href="#安装JWT" class="headerlink" title="安装JWT"></a>安装JWT</h2><pre><code class="go">go get github.com/dgrijalva/jwt-go
-</code></pre>
-<pre><code class="go">//token 由协议头  +  claims存储信息 +第三部分为前两部分 协议头和claims +jwtKey  哈希的值
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
-//eyJVc2VySWQiOjQsImV4cCI6MTYyODM5NDY2MywiaWF0IjoxNjI3Nzg5ODYzLCJpc3MiOiJFbGRlciIsInN1YiI6InVzZXIgdG9rZW4ifQ.
-//SG2WLQ3Njb2agPImeuqGQY3GUcasjbR35Mkr5LHAZLc
-
-//可以用 echo  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 |base64 -D  查看信息
-</code></pre>
-<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20210801115628981.png" alt="image-20210801115628981"></p>
-<h2 id="jwt加密"><a href="#jwt加密" class="headerlink" title="jwt加密"></a>jwt加密</h2><pre><code class="go">var jwtKey = []byte(&quot;a_secret_crect&quot;)  //JWT加密密钥
-
-type Claims struct &#123;
-    UserId uint
-    jwt.StandardClaims
+        <h2 id="练习一、实现学生信息的增删改查"><a href="#练习一、实现学生信息的增删改查" class="headerlink" title="练习一、实现学生信息的增删改查"></a>练习一、实现学生信息的增删改查</h2><pre><code class="go">type student struct &#123;
+    ID     int
+    Name   string
+    Gender string
+    Score  int
 &#125;
-//发放token
-func ReleaseToken(user model.User) (string,error) &#123;
-    expirationTime := time.Now().Add(7 * 24 * time.Hour)  //设置过期时间 7天
-    claims :=&amp;Claims&#123;
-        UserId:         user.ID,
-        StandardClaims: jwt.StandardClaims&#123;
-            ExpiresAt: expirationTime.Unix(),   //过期时间
-            IssuedAt: time.Now().Unix(),  //发放时间
-            Issuer: &quot;Elder&quot;,  //发放的人
-            Subject: &quot;user token&quot;, //发放主题
-        &#125;,
+
+func NewStu(id int, name, gender string, score int) *student &#123;
+    return &amp;student&#123;
+        ID:     id,
+        Name:   name,
+        Gender: gender,
+        Score:  score,
     &#125;
-    token := jwt.NewWithClaims(jwt.SigningMethodHS256,claims)
-    tokenString,err := token.SignedString(jwtKey)  //使用密钥生成token
-    if err !=nil &#123;
-        return &quot;&quot;,err
+&#125;
+
+func main() &#123;
+    students := make([]*student, 0, 5)
+    for i := 0; i &lt; 5; i++ &#123;
+        result, _ := rand.Int(rand.Reader, big.NewInt(128))
+        stu := &amp;student&#123;
+            ID:     i,
+            Name:   fmt.Sprintf(&quot;stu%02d&quot;, i),
+            Gender: &quot;男&quot;,
+            Score:  int(result.Int64()),
+        &#125;
+        students = append(students, stu)
     &#125;
-    return tokenString,nil
+    var elt int
+    for &#123;
+        fmt.Println(&quot;列表已经初始化，请选择操作：1展示列表，2添加学生，3编辑学生，4删除学生&quot;)
+        fmt.Print(&quot;请选择操作：&quot;)
+        fmt.Scan(&amp;elt)
+        if elt == 1 &#123;
+            for _, v := range students &#123;
+                fmt.Printf(&quot;%+v\n&quot;, v)
+            &#125;
+            data, _ := json.Marshal(students)
+            fmt.Printf(&quot;%s&quot;, data)
+        &#125; else if elt == 2 &#123;
+            fmt.Println(&quot;添加学生&quot;)
+            result, _ := rand.Int(rand.Reader, big.NewInt(128))
+            stu := &amp;student&#123;
+                ID:     len(students) + 1,
+                Name:   fmt.Sprintf(&quot;张浩%02d&quot;, len(students)+1),
+                Gender: &quot;男&quot;,
+                Score:  int(result.Int64()),
+            &#125;
+            students = append(students, stu)
+        &#125; else if elt == 3 &#123;
+            fmt.Println(&quot;编辑学生&quot;)
+            var edit, s int
+            var n, g string
+            fmt.Print(&quot;请选择编辑学生id：&quot;)
+            fmt.Scan(&amp;edit)
+            for _, v := range students &#123;
+                if v.ID == edit &#123;
+                    fmt.Print(&quot;输入学生信息（姓名，性别，分数）：&quot;)
+                    fmt.Scan(&amp;n, &amp;g, &amp;s)
+                    v.Name = n
+                    v.Gender = g
+                    v.Score = s
+                &#125;
+            &#125;
+            fmt.Println(&quot;修改成功&quot;)
+        &#125; else if elt == 4 &#123;
+            fmt.Println(&quot;删除学生&quot;)
+            var edit int
+            fmt.Print(&quot;请选择删除学生id：&quot;)
+            fmt.Scan(&amp;edit)
+            var i int = 0
+            for _, v := range students &#123;
+
+                if v.ID == edit &#123;
+                    fmt.Println(i)
+                    students = append(students[:i], students[i+1:]...)
+                &#125;
+                i++
+            &#125;
+        &#125; else &#123;
+            fmt.Println(&quot;退出&quot;)
+            break
+        &#125;
+    &#125;
 &#125;
 </code></pre>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20211016230151176.png" alt="image-20211016230151176"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
