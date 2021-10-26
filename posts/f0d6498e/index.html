@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>tags | 月夜魂归的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="tags | 月夜魂归的博客">
+  <title>5.Go热重载 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" Go ">
+  <meta name="description" content="5.Go热重载 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="tags">
@@ -906,24 +906,39 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-5.Go热重载" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">tags</h1>
+        <h1 class="article-title">5.Go热重载</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="GO笔记">GO笔记</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Go</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-07-23 20:53:25'>2021-07-23 20:46</time>
+            发布时间 : <time class="date" title='最后更新: 2021-10-26 18:29:46'>2020-09-11 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:95</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -942,7 +957,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%AD%E5%8A%A0%E8%BD%BD"><span class="toc-text">热加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="toc-text">运行项目</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -958,7 +973,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="热加载"><a href="#热加载" class="headerlink" title="热加载"></a>热加载</h2><p>网址</p>
+<pre><code class="go">https://github.com/cosmtrek/air
+</code></pre>
+<p>安装</p>
+<pre><code class="go">go get -u github.com/cosmtrek/air
+</code></pre>
+<p>在项目根目录创建一个名为 .air.conf 的配置文件。创建完毕之后，在文件中写入你应用运行的命令如：</p>
+<h3 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h3><pre><code class="go">air -c .air.conf
+</code></pre>
+<p>项目运行后，我们再次编辑项目中的文件，项目的服务会自动重启了。</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
     </div>
