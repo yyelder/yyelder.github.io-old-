@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>go语言实现数据库导成model | 月夜魂归的博客</title>
+  <meta name="keywords" content=" GO ">
+  <meta name="description" content="go语言实现数据库导成model | 月夜魂归的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http://example.com/tags/index.html">
+<meta property="og:site_name" content="月夜魂归的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-23T12:46:18.000Z">
+<meta property="article:modified_time" content="2021-07-23T12:53:25.777Z">
+<meta property="article:author" content="Elder">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Elder</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/gumugwen"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:gumuX@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1245516932&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(41)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="工具">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        工具
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="工具<--->开发工具">
+                                        
+                                        开发工具
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="工具<--->hexo">
+                                        
+                                        hexo
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        数据库
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="数据库<--->Mysql">
+                                        
+                                        Mysql
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="大数据">
+                        
+                        大数据
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="单片机">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        单片机
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="单片机<--->ESP32">
+                                        
+                                        ESP32
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="单片机<--->ESP8266">
+                                        
+                                        ESP8266
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="区块链">
+                        
+                        区块链
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="微信">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        微信
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="微信<--->微信公众号">
+                                        
+                                        微信公众号
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="GO笔记">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        GO笔记
+                        <small>(22)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="GO笔记<--->学习blog">
+                                        
+                                        学习blog
+                                        
+                                            <small>(15
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="GO笔记<--->docker">
+                                        
+                                        docker
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="linux">
+                        
+                        linux
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="nas">
+                        
+                        nas
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Vue">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        Vue
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="Vue<--->vueShop项目">
+                                        
+                                        vueShop项目
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="41">
+<input type="hidden" id="yelog_site_word_count" value="54.9k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>单片机</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>工具</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>区块链</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>微信</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docke</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ES6</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>GO</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goblog</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hadoop</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nas</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vueshop</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="全部文章 GO笔记 "
+           href="/posts/cf42190b/"
+           data-tag="Go"
+           data-author="" >
+            <span class="post-title" title="go语言练习">go语言练习</span>
+            <span class="post-date" title="2021-10-16 00:00:00">2021/10/16</span>
+        </a>
+        
+        <a id="top" class="全部文章 单片机 ESP32 "
+           href="/posts/b48794b/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="(标准)程序学习区">(标准)程序学习区</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a id="top" class="全部文章 工具 hexo "
+           href="/posts/8ab3b61c/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="hexo安装文档">hexo安装文档</span>
+            <span class="post-date" title="2020-07-30 00:00:00">2020/07/30</span>
+        </a>
+        
+        <a id="top" class="全部文章 单片机 ESP32 "
+           href="/posts/405f27aa/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="esp课件">esp课件</span>
+            <span class="post-date" title="2020-07-30 00:00:00">2020/07/30</span>
+        </a>
+        
+        <a  class="全部文章 数据库 Mysql "
+           href="/posts/6e261748/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="配置ssl连接">配置ssl连接</span>
+            <span class="post-date" title="2021-11-04 14:14:05">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 数据库 Mysql "
+           href="/posts/b4bda597/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="navicat安装">navicat安装</span>
+            <span class="post-date" title="2021-11-04 14:14:05">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 数据库 Mysql "
+           href="/posts/e98702bb/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MysqlZIP安装">MysqlZIP安装</span>
+            <span class="post-date" title="2021-11-04 14:14:05">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 工具 开发工具 "
+           href="/posts/452f3b9c/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ngrok使用">ngrok使用</span>
+            <span class="post-date" title="2021-11-04 14:14:04">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/edd76011/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="4.go处理文件">4.go处理文件</span>
+            <span class="post-date" title="2021-11-04 14:14:04">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/55989ea1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2.GO出现问题">2.GO出现问题</span>
+            <span class="post-date" title="2021-11-04 14:14:04">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/20a2197f/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="1.Go环境配置">1.Go环境配置</span>
+            <span class="post-date" title="2021-11-04 14:14:04">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/a485763a/"
+           data-tag="GO"
+           data-author="" >
+            <span class="post-title" title="go语言实现数据库导成model">go语言实现数据库导成model</span>
+            <span class="post-date" title="2021-11-03 00:00:00">2021/11/03</span>
+        </a>
+        
+        <a  class="全部文章 区块链 "
+           href="/posts/a8f7a421/"
+           data-tag="区块链"
+           data-author="" >
+            <span class="post-title" title="区块链和oracle">区块链和oracle</span>
+            <span class="post-date" title="2021-10-26 00:00:00">2021/10/26</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/fcb04d9d/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="15.Go语言开发参考标准方式">15.Go语言开发参考标准方式</span>
+            <span class="post-date" title="2021-10-05 00:00:00">2021/10/05</span>
+        </a>
+        
+        <a  class="全部文章 微信 微信公众号 "
+           href="/posts/ae53d71f/"
+           data-tag="微信"
+           data-author="" >
+            <span class="post-title" title="公众号开发">公众号开发</span>
+            <span class="post-date" title="2021-10-01 00:00:00">2021/10/01</span>
+        </a>
+        
+        <a  class="全部文章 Vue "
+           href="/posts/d73c0d37/"
+           data-tag="ES6"
+           data-author="" >
+            <span class="post-title" title="ES6">ES6</span>
+            <span class="post-date" title="2021-09-23 00:00:00">2021/09/23</span>
+        </a>
+        
+        <a  class="全部文章 Vue vueShop项目 "
+           href="/posts/e2f4c9ee/"
+           data-tag="vueshop"
+           data-author="" >
+            <span class="post-title" title="3.项目优化">3.项目优化</span>
+            <span class="post-date" title="2021-09-13 08:42:48">2021/09/13</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 docker "
+           href="/posts/c56ee665/"
+           data-tag="docke"
+           data-author="" >
+            <span class="post-title" title="Docker入门学习笔记">Docker入门学习笔记</span>
+            <span class="post-date" title="2021-09-02 00:00:00">2021/09/02</span>
+        </a>
+        
+        <a  class="全部文章 Vue vueShop项目 "
+           href="/posts/153a865a/"
+           data-tag="vueshop"
+           data-author="" >
+            <span class="post-title" title="2.前端知识碎片">2.前端知识碎片</span>
+            <span class="post-date" title="2021-08-30 07:48:44">2021/08/30</span>
+        </a>
+        
+        <a  class="全部文章 Vue vueShop项目 "
+           href="/posts/df38a864/"
+           data-tag="vueshop"
+           data-author="" >
+            <span class="post-title" title="1.基本项目安装">1.基本项目安装</span>
+            <span class="post-date" title="2021-08-22 08:42:48">2021/08/22</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/4ceab5f8/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="14.Go语言打包">14.Go语言打包</span>
+            <span class="post-date" title="2021-08-21 11:28:08">2021/08/21</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/d32991df/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="12.Go重构代码">12.Go重构代码</span>
+            <span class="post-date" title="2021-08-06 14:49:08">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/27d14625/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="13.GO文章实现后台代码(uuid)">13.GO文章实现后台代码(uuid)</span>
+            <span class="post-date" title="2021-08-06 14:49:08">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/ae7f427f/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="11.Go语言Time时间修改格式">11.Go语言Time时间修改格式</span>
+            <span class="post-date" title="2021-08-06 10:25:03">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/ae9ea94a/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="10.实现文章分类">10.实现文章分类</span>
+            <span class="post-date" title="2021-08-06 08:21:03">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/c9bd5e20/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="9.GO获得路由参数信息">9.GO获得路由参数信息</span>
+            <span class="post-date" title="2021-08-03 19:51:03">2021/08/03</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/3d83c12e/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="8.前端开发">8.前端开发</span>
+            <span class="post-date" title="2021-08-02 09:51:03">2021/08/02</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/ebccff4c/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="7.Vueblog">7.Vueblog</span>
+            <span class="post-date" title="2021-08-02 06:51:23">2021/08/02</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/988c9994/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="6.blog修改返回json格式及封装HTTP返回">6.blog修改返回json格式及封装HTTP返回</span>
+            <span class="post-date" title="2021-08-01 19:23:07">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/c0988f99/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="5.blog实现用户中间件">5.blog实现用户中间件</span>
+            <span class="post-date" title="2021-08-01 18:32:19">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/fa48f225/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="4.blog实现JWT认证">4.blog实现JWT认证</span>
+            <span class="post-date" title="2021-08-01 15:22:45">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/77f78a77/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="3.blog实现用户登录(密码加密解密)">3.blog实现用户登录(密码加密解密)</span>
+            <span class="post-date" title="2021-08-01 10:58:03">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/83b04df8/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="2.blog 项目重构">2.blog 项目重构</span>
+            <span class="post-date" title="2021-08-01 09:12:03">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/6638504c/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="1.blog实现用户注册">1.blog实现用户注册</span>
+            <span class="post-date" title="2021-07-31 08:52:03">2021/07/31</span>
+        </a>
+        
+        <a  class="全部文章 大数据 "
+           href="/posts/69284df1/"
+           data-tag="hadoop"
+           data-author="" >
+            <span class="post-title" title="1.hadoop安装实验">1.hadoop安装实验</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/f0d6498e/"
+           data-tag="Go"
+           data-author="" >
+            <span class="post-title" title="5.Go热重载">5.Go热重载</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 工具 开发工具 "
+           href="/posts/1055d9da/"
+           data-tag="工具"
+           data-author="" >
+            <span class="post-title" title="Idea2021.2旗舰版安装破解方法">Idea2021.2旗舰版安装破解方法</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 工具 开发工具 "
+           href="/posts/230490ec/"
+           data-tag="工具"
+           data-author="" >
+            <span class="post-title" title="VsCode">VsCode</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 linux "
+           href="/posts/9211474f/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux">linux</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 nas "
+           href="/posts/8332ac56/"
+           data-tag="nas"
+           data-author="" >
+            <span class="post-title" title="我家nas安装">我家nas安装</span>
+            <span class="post-date" title="2020-07-11 00:00:00">2020/07/11</span>
+        </a>
+        
+        <a  class="全部文章 单片机 ESP8266 "
+           href="/posts/9385ce0d/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="获得网络时间">获得网络时间</span>
+            <span class="post-date" title="2020-04-08 00:00:00">2020/04/08</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-go语言实现数据库导成model" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">go语言实现数据库导成model</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="GO笔记">GO笔记</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">GO</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-11-04 14:14:04'>2021-11-03 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:388</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">将数据库转换成模型</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="将数据库转换成模型"><a href="#将数据库转换成模型" class="headerlink" title="将数据库转换成模型"></a>将数据库转换成模型</h2><p>使用网址<a target="_blank" rel="noopener" href="https://github.com/xxjwxc/gormt">https://github.com/xxjwxc/gormt</a></p>
+<p>安装</p>
+<pre><code class="go">go get -u -v github.com/xxjwxc/gormt@master
+</code></pre>
+<p>配置config.yml 将它放在项目跟目录</p>
+<pre><code class="yml">base:
+  is_dev : true
+out_dir : ./model  # 输出目录
+url_tag : json # web url tag(json,db(https://github.com/google/go-querystring))
+language :  # 语言(English,中 文)
+db_tag : gorm # 数据库标签名(gorm,db)
+simple : false # 简单输出(默认只输出gorm主键和字段标签)
+is_db_tag : true # 是否输出 数据库标签(gorm,db)
+is_out_sql : false # 是否输出 sql 原信息
+is_out_func : false # 是否输出 快捷函数
+is_web_tag : true # 是否打web标记(json标记前提条件)
+is_web_tag_pk_hidden: true # web标记是否隐藏主键
+is_foreign_key : true # 是否导出外键关联
+is_gui : false # 是否ui模式显示
+is_table_name : true # 是否直接生成表名
+is_column_name : true # 是否直接生成列名
+is_null_to_point : false # 数据库默认 &#39;DEFAULT NULL&#39; 时设置结构为指针类型
+table_prefix : &quot;&quot; # 表前缀, 如果有则使用, 没有留空
+table_names: &quot;&quot; # 指定表生成，多个表用,隔开
+is_out_file_by_table_name: true # 是否根据表名生成多个model
+
+db_info:
+  host : 127.0.0.1 # type=1的时候，host为yml文件全路径
+  port : 3306
+  username : root
+  password : root
+  database : crmp
+  type: 0 # 数据库类型:0:mysql , 1:sqlite , 2:mssql
+self_type_define: # 自定义数据类型映射
+  datetime: time.Time
+  time: time.Time
+out_file_name: &quot;&quot; # 自定义生成文件名
+web_tag_type: 0 # json tag类型 0: 小驼峰 1: 下划线
+
+# sqlite
+# db_info:
+#     host : /Users/xxj/Downloads/caoguo # type=1的时候，host为yml文件全路径
+#     port :
+#     username :
+#     password :
+#     database :
+#     type: 1 # 数据库类型:0:mysql , 1:sqlite , 2:mssql
+</code></pre>
+<p>生成内容如下</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20211103104915584.png" alt="image-20211103104915584"></p>
+<p>运行方式</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20211103105011490.png" alt="image-20211103105011490"></p>
+<pre><code class="shell">gormt
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry"><span class="miit">
+                <img src="/img/gov.png" title="中华人民共和国工业和信息化部">
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备19062340号-2</a>
+        </span>
+    
+    ©Alisa&amp;Elder
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 562px;
+    }
+    .nav.fullscreen {
+        margin-left: -562px;
+    }
+    .nav-left {
+        width: 140px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 522px;
+        }
+        .nav.fullscreen {
+            margin-left: -522px;
+        }
+        .nav-left {
+            width: 130px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 522px;
+            margin-left: -522px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

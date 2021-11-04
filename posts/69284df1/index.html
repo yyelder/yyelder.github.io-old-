@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>1.hadoop安装实验 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" hadoop ">
+  <meta name="description" content="1.hadoop安装实验 | 月夜魂归的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http://example.com/tags/index.html">
+<meta property="og:site_name" content="月夜魂归的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-23T12:46:18.000Z">
+<meta property="article:modified_time" content="2021-07-23T12:53:25.777Z">
+<meta property="article:author" content="Elder">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Elder</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/gumugwen"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:gumuX@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1245516932&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(41)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="工具">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        工具
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="工具<--->开发工具">
+                                        
+                                        开发工具
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="工具<--->hexo">
+                                        
+                                        hexo
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        数据库
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="数据库<--->Mysql">
+                                        
+                                        Mysql
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="大数据">
+                        
+                        大数据
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="单片机">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        单片机
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="单片机<--->ESP32">
+                                        
+                                        ESP32
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="单片机<--->ESP8266">
+                                        
+                                        ESP8266
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="区块链">
+                        
+                        区块链
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="微信">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        微信
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="微信<--->微信公众号">
+                                        
+                                        微信公众号
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="GO笔记">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        GO笔记
+                        <small>(22)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="GO笔记<--->学习blog">
+                                        
+                                        学习blog
+                                        
+                                            <small>(15
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="GO笔记<--->docker">
+                                        
+                                        docker
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="linux">
+                        
+                        linux
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="nas">
+                        
+                        nas
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Vue">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        Vue
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="Vue<--->vueShop项目">
+                                        
+                                        vueShop项目
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="41">
+<input type="hidden" id="yelog_site_word_count" value="54.9k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>单片机</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>工具</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>区块链</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>微信</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docke</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ES6</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>GO</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goblog</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hadoop</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nas</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vueshop</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="全部文章 GO笔记 "
+           href="/posts/cf42190b/"
+           data-tag="Go"
+           data-author="" >
+            <span class="post-title" title="go语言练习">go语言练习</span>
+            <span class="post-date" title="2021-10-16 00:00:00">2021/10/16</span>
+        </a>
+        
+        <a id="top" class="全部文章 单片机 ESP32 "
+           href="/posts/b48794b/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="(标准)程序学习区">(标准)程序学习区</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a id="top" class="全部文章 工具 hexo "
+           href="/posts/8ab3b61c/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="hexo安装文档">hexo安装文档</span>
+            <span class="post-date" title="2020-07-30 00:00:00">2020/07/30</span>
+        </a>
+        
+        <a id="top" class="全部文章 单片机 ESP32 "
+           href="/posts/405f27aa/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="esp课件">esp课件</span>
+            <span class="post-date" title="2020-07-30 00:00:00">2020/07/30</span>
+        </a>
+        
+        <a  class="全部文章 数据库 Mysql "
+           href="/posts/6e261748/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="配置ssl连接">配置ssl连接</span>
+            <span class="post-date" title="2021-11-04 14:14:05">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 数据库 Mysql "
+           href="/posts/b4bda597/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="navicat安装">navicat安装</span>
+            <span class="post-date" title="2021-11-04 14:14:05">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 数据库 Mysql "
+           href="/posts/e98702bb/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MysqlZIP安装">MysqlZIP安装</span>
+            <span class="post-date" title="2021-11-04 14:14:05">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 工具 开发工具 "
+           href="/posts/452f3b9c/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ngrok使用">ngrok使用</span>
+            <span class="post-date" title="2021-11-04 14:14:04">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/edd76011/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="4.go处理文件">4.go处理文件</span>
+            <span class="post-date" title="2021-11-04 14:14:04">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/55989ea1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2.GO出现问题">2.GO出现问题</span>
+            <span class="post-date" title="2021-11-04 14:14:04">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/20a2197f/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="1.Go环境配置">1.Go环境配置</span>
+            <span class="post-date" title="2021-11-04 14:14:04">2021/11/04</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/a485763a/"
+           data-tag="GO"
+           data-author="" >
+            <span class="post-title" title="go语言实现数据库导成model">go语言实现数据库导成model</span>
+            <span class="post-date" title="2021-11-03 00:00:00">2021/11/03</span>
+        </a>
+        
+        <a  class="全部文章 区块链 "
+           href="/posts/a8f7a421/"
+           data-tag="区块链"
+           data-author="" >
+            <span class="post-title" title="区块链和oracle">区块链和oracle</span>
+            <span class="post-date" title="2021-10-26 00:00:00">2021/10/26</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/fcb04d9d/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="15.Go语言开发参考标准方式">15.Go语言开发参考标准方式</span>
+            <span class="post-date" title="2021-10-05 00:00:00">2021/10/05</span>
+        </a>
+        
+        <a  class="全部文章 微信 微信公众号 "
+           href="/posts/ae53d71f/"
+           data-tag="微信"
+           data-author="" >
+            <span class="post-title" title="公众号开发">公众号开发</span>
+            <span class="post-date" title="2021-10-01 00:00:00">2021/10/01</span>
+        </a>
+        
+        <a  class="全部文章 Vue "
+           href="/posts/d73c0d37/"
+           data-tag="ES6"
+           data-author="" >
+            <span class="post-title" title="ES6">ES6</span>
+            <span class="post-date" title="2021-09-23 00:00:00">2021/09/23</span>
+        </a>
+        
+        <a  class="全部文章 Vue vueShop项目 "
+           href="/posts/e2f4c9ee/"
+           data-tag="vueshop"
+           data-author="" >
+            <span class="post-title" title="3.项目优化">3.项目优化</span>
+            <span class="post-date" title="2021-09-13 08:42:48">2021/09/13</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 docker "
+           href="/posts/c56ee665/"
+           data-tag="docke"
+           data-author="" >
+            <span class="post-title" title="Docker入门学习笔记">Docker入门学习笔记</span>
+            <span class="post-date" title="2021-09-02 00:00:00">2021/09/02</span>
+        </a>
+        
+        <a  class="全部文章 Vue vueShop项目 "
+           href="/posts/153a865a/"
+           data-tag="vueshop"
+           data-author="" >
+            <span class="post-title" title="2.前端知识碎片">2.前端知识碎片</span>
+            <span class="post-date" title="2021-08-30 07:48:44">2021/08/30</span>
+        </a>
+        
+        <a  class="全部文章 Vue vueShop项目 "
+           href="/posts/df38a864/"
+           data-tag="vueshop"
+           data-author="" >
+            <span class="post-title" title="1.基本项目安装">1.基本项目安装</span>
+            <span class="post-date" title="2021-08-22 08:42:48">2021/08/22</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/4ceab5f8/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="14.Go语言打包">14.Go语言打包</span>
+            <span class="post-date" title="2021-08-21 11:28:08">2021/08/21</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/d32991df/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="12.Go重构代码">12.Go重构代码</span>
+            <span class="post-date" title="2021-08-06 14:49:08">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/27d14625/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="13.GO文章实现后台代码(uuid)">13.GO文章实现后台代码(uuid)</span>
+            <span class="post-date" title="2021-08-06 14:49:08">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/ae7f427f/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="11.Go语言Time时间修改格式">11.Go语言Time时间修改格式</span>
+            <span class="post-date" title="2021-08-06 10:25:03">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/ae9ea94a/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="10.实现文章分类">10.实现文章分类</span>
+            <span class="post-date" title="2021-08-06 08:21:03">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/c9bd5e20/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="9.GO获得路由参数信息">9.GO获得路由参数信息</span>
+            <span class="post-date" title="2021-08-03 19:51:03">2021/08/03</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/3d83c12e/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="8.前端开发">8.前端开发</span>
+            <span class="post-date" title="2021-08-02 09:51:03">2021/08/02</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/ebccff4c/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="7.Vueblog">7.Vueblog</span>
+            <span class="post-date" title="2021-08-02 06:51:23">2021/08/02</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/988c9994/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="6.blog修改返回json格式及封装HTTP返回">6.blog修改返回json格式及封装HTTP返回</span>
+            <span class="post-date" title="2021-08-01 19:23:07">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/c0988f99/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="5.blog实现用户中间件">5.blog实现用户中间件</span>
+            <span class="post-date" title="2021-08-01 18:32:19">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/fa48f225/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="4.blog实现JWT认证">4.blog实现JWT认证</span>
+            <span class="post-date" title="2021-08-01 15:22:45">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/77f78a77/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="3.blog实现用户登录(密码加密解密)">3.blog实现用户登录(密码加密解密)</span>
+            <span class="post-date" title="2021-08-01 10:58:03">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/83b04df8/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="2.blog 项目重构">2.blog 项目重构</span>
+            <span class="post-date" title="2021-08-01 09:12:03">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/6638504c/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="1.blog实现用户注册">1.blog实现用户注册</span>
+            <span class="post-date" title="2021-07-31 08:52:03">2021/07/31</span>
+        </a>
+        
+        <a  class="全部文章 大数据 "
+           href="/posts/69284df1/"
+           data-tag="hadoop"
+           data-author="" >
+            <span class="post-title" title="1.hadoop安装实验">1.hadoop安装实验</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/f0d6498e/"
+           data-tag="Go"
+           data-author="" >
+            <span class="post-title" title="5.Go热重载">5.Go热重载</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 工具 开发工具 "
+           href="/posts/1055d9da/"
+           data-tag="工具"
+           data-author="" >
+            <span class="post-title" title="Idea2021.2旗舰版安装破解方法">Idea2021.2旗舰版安装破解方法</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 工具 开发工具 "
+           href="/posts/230490ec/"
+           data-tag="工具"
+           data-author="" >
+            <span class="post-title" title="VsCode">VsCode</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 linux "
+           href="/posts/9211474f/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux">linux</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 nas "
+           href="/posts/8332ac56/"
+           data-tag="nas"
+           data-author="" >
+            <span class="post-title" title="我家nas安装">我家nas安装</span>
+            <span class="post-date" title="2020-07-11 00:00:00">2020/07/11</span>
+        </a>
+        
+        <a  class="全部文章 单片机 ESP8266 "
+           href="/posts/9385ce0d/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="获得网络时间">获得网络时间</span>
+            <span class="post-date" title="2020-04-08 00:00:00">2020/04/08</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-1.hadoop安装实验" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">1.hadoop安装实验</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="大数据">大数据</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">hadoop</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-11-04 14:14:04'>2020-09-11 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:3.2k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-text">实验内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">实验知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-text">实验环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">使用资源文件夹</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1%E3%80%81%E5%90%AF%E5%8A%A8Docker%E5%AE%B9%E5%99%A8"><span class="toc-text">1.1、启动Docker容器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8A%A0%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="toc-text">1.加载镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%90%AF%E5%8A%A8%E5%AE%9E%E9%AA%8C%E5%AE%B9%E5%99%A8"><span class="toc-text">2.启动实验容器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2%E3%80%81%E9%85%8D%E7%BD%AEHadoop%E7%8E%AF%E5%A2%83"><span class="toc-text">1.2、配置Hadoop环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AEJAVA%E7%8E%AF%E5%A2%83"><span class="toc-text">1.配置JAVA环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E5%88%86%E5%B8%83%E5%BC%8F%E6%A8%A1%E5%BC%8F"><span class="toc-text">2.配置分布式模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AEhosts%E6%96%87%E4%BB%B6"><span class="toc-text">3.配置hosts文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AESSH%E6%97%A0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="toc-text">4.配置SSH无密码登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AE%89%E8%A3%85Hadoop%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">5.安装Hadoop并配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3%E3%80%81%E9%85%8D%E7%BD%AE%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83"><span class="toc-text">1.3、配置集群环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6slaves"><span class="toc-text">1.修改文件slaves</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6core-site-xml"><span class="toc-text">2.修改文件core-site.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6hdfs-site-xml"><span class="toc-text">3. 修改文件hdfs-site.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6mapred-site-xml"><span class="toc-text">4.修改文件mapred-site.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6yarn-site-xml"><span class="toc-text">5.修改文件yarn-site.xml</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4%E3%80%81%E9%85%8D%E7%BD%AEslave%E8%8A%82%E7%82%B9"><span class="toc-text">1.4、配置slave节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-5%E3%80%81%E5%90%AF%E5%8A%A8Hadoop%E9%9B%86%E7%BE%A4"><span class="toc-text">1.5、启动Hadoop集群</span></a>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p>Hadoop安装部署。</p>
+<h2 id="实验知识点"><a href="#实验知识点" class="headerlink" title="实验知识点"></a>实验知识点</h2><p>Linux基本操作<br>Docker基本操作<br>Hadoop基本操作</p>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>Ubuntu 16.04 Hadoop 2.7.1</p>
+<h2 id="使用资源文件夹"><a href="#使用资源文件夹" class="headerlink" title="使用资源文件夹"></a>使用资源文件夹</h2><p>资源文件夹位于”/cgsrc”，该文件夹存放了所有实验中需要用到的安装包。</p>
+<p>需要使用时可以将该目录挂载到相应的docker容器中。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580701309.png" alt="img"></p>
+<h1 id="1-1、启动Docker容器"><a href="#1-1、启动Docker容器" class="headerlink" title="1.1、启动Docker容器"></a>1.1、启动Docker容器</h1><h2 id="1-加载镜像"><a href="#1-加载镜像" class="headerlink" title="1.加载镜像"></a>1.加载镜像</h2><p>实验使用的Docker镜像保存在<code>/cg/images/hadoop_node.tar.gz</code>文件中，执行如下命令加载该镜像:</p>
+<pre><code class="bash">docker load &lt; /cg/images/hadoop_node.tar.gz
+</code></pre>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580705899.png" alt="img"></p>
+<h2 id="2-启动实验容器"><a href="#2-启动实验容器" class="headerlink" title="2.启动实验容器"></a>2.启动实验容器</h2><p>执行如下四个命令，启动四个名称分别为master、slave1、slave2、slave3的docker容器用于实验：</p>
+<pre><code>docker run --name master --privileged --hostname master --ip 172.18.0.2 --add-host=slave1:172.18.0.3  --add-host=slave2:172.18.0.4 --add-host=slave3:172.18.0.5 -itd -v /cgsrc:/cgsrc:ro -v /headless/course/:/course hadoop_node /service_start.sh
+
+docker run --name slave1 --privileged --hostname slave1 --ip 172.18.0.3 --add-host=master:172.18.0.2  --add-host=slave2:172.18.0.4 --add-host=slave3:172.18.0.5  -itd -v /cgsrc:/cgsrc:ro hadoop_node /service_start.sh
+
+docker run --name slave2 --privileged --hostname slave2 --ip 172.18.0.4 --add-host=master:172.18.0.2 --add-host=slave1:172.18.0.3  --add-host=slave3:172.18.0.5 -itd -v /cgsrc:/cgsrc:ro hadoop_node /service_start.sh
+
+docker run --name slave3 --privileged --hostname slave3 --ip 172.18.0.5 --add-host=master:172.18.0.2 --add-host=slave1:172.18.0.3  --add-host=slave2:172.18.0.4 -itd -v /cgsrc:/cgsrc:ro hadoop_node /service_start.sh
+</code></pre>
+<p>执行结果如下: <img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580709933.png" alt="img"></p>
+<p>在终端使用如下命令进入容器中：</p>
+<pre><code>docker exec -it --privileged $NAME /bin/bash
+</code></pre>
+<p>将命令中的<code>$NAME</code>替换为对应的容器名称即可，比如进入master容器可以使用命令:</p>
+<pre><code class="bash">docker exec -it --privileged master /bin/bash
+</code></pre>
+<p><strong>特别注意：</strong></p>
+<p>如果再次进入桌面实验环境后，发现容器未启动（使用下面命令查看）</p>
+<pre><code>docker ps
+</code></pre>
+<p>按顺序使用下面命令启动容器。</p>
+<pre><code>docker start master
+docker start slave1
+docker start slave2
+docker start slave3
+</code></pre>
+<p><strong>注意：不要使用 <code>docker start master slave1 slave2 slave3</code>并发启动多容器，使用该命令启动容器时，容器的启动先后顺序是不确定的，这可能会导致容器分配到的IP和创建容器时指定的IP不一致，导致集群无法启动。</strong></p>
+<p>然后检查IP和hosts是否对应，如果不对，使用下面命令关闭容器后，再次按顺序启动容器。</p>
+<pre><code>docker stop master slave1 slave2 salve3
+</code></pre>
+<hr>
+<h1 id="1-2、配置Hadoop环境"><a href="#1-2、配置Hadoop环境" class="headerlink" title="1.2、配置Hadoop环境"></a>1.2、配置Hadoop环境</h1><h2 id="1-配置JAVA环境"><a href="#1-配置JAVA环境" class="headerlink" title="1.配置JAVA环境"></a>1.配置JAVA环境</h2><p>Hadoop是基于Java语言开发的，因此需要安装Java环境。</p>
+<p>在这里我们仅介绍master的配制方法，<strong>slave1、slave2和slave3都需要按照下面的步骤配置Java环境！</strong></p>
+<p>首先在容器master中使用如下命令从资源文件夹<code>/cgsrc</code>中将JDK安装包复制到<code>/usr/local/java</code>目录下：</p>
+<pre><code>mkdir /usr/local/java
+cp /cgsrc/jdk-8u171-linux-x64.tar.gz /usr/local/java/
+</code></pre>
+<p>我们接下来切换到<code>/usr/local/java</code>目录下，将安装包解压，并删除用过的tar文件。</p>
+<pre><code>cd /usr/local/java/
+tar -zxvf jdk-8u171-linux-x64.tar.gz
+rm -f jdk-8u171-linux-x64.tar.gz
+</code></pre>
+<p>此时<code>/usr/local/java</code>目录下仅有一个<code>jdk1.8.0_171</code>目录，这就是Java主目录。</p>
+<p>接下来需要配置<code>JAVA_HOME</code>环境变量，为了方便起见，这里直接在<code>~/.bachrc</code>这个文件中进行设置，采用这种配置方式时，只对当前登录的单个用户生效，当该用户登录以及每次打开新的Shell时，它的环境变量文件<code>.bashrc</code>会被读取。输入下面命令打开当前登录用户的环境变量配置文件<code>.bashrc</code>：</p>
+<pre><code>vim ~/.bashrc
+</code></pre>
+<p>在文件最后面添加如下三行（<strong>注意等号前后不能有空格</strong>），然后保存退出vim：</p>
+<pre><code>export JAVA_HOME=/usr/local/java/jdk1.8.0_171
+export CLASSPATH=.:$&#123;JAVA_HOME&#125;/jre/lib/rt.jar:$&#123;JAVA_HOME&#125;/lib/dt.jar:$&#123;JAVA_HOME&#125;/lib/tools.jar
+export PATH=$PATH:$&#123;JAVA_HOME&#125;/bin
+</code></pre>
+<p>接下来让环境变量生效，执行如下代码：</p>
+<pre><code>source ~/.bashrc
+</code></pre>
+<p>执行上述命令后，可以检验一下是否设置正确：</p>
+<pre><code>echo $JAVA_HOME    #检验变量值
+java -version      #查看java版本
+</code></pre>
+<p>输出如下即表明配置Java环境成功：</p>
+<pre><code>java version &quot;1.8.0_171&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_171-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)
+</code></pre>
+<p><strong>请务必以同样的步骤对每个节点进行配置!</strong></p>
+<h2 id="2-配置分布式模式"><a href="#2-配置分布式模式" class="headerlink" title="2.配置分布式模式"></a>2.配置分布式模式</h2><blockquote>
+<p>当Hadoop采用分布式模式部署和运行时，存储采用分布式文件系统HDFS。而且，HDFS的名称节点和数据节点位于不同的机器上。这时，数据就可以分布到多个节点上，不同数据节点上的数据计算可以并行执行，这使得MapReduce分布式计算能力才能真正发挥作用。</p>
+</blockquote>
+<p>本节使用3个虚拟节点搭建集群环境，可以看做是三台物理机器：Master节点和三个Slave节点。节点的IP地址可以在对应的命令行中使用<code>ifconfig</code>命令查看：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580706804.png" alt="img"></p>
+<p>Hadoop集群的安装配置大致包括以下步骤：</p>
+<p>（1）选定一台机器作为Master</p>
+<p>（2）在Master节点上安装Hadoop，并完成配置。</p>
+<p>（3）将Master节点上的Hadoop目录复制到其他Slave节点上</p>
+<p>（4）在Master节点上开启Hadoop</p>
+<h2 id="3-配置hosts文件"><a href="#3-配置hosts文件" class="headerlink" title="3.配置hosts文件"></a>3.配置hosts文件</h2><p>本次演示中，3个节点的ip地址如下：</p>
+<p>（1）master 172.18.0.2</p>
+<p>（2）slave1 172.18.0.3</p>
+<p>（3）slave2 172.18.0.4</p>
+<p>（4）slave3 172.18.0.5</p>
+<p>由于我们在docker的启动命令里已经加入了host配置，所以检查发现<code>/etc/hosts</code>文件里映射关系齐全则可以略过此步骤。</p>
+<p>执行如下命令打开并修改master节点中的<code>/etc/hosts</code>文件：</p>
+<pre><code>vim /etc/hosts
+</code></pre>
+<p>确保在hosts文件中有如下IP和主机名映射关系：</p>
+<pre><code>172.18.0.2    master
+172.18.0.3    slave1
+172.18.0.4    slave2
+172.18.0.5    slave3
+</code></pre>
+<p>上面完成了master节点的配置，接下来<strong>在三个slave节点中使用同样步骤配置hosts文件</strong>。</p>
+<p>在各个节点上执行如下指令，测试节点之间是否已经联通：</p>
+<pre><code>ping master -c 3
+ping slave1 -c 3
+ping slave2 -c 3
+ping slave3 -c 3
+</code></pre>
+<p>如果都能连通，则配置成功。</p>
+<h2 id="4-配置SSH无密码登录"><a href="#4-配置SSH无密码登录" class="headerlink" title="4.配置SSH无密码登录"></a>4.配置SSH无密码登录</h2><p>需要让master节点可以SSH无密码登录到各个slave节点上。</p>
+<p>首先，生成master节点的公钥，<strong>如果之前已经生成过公钥，必须删除原来的公钥</strong>，重新生成一次。具体命令如下：</p>
+<pre><code>cd ~/.ssh            #如果没有该目录，先执行一次 ssh localhost，密码默认为83953588abc
+rm -f ./id_rsa*        #删除之前生成的公钥
+ssh-keygen -t rsa    #执行该命令后，遇到提示信息，均按Enter即可
+</code></pre>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580706747.png" alt="img"></p>
+<p>为了让master节点能无密码SSH登录到本机，需要在master节点上执行如下命令：</p>
+<pre><code>cat ./id_rsa.pub &gt;&gt; ./authorized_keys
+</code></pre>
+<p>完成后可以执行<code>ssh master</code>来验证一下，可能会遇到提示信息，只要输入 <code>yes</code> 即可，测试成功后执行<code>exit</code>命令返回原来的终端。 <img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580706961.png" alt="img"> 接下来在master节点上将公钥传输到两个slave节点：</p>
+<pre><code>scp ~/.ssh/id_rsa.pub root@slave1:/root
+scp ~/.ssh/id_rsa.pub root@slave2:/root
+scp ~/.ssh/id_rsa.pub root@slave3:/root
+</code></pre>
+<p>执行scp复制文件时会要求输入相应的slave的密码，默认为 83953588abc。</p>
+<p>传输完成后在三个slave节点上将SSH公钥加入授权：</p>
+<pre><code>mkdir -p ~/.ssh       #如果slave节点上已存在该目录，则先删除该目录再执行该命令
+cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+rm -f ~/id_rsa.pub
+</code></pre>
+<p>这样就可以在master节点上无密码SSH登录到各个slave节点了。</p>
+<p>注意：由于启动Hadoop集群时，master节点需要通过ssh登录自身节点(<code>ssh localhost</code>)，为了去掉ssh的交互式认证提示，需要在master节点上执行以下命令：</p>
+<pre><code>ssh-keyscan localhost &gt;&gt; ~/.ssh/known_hosts
+</code></pre>
+<h2 id="5-安装Hadoop并配置环境变量"><a href="#5-安装Hadoop并配置环境变量" class="headerlink" title="5.安装Hadoop并配置环境变量"></a>5.安装Hadoop并配置环境变量</h2><p>在master节点上执行如下操作安装hadoop并配置环境变量。</p>
+<p>首先将hadoop安装包复制到 <code>/usr/local </code>目录下：</p>
+<pre><code>cp /cgsrc/hadoop-2.7.1.tar.gz /usr/local/
+</code></pre>
+<p>切换到<code>/usr/local</code>目录下，对安装包进行解压：</p>
+<pre><code>cd /usr/local
+tar -zxvf hadoop-2.7.1.tar.gz
+rm -f hadoop-2.7.1.tar.gz
+</code></pre>
+<p>解压得到名为<code>hadoop-2.7.1</code>的目录，将其重命名为 <code>hadoop</code>：</p>
+<pre><code>mv hadoop-2.7.1/ hadoop
+</code></pre>
+<p>之后就可以配置<code>PATH</code>变量了，使我们可以在任何目录下使用<code>hadoop</code>指令。</p>
+<p>首先打开 ~/.bashrc 文件：</p>
+<pre><code>vim ~/.bashrc
+</code></pre>
+<p>然后在该文件最末加入下面一行内容：</p>
+<pre><code>export PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin
+</code></pre>
+<p>保存后执行 <code>source ~/.bashrc</code> 使配置生效。</p>
+<p>之后执行如下命令查看hadoop版本：</p>
+<pre><code>hadoop version
+</code></pre>
+<p>若得到如下输出则安装成功： <img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580707536.png" alt="img"></p>
+<h1 id="1-3、配置集群环境"><a href="#1-3、配置集群环境" class="headerlink" title="1.3、配置集群环境"></a>1.3、配置集群环境</h1><p>配置集群环境时，需要修改 <code>/usr/local/hadoop/etc/hadoop</code> 目录下的配置文件，这里仅设置正常启动必须的设置项，包括 <code>slaves</code>、<code>core-site.xml</code>、<code>hdfs-site.xml</code>、<code>mapred-site.xml</code>、<code>yarn-site.xml</code>共五个文件。</p>
+<p>以下对<strong>master</strong>节点的配置文件进行修改。</p>
+<h2 id="1-修改文件slaves"><a href="#1-修改文件slaves" class="headerlink" title="1.修改文件slaves"></a>1.修改文件slaves</h2><p>需要把所有数据节点的主机名写入该文件，每行一个，默认为localhost（即把本机作为数据节点）。在进行集群配置时，可以保留localhost，让master节点同时充当名称节点和数据节点，也可以删除localhost这行，让master节点仅作为名称节点使用。</p>
+<p>本节让master节点仅作为名称节点使用，因此将slaves文件中原来的内容删除，添加如下内容：</p>
+<pre><code>slave1
+slave2
+slave3
+</code></pre>
+<h2 id="2-修改文件core-site-xml"><a href="#2-修改文件core-site-xml" class="headerlink" title="2.修改文件core-site.xml"></a>2.修改文件core-site.xml</h2><p>把<code>core-site.xml</code>文件修改为如下内容：</p>
+<pre><code class="xml">&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.defaultFS&lt;/name&gt;
+        &lt;value&gt;hdfs://master:9000&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+        &lt;value&gt;file:/usr/local/hadoop/tmp&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+<h2 id="3-修改文件hdfs-site-xml"><a href="#3-修改文件hdfs-site-xml" class="headerlink" title="3. 修改文件hdfs-site.xml"></a>3. 修改文件hdfs-site.xml</h2><p>对于Hadoop的分布式文件系统HDFS而言，一般是采用冗余存储，冗余因子一般是3，也就是说一份数据保存3份副本。设置该冗余因子的参数为dfs.replication。所以，dfs.replication设置为3，文件具体内容如下：</p>
+<pre><code class="xml">&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
+        &lt;value&gt;master:50090&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;3&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+        &lt;value&gt;file:/usr/local/hadoop/tmp/dfs/name&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+        &lt;value&gt;file:/usr/local/hadoop/tmp/dfs/date&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+<h2 id="4-修改文件mapred-site-xml"><a href="#4-修改文件mapred-site-xml" class="headerlink" title="4.修改文件mapred-site.xml"></a>4.修改文件mapred-site.xml</h2><p><code>/usr/local/hadoop/etc/hadoop</code> 目录下有一个 <code>mapred-site.xml.template</code>文件，需要复制该文件为 <code>mapred-site.xml</code>：</p>
+<pre><code>cp mapred-site.xml.template mapred-site.xml
+</code></pre>
+<p>然后配置<code>mapred-site.xml</code>文件如下：</p>
+<pre><code class="xml">&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+        &lt;value&gt;yarn&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
+        &lt;value&gt;master:10020&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;
+        &lt;value&gt;master:19888&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+<h2 id="5-修改文件yarn-site-xml"><a href="#5-修改文件yarn-site-xml" class="headerlink" title="5.修改文件yarn-site.xml"></a>5.修改文件yarn-site.xml</h2><p>把 <code>yarn-site.xml </code>配置为如下内容：</p>
+<pre><code class="xml">&lt;configuration&gt;    
+    &lt;property&gt;
+        &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+        &lt;value&gt;master&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+      &lt;name&gt;yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage&lt;/name&gt;
+      &lt;value&gt;98.5&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+<hr>
+<h1 id="1-4、配置slave节点"><a href="#1-4、配置slave节点" class="headerlink" title="1.4、配置slave节点"></a>1.4、配置slave节点</h1><p>五个配置文件配置完成之后，需要把<strong>master</strong>节点上的 <code>/usr/local/hadoop </code>文件复制到各个节点上。</p>
+<p>在<strong>master</strong>节点上执行具体命令如下：</p>
+<pre><code>cd /usr/local
+rm -rf ./hadoop/tmp                         #删除临时文件
+rm -rf ./hadoop/logs/*                      #删除日志文件
+tar -zcf ~/hadoop.master.tar.gz ./hadoop    #先压缩再复制
+cd ~
+scp ./hadoop.master.tar.gz root@slave1:/root
+scp ./hadoop.master.tar.gz root@slave2:/root
+scp ./hadoop.master.tar.gz root@slave3:/root
+</code></pre>
+<p>然后分别在<strong>slave1</strong>、<strong>slave2</strong>和<strong>slave3</strong>节点上执行如下命令：</p>
+<pre><code>rm -rf /usr/local/hadoop                        #如果有旧文件则先删除
+tar -zxf ~/hadoop.master.tar.gz -C /usr/local
+rm -f ~/hadoop.master.tar.gz
+</code></pre>
+<hr>
+<h1 id="1-5、启动Hadoop集群"><a href="#1-5、启动Hadoop集群" class="headerlink" title="1.5、启动Hadoop集群"></a>1.5、启动Hadoop集群</h1><p>首次启动Hadoop集群时，需要先在master节点执行名称节点的格式化：</p>
+<pre><code>hdfs namenode -format
+</code></pre>
+<p>现在可以启动Hadoop了，启动需要在master节点上进行，执行如下命令：</p>
+<pre><code>start-dfs.sh
+start-yarn.sh
+mr-jobhistory-daemon.sh start historyserver
+</code></pre>
+<p>通过命令<code>jps</code>可以查看各个节点启动的进程。如果已经正确启动，则在master节点上可以看到如下进程：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580708953.png" alt="img"></p>
+<p>在slave节点上可以看到如下进程：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580708988.png" alt="img"></p>
+<p>缺少任一进程都表示出错。</p>
+<p>也可以在浏览器中输入 <code>master的ip:50070</code> 查看节点状态。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580709066.png" alt="img"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry"><span class="miit">
+                <img src="/img/gov.png" title="中华人民共和国工业和信息化部">
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备19062340号-2</a>
+        </span>
+    
+    ©Alisa&amp;Elder
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 562px;
+    }
+    .nav.fullscreen {
+        margin-left: -562px;
+    }
+    .nav-left {
+        width: 140px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 522px;
+        }
+        .nav.fullscreen {
+            margin-left: -522px;
+        }
+        .nav-left {
+            width: 130px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 522px;
+            margin-left: -522px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
