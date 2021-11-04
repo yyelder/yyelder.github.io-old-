@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>5.Go热重载 | 月夜魂归的博客</title>
-  <meta name="keywords" content=" Go ">
-  <meta name="description" content="5.Go热重载 | 月夜魂归的博客">
+  <title>2.hadoop命令操作 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" hadoop ">
+  <meta name="description" content="2.hadoop命令操作 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Go与Vue联手干掉MCU">
 <meta property="og:type" content="website">
@@ -980,9 +980,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-5.Go热重载" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-2.hadoop命令操作" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">5.Go热重载</h1>
+        <h1 class="article-title">2.hadoop命令操作</h1>
     
     <div class="article-meta">
         
@@ -992,7 +992,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="GO笔记">GO笔记</a>
+            <a  data-rel="大数据">大数据</a>
             
         </span>
         
@@ -1000,19 +1000,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">Go</a>
+            <a class="color2">hadoop</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-11-04 14:19:00'>2020-09-11 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2021-11-04 14:19:01'>2020-09-11 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:95</span>
+        <span>字数:916</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1031,7 +1031,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%AD%E5%8A%A0%E8%BD%BD"><span class="toc-text">热加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="toc-text">运行项目</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HDFS-%E5%AE%8C%E6%95%B4%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A7%88"><span class="toc-text">HDFS 完整命令概览</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95"><span class="toc-text">一、查看目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="toc-text">二、创建目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95"><span class="toc-text">三、删除目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">一、文件上传</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-text">二、文件下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-text">三、查看文件内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F"><span class="toc-text">四、查看文件大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6"><span class="toc-text">五、复制文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%87%8D%E5%91%BD%E5%90%8D-%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-text">六、重命名&#x2F;移动文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%BF%AE%E6%94%B9"><span class="toc-text">七、文件权限修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-text">八、删除文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="toc-text">九、查看文件系统信息</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -1047,16 +1047,112 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="热加载"><a href="#热加载" class="headerlink" title="热加载"></a>热加载</h2><p>网址</p>
-<pre><code class="go">https://github.com/cosmtrek/air
+        <ol>
+<li><p>实验内容</p>
+<p>本实验通过登录HDFS文件系统熟悉基本的HDFS操作。</p>
+</li>
+<li><p>实验目标</p>
+<p>通过本实验掌握HDFS基本操作。</p>
+</li>
+<li><p>实验知识点</p>
+<p>HDFS基本操作</p>
+</li>
+<li><p>实验环境</p>
+<p>Hadoop</p>
+<p>CourseGrading在线实验环境</p>
+</li>
+<li><p>预备知识</p>
+<p>Hadoop 基本操作</p>
+</li>
+</ol>
+<h2 id="HDFS-完整命令概览"><a href="#HDFS-完整命令概览" class="headerlink" title="HDFS 完整命令概览"></a>HDFS 完整命令概览</h2><pre><code>hadoop fs [generic options]    [-appendToFile &lt;localsrc&gt; ... &lt;dst&gt;]
+    [-cat [-ignoreCrc] &lt;src&gt; ...]
+    [-checksum &lt;src&gt; ...]
+    [-chgrp [-R] GROUP PATH...]
+    [-chmod [-R] &lt;MODE[,MODE]... | OCTALMODE&gt; PATH...]
+    [-chown [-R] [OWNER][:[GROUP]] PATH...]
+    [-copyFromLocal [-f] [-p] [-l] &lt;localsrc&gt; ... &lt;dst&gt;]
+    [-copyToLocal [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]
+    [-count [-q] [-h] &lt;path&gt; ...]
+    [-cp [-f] [-p | -p[topax]] &lt;src&gt; ... &lt;dst&gt;]
+    [-createSnapshot &lt;snapshotDir&gt; [&lt;snapshotName&gt;]]
+    [-deleteSnapshot &lt;snapshotDir&gt; &lt;snapshotName&gt;]
+    [-df [-h] [&lt;path&gt; ...]]
+    [-du [-s] [-h] &lt;path&gt; ...]
+    [-expunge]
+    [-find &lt;path&gt; ... &lt;expression&gt; ...]
+    [-get [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]
+    [-getfacl [-R] &lt;path&gt;]
+    [-getfattr [-R] &#123;-n name | -d&#125; [-e en] &lt;path&gt;]
+    [-getmerge [-nl] &lt;src&gt; &lt;localdst&gt;]
+    [-help [cmd ...]]
+    [-ls [-d] [-h] [-R] [&lt;path&gt; ...]]
+    [-mkdir [-p] &lt;path&gt; ...]
+    [-moveFromLocal &lt;localsrc&gt; ... &lt;dst&gt;]
+    [-moveToLocal &lt;src&gt; &lt;localdst&gt;]
+    [-mv &lt;src&gt; ... &lt;dst&gt;]
+    [-put [-f] [-p] [-l] &lt;localsrc&gt; ... &lt;dst&gt;]
+    [-renameSnapshot &lt;snapshotDir&gt; &lt;oldName&gt; &lt;newName&gt;]
+    [-rm [-f] [-r|-R] [-skipTrash] &lt;src&gt; ...]
+    [-rmdir [--ignore-fail-on-non-empty] &lt;dir&gt; ...]
+    [-setfacl [-R] [&#123;-b|-k&#125; &#123;-m|-x &lt;acl_spec&gt;&#125; &lt;path&gt;]|[--set &lt;acl_spec&gt; &lt;path&gt;]]
+    [-setfattr &#123;-n name [-v value] | -x name&#125; &lt;path&gt;]
+    [-setrep [-R] [-w] &lt;rep&gt; &lt;path&gt; ...]
+    [-stat [format] &lt;path&gt; ...]
+    [-tail [-f] &lt;file&gt;]
+    [-test -[defsz] &lt;path&gt;]
+    [-text [-ignoreCrc] &lt;src&gt; ...]
+    [-touchz &lt;path&gt; ...]
+    [-truncate [-w] &lt;length&gt; &lt;path&gt; ...]
+    [-usage [cmd ...]]
 </code></pre>
-<p>安装</p>
-<pre><code class="go">go get -u github.com/cosmtrek/air
-</code></pre>
-<p>在项目根目录创建一个名为 .air.conf 的配置文件。创建完毕之后，在文件中写入你应用运行的命令如：</p>
-<h3 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h3><pre><code class="go">air -c .air.conf
-</code></pre>
-<p>项目运行后，我们再次编辑项目中的文件，项目的服务会自动重启了。</p>
+<p>参考《Hadoop安装部署》实验，安装有三个数据节点的Hadoop集群</p>
+<h1 id="一、查看目录"><a href="#一、查看目录" class="headerlink" title="一、查看目录"></a>一、查看目录</h1><p>命令使用格式：<code>hadoop fs -ls 目录名</code></p>
+<p>执行效果： <img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580805996.png" alt="img"></p>
+<h1 id="二、创建目录"><a href="#二、创建目录" class="headerlink" title="二、创建目录"></a>二、创建目录</h1><p>使用格式：<code>hadoop fs -mkdir 目录名</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580806003.png" alt="img"></p>
+<p><strong>注意事项：如果需要创建多层目录，可以使用参数“-p”。例如创建目录/test/test1/test2/test3，如果test3的上层目录都不存在，使用mkdir直接创建会报错，加上“-p“选项，就可以直接创建了。</strong></p>
+<h1 id="三、删除目录"><a href="#三、删除目录" class="headerlink" title="三、删除目录"></a>三、删除目录</h1><p>使用格式：<code>hadoop fs -rm -r 目录名</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580806015.png" alt="img"></p>
+<h1 id="一、文件上传"><a href="#一、文件上传" class="headerlink" title="一、文件上传"></a>一、文件上传</h1><p>使用格式：<code>hadoop fs -put 本地文件路径 HDFS文件路径</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580806929.png" alt="img"></p>
+<h1 id="二、文件下载"><a href="#二、文件下载" class="headerlink" title="二、文件下载"></a>二、文件下载</h1><p>使用格式：<code>hadoop fs -get HDFS文件路径 本地文件路径</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_3/639ll1585288547.png" alt="img"></p>
+<h1 id="三、查看文件内容"><a href="#三、查看文件内容" class="headerlink" title="三、查看文件内容"></a>三、查看文件内容</h1><p>使用格式：<code>hadoop fs -cat 文件路径</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580807078.png" alt="img"></p>
+<h1 id="四、查看文件大小"><a href="#四、查看文件大小" class="headerlink" title="四、查看文件大小"></a>四、查看文件大小</h1><p>使用格式：<code>hadoop fs -du 参数 目录或文件</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580807159.png" alt="img"></p>
+<p><strong>注意事项：如果是目录的话，将会列出目录中每个文件的大小。目录中的子目录大小显示为0。</strong></p>
+<h1 id="五、复制文件"><a href="#五、复制文件" class="headerlink" title="五、复制文件"></a>五、复制文件</h1><p>使用格式：<code>hadoop fs -cp 文件名 复制后的文件名</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580807246.png" alt="img"></p>
+<h1 id="六、重命名-移动文件"><a href="#六、重命名-移动文件" class="headerlink" title="六、重命名/移动文件"></a>六、重命名/移动文件</h1><p>使用格式：<code>hadoop fs -mv 目录或文件 目录</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580808367.png" alt="img"></p>
+<h1 id="七、文件权限修改"><a href="#七、文件权限修改" class="headerlink" title="七、文件权限修改"></a>七、文件权限修改</h1><p>使用格式：<code>hadoop fs -chmod 权限选项 目录或者文件</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580808580.png" alt="img"></p>
+<h1 id="八、删除文件"><a href="#八、删除文件" class="headerlink" title="八、删除文件"></a>八、删除文件</h1><p>使用格式：<code>hadoop fs -rm 文件路径</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580808704.png" alt="img"></p>
+<h1 id="九、查看文件系统信息"><a href="#九、查看文件系统信息" class="headerlink" title="九、查看文件系统信息"></a>九、查看文件系统信息</h1><p>使用格式：<code>hadoop fs -df -h</code></p>
+<p>执行效果：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580808858.png" alt="img"></p>
+<p>作业</p>
+<p>题目说明</p>
+<p>1、使用hdfs命令在hdfs文件系统上创建文件夹<code>/mydir</code>；</p>
+<p>2、在master节点上以自己的学号作为文件名创建一个文件，文件的内容是一小段随意的英文；</p>
+<p>3、使用hdfs命令将该文件上传到hdfs文件系统上的<code>/mydir</code>文件夹下；</p>
+<p>4、使用hdfs命令浏览该文件的内容；</p>
+<p>5、将该文件重命名为 <code>homework.txt</code>；</p>
+<p>6、将该文件的权限修改为仅自己可以读写，即<code>rw-------</code>；</p>
+<p>7、将上传的文件删除。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
