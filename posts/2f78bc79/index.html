@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MysqlZIP安装 | 月夜魂归的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="MysqlZIP安装 | 月夜魂归的博客">
+  <title>jenkins+docker+gitee自动部署 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" jenkins ">
+  <meta name="description" content="jenkins+docker+gitee自动部署 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -1002,9 +1002,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-MysqlZIP安装" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-jenkins+docker+gitee自动部署" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">MysqlZIP安装</h1>
+        <h1 class="article-title">jenkins+docker+gitee自动部署</h1>
     
     <div class="article-meta">
         
@@ -1014,22 +1014,29 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="数据库">数据库</a> > 
+            <a  data-rel="GO笔记">GO笔记</a> > 
             
-            <a  data-rel="数据库&lt;---&gt;Mysql">Mysql</a>
+            <a  data-rel="GO笔记&lt;---&gt;docker">docker</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">jenkins</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-11-06 16:15:37'>2021-11-06 16:15</time>
+            发布时间 : <time class="date" title='最后更新: 2021-11-06 16:15:36'>2021-11-06 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.3k</span>
+        <span>字数:928</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1048,7 +1055,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%EF%BC%8C%E5%AE%89%E8%A3%85"><span class="toc-text">一，安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E9%85%8D%E7%BD%AEmy-ini"><span class="toc-text">1.1配置my.ini</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">1.2.初始化数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%EF%BC%8C%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A0%81%E5%92%8C%E5%AF%86%E7%A0%81%E8%AE%A4%E8%AF%81%E6%8F%92%E4%BB%B6"><span class="toc-text">二，更改密码和密码认证插件</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="toc-text">docker自动化部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E4%B8%A4%E4%B8%AA%E5%AE%B9%E5%99%A8-tomcat01-%E5%92%8C-myjenkins"><span class="toc-text">运行两个容器 tomcat01  和   myjenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EJenkins%E9%85%8D%E7%BD%AE"><span class="toc-text">关于Jenkins配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Node%E9%A1%B9%E7%9B%AEshell"><span class="toc-text">Node项目shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Go%E9%A1%B9%E7%9B%AE"><span class="toc-text">Go项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JAVA%E9%A1%B9%E7%9B%AE"><span class="toc-text">JAVA项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5root"><span class="toc-text">进入root</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E5%87%BA%E7%8E%B0%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-text">运行出现权限问题</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1064,142 +1071,139 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>下载zip安装包：</p>
-<p>　　MySQL8.0 For Windows zip包下载地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/file/?id=476233%EF%BC%8C%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E5%90%8E%E5%8F%AF%E4%BB%A5%E4%B8%8D%E7%99%BB%E5%BD%95%E3%80%82%E5%90%8E%E7%82%B9%E5%87%BB%E5%BA%95%E9%83%A8%E2%80%9CNo">https://dev.mysql.com/downloads/file/?id=476233，进入页面后可以不登录。后点击底部“No</a> thanks, just start my download.”即可开始下载。</p>
-<p>　　或直接下载：<a target="_blank" rel="noopener" href="https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip">https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip</a></p>
-<h2 id="一，安装"><a href="#一，安装" class="headerlink" title="一，安装"></a>一，安装</h2><p>　　比如我的安装目录是：C:\Program Files\MySQL</p>
-<h2 id="1-1配置my-ini"><a href="#1-1配置my-ini" class="headerlink" title="1.1配置my.ini"></a>1.1配置my.ini</h2><p>​        我们发现解压后的目录并没有my.ini文件，没关系可以自行创建。在安装根目录下添加 my.ini，比如我这里是：C:\Program Files\MySQL\my.ini，写入基本配置：</p>
-<pre><code>[mysqld]
-# 设置3306端口
-port=3306
-# 设置mysql的安装目录
-basedir=C:\Program Files\MySQL\MySQL8
-# 设置mysql数据库的数据的存放目录
-datadir=E:\Program Files\MySQL\Data
-# 允许最大连接数
-max_connections=200
-# 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
-max_connect_errors=10
-# 服务端使用的字符集默认为UTF8
-character-set-server=utf8
-# 创建新表时将使用的默认存储引擎
-default-storage-engine=INNODB
-# 默认使用“mysql_native_password”插件认证
-default_authentication_plugin=mysql_native_password
-[mysql]
-# 设置mysql客户端默认字符集
-default-character-set=utf8
-[client]
-# 设置mysql客户端连接服务端时默认使用的端口
-port=3306
-default-character-set=utf8
+        <h1 id="docker自动化部署"><a href="#docker自动化部署" class="headerlink" title="docker自动化部署"></a>docker自动化部署</h1><p>前提条件 docker镜像   tomcat +  jenkins/jenkins</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20211106152050111.png" alt="image-20211106152050111"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code class="shell">docker pull tomcat
+docker pull jenkins/jenkins:lts
 </code></pre>
-<p>注意，里面的 basedir 是我本地的安装目录，datadir 是我数据库数据文件要存放的位置，各项配置需要根据自己的环境进行配置。</p>
-<p>查看所有的配置项，可参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html">https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html</a></p>
-<h2 id="1-2-初始化数据库"><a href="#1-2-初始化数据库" class="headerlink" title="1.2.初始化数据库"></a>1.2.初始化数据库</h2><p>进入bin安装目录 </p>
-<pre><code>mysqld --initialize --console
+<h2 id="运行两个容器-tomcat01-和-myjenkins"><a href="#运行两个容器-tomcat01-和-myjenkins" class="headerlink" title="运行两个容器 tomcat01  和   myjenkins"></a>运行两个容器 tomcat01  和   myjenkins</h2><pre><code class="shell">#运行docker 本地/home/docker_project和/usr/local/tomcat/webapps/my-project自动同步
+docker run -it -v /home/docker_project:/usr/local/tomcat/webapps/my-project  --name tomcat01  -p 1016:8080 tomcat
+#运行jenkins  外部端口8882访问 内部8080 50000是查看jenkins信息
+#本地/home/docker_project和/var/tomcatspace自动同步
+docker run -it -p 8882:8080 -p 50000:50000 -v /home/docker_project:/var/tomcatspace --name myjenkins jenkins/jenkins
 </code></pre>
-<p><img src="C:/Users/Elder/AppData/Roaming/Typora/typora-user-images/image-20210724232012925.png" alt="image-20210724232012925"></p>
-<p>得到初始用户名和密码  root@localhost: (%I&lt;(49r9Ekh</p>
-<p>要是你手贱，关快了，或者没记住，那也没事，删掉初始化的 datadir 目录，再执行一遍初始化命令，又会重新生成的。当然，也可以使用安全工具，强制改密码，用什么方法，自己随意。</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html">https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html</a></p>
-<pre><code>mysqld --install [服务名] 或者 .\mysqld --install
+<p>jenkins 拉取gitee项目 –&gt;&gt;linux本地目录  —&gt;tomcat</p>
+<p>/var/tomcatspace     /home/docker_project       /usr/local/tomcat/webapps/my-project</p>
+<p>gitee账户密码    </p>
+<pre><code>1245516932@qq.com  XXXXXXXX
 </code></pre>
-<p>如果出现</p>
-<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/20210724233107.png"></p>
-<p>使用win+Q搜索cmd，右键“用管理员身份打开cmd命令</p>
-<p>后面的服务名可以不写，默认的名字为 mysql。当然，如果你的电脑上需要安装多个MySQL服务，就可以用不同的名字区分了，比如 mysql5 和 mysql8。</p>
-<pre><code>安装完成之后，就可以通过命令net start mysql启动MySQL的服务了。
+<p>测试项目</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/gumuX/auto-test.git">https://gitee.com/gumuX/auto-test.git</a></p>
+<p>复制宿主机文件node到docker容器</p>
+<pre><code class="shell">docker cp  node-v8.11.3-linux-x64 myjenkins:/home
 </code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234135.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html">https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html</a></p>
-<h2 id="二，更改密码和密码认证插件"><a href="#二，更改密码和密码认证插件" class="headerlink" title="二，更改密码和密码认证插件"></a>二，更改密码和密码认证插件</h2><p>在MySQL安装目录的 bin 目录下执行命令：</p>
-<pre><code>mysql -u root -p
+<h2 id="关于Jenkins配置"><a href="#关于Jenkins配置" class="headerlink" title="关于Jenkins配置"></a>关于Jenkins配置</h2><p>安装插件</p>
+<pre><code>NodeJS Plugin
+Gitee Plugin
+Git plugin
 </code></pre>
-<p>　　这时候会提示输入密码，记住了上面第1.3步安装时的密码，填入即可登录成功，进入MySQL命令模式。</p>
-<p>在MySQL8.0.4以前，执行</p>
-<p>SET PASSWORD=PASSWORD(‘[修改的密码]’);<br>就可以更改密码，但是MySQL8.0.4开始，这样默认是不行的。因为之前，MySQL的密码认证插件是“mysql_native_password”，而现在使用的是“caching_sha2_password”。</p>
-<p>　　因为当前有很多数据库工具和链接包都不支持“caching_sha2_password”，为了方便，我暂时还是改回了“mysql_native_password”认证插件。</p>
-<p>修改用户密码，在MySQL中执行命令：</p>
-<pre><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;新密码&#39;;
+<p>项目</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20211106154955734.png" alt="image-20211106154955734"></p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20211106154916751.png" alt="image-20211106154916751"></p>
+<h3 id="Node项目shell"><a href="#Node项目shell" class="headerlink" title="Node项目shell"></a>Node项目shell</h3><p>全局工具配置</p>
+<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20211106154718240.png" alt="image-20211106154718240"></p>
+<p>testauto005是项目名称</p>
+<pre><code class="js">sudo su
+cd /var/jenkins_home/workspace/testauto005
+node -v
+npm -v
+echo &#39;开始安装依赖&#39;
+npm config set registry http://registry.npm.taobao.org/
+npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass
+npm config get registry
+npm i
+echo &#39;依赖安装完毕&#39;
+echo &#39;开始打包&#39;
+npm run build
+echo &#39;打包完毕&#39;
+echo &#39;开始部署&#39;
+sudo cp -r /var/jenkins_home/workspace/testauto005/dist/* /var/tomcatspace
 </code></pre>
-<p>修改密码验证插件，同时修改密码。</p>
-<p>　　如果想默认使用“mysql_native_password”插件认证，可以在配置文件中配置default_authentication_plugin项。</p>
-<p><strong>[mysqld]</strong><br><strong>default_authentication_plugin=mysql_native_password</strong></p>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234609.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password">https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password</a></p>
-<p>　　到此，安装部署就完成了。官方说测试速度MySQL8比5快两倍。</p>
-<p>　　可以用 命令查看一下默认安装的数据库：</p>
-<pre><code>show databases;
-
-use mysql;
-
-show tables;
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.01 sec)
-
-mysql&gt;
+<p>Node项目打包构建路径会有问题所以在项目根目录添加vue.config.js</p>
+<pre><code class="js">module.exports = &#123;
+    // 基本路径 baseURL已经过时
+    publicPath: &#39;./&#39;,
+    // 输出文件目录
+    outputDir: &#39;dist&#39;,
+    // eslint-loader 是否在保存的时候检查
+    lintOnSave: true,
+    // use the full build with in-browser compiler?
+    // https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
+    // compiler: false,
+    // webpack配置
+    // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
+    chainWebpack: () =&gt; &#123;&#125;,
+    configureWebpack: () =&gt; &#123;&#125;,
+    // vue-loader 配置项
+    // https://vue-loader.vuejs.org/en/options.html
+    // vueLoader: &#123;&#125;,
+    // 生产环境是否生成 sourceMap 文件
+    productionSourceMap: true,
+    // css相关配置
+    css: &#123;
+        // 是否使用css分离插件 ExtractTextPlugin
+        extract: true,
+        // 开启 CSS source maps?
+        sourceMap: false,
+        // css预设器配置项
+        loaderOptions: &#123;&#125;,
+        // 启用 CSS modules for all css / pre-processor files.
+        modules: false
+    &#125;,
+    // use thread-loader for babel &amp; TS in production build
+    // enabled by default if the machine has more than 1 cores
+    parallel: require(&#39;os&#39;).cpus().length &gt; 1,
+    // 是否启用dll
+    // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode
+    // dll: false,
+    // PWA 插件相关配置
+    // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
+    pwa: &#123;&#125;,
+    // webpack-dev-server 相关配置
+    devServer: &#123;
+        open: process.platform === &#39;darwin&#39;,
+        disableHostCheck: true,
+        host: &#39;www.test.com&#39;, //如果是真机测试，就使用这个IP
+        port: 1234,
+        https: false,
+        hotOnly: false,
+        before: app =&gt; &#123;&#125;
+    &#125;,
+    // 第三方插件配置
+    pluginOptions: &#123;
+        // ...
+    &#125;
+&#125;
 </code></pre>
-<p>看到默认初始化了mysql数据库，其中user表里面存储MySQL用户信息。我们可以看一下默认MySQL用户：</p>
-<p> select user,host,authentication_string from mysql.user;</p>
-<pre><code>mysql&gt; select user,host,authentication_string from mysql.user;
-+------------------+-----------+-------------------------------------------+
-| user             | host      | authentication_string                     |
-+------------------+-----------+-------------------------------------------+
-| mysql.infoschema | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.session    | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.sys        | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| root             | localhost | *27C237A977F4F44D3F551F1A673BE14DFD232961 |
-+------------------+-----------+-------------------------------------------+
-4 rows in set (0.00 sec)
+<h3 id="Go项目"><a href="#Go项目" class="headerlink" title="Go项目"></a>Go项目</h3><h3 id="JAVA项目"><a href="#JAVA项目" class="headerlink" title="JAVA项目"></a>JAVA项目</h3><h2 id="进入root"><a href="#进入root" class="headerlink" title="进入root"></a>进入root</h2><p>apt-get update   报错E: List directory /var/lib/apt/lists/partial is missing. - Acquire (13: Permission denied)<br>docker exec -u 0 -it id /bin/bash</p>
+<h2 id="运行出现权限问题"><a href="#运行出现权限问题" class="headerlink" title="运行出现权限问题"></a>运行出现权限问题</h2><pre><code class="shell">#解决权限问题
+docker exec -u 0 -it id /bin/bash   #进入jenkins容器 的root用户
+apt-get update
+apt-get install sudo
+apt-get install vim
+root用户进入到Linux系统的/etc目录下
+cd /etc
+设置读写权限
+chmod u+w /etc/sudoers
+编辑sudoers文件，加入下面一句话 添加进最高权限组
+jenkins ALL=(ALL)NOPASSWD:ALL
 
-mysql&gt;
+docker exec  -it id /bin/bash  #进入jenkins容器 的jenkins用户
 </code></pre>
-<pre><code>管理员root的host是localhost，代表仅限localhost登录访问。如果要允许开放其他ip登录，则需要添加新的host。如果要允许所有ip访问，可以直接修改成“%”
+<p>关于sudo无密码</p>
+<pre><code class="shell">
+#sudoers文件设置sudo命令无密码（root密码）登录
+1. 当用户执行sudo时，Linux系统会去寻找/etc/sudoers文件，并且这是主动的，判断用户是否有执行sudo命令的权限
+2. 如果用户有执行sudo的权限，让用户输入自己的密码来确认，这里比使用root的密码强多了，赞一下
+3. 如果密码输入正确，开始执行sudo后面跟的shell命令
+4. 如果要切换的身份相同， 和su命令一样，也不用输入密码
 
-创建用户：
+hadoop ALL=(root)NOPASSWD:ALL
 
-CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;;
+这样也行
 
-#(需要注意：mysql8.0加密方式修改了)
-#检查用户
-
-select user, host, plugin, authentication_string from user\G;
-
-授权远程数据库
-
-#授权所有权限
-GRANT ALL PRIVILEGES ON *.* TO &#39;xxh&#39;@&#39;%&#39;；
-#授权基本的查询修改权限，按需求设置
-GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON *.* TO &#39;xxh&#39;@&#39;%&#39;;
-
-查看用户权限
-show grants for &#39;xxh&#39;@&#39;%&#39;;
-
- 
-
-示例：
-mysql&gt; use mysql;
-Database changed
-mysql&gt; CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;; #创建用户(注意：mysql8.0加密方式修改了)
-Query OK, 0 rows affected (0.07 sec)
-mysql&gt;
+hadoop ALL=(ALL) ALL
 </code></pre>
-<p>查看密码加密方式：</p>
-<pre><code>select user, host, plugin, authentication_string from user;
-</code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724235136.png"></p>
-<p>另外，如果需要新增账户，或者本机以外的其他人访问MySQL则还需要设置内置账户的host，具体可以参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sos-blue/p/6852945.html">MySQL创建用户与授权</a></p>
-<p>参考链接</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiongzaiqiren/p/8970203.html">https://www.cnblogs.com/xiongzaiqiren/p/8970203.html</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>

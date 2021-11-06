@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MysqlZIP安装 | 月夜魂归的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="MysqlZIP安装 | 月夜魂归的博客">
+  <title>3.hadoop自动化部署脚本文件 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" docker ">
+  <meta name="description" content="3.hadoop自动化部署脚本文件 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -1002,9 +1002,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-MysqlZIP安装" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-3.hadoop自动化部署脚本文件" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">MysqlZIP安装</h1>
+        <h1 class="article-title">3.hadoop自动化部署脚本文件</h1>
     
     <div class="article-meta">
         
@@ -1014,22 +1014,27 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="数据库">数据库</a> > 
-            
-            <a  data-rel="数据库&lt;---&gt;Mysql">Mysql</a>
+            <a  data-rel="大数据">大数据</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">docker</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-11-06 16:15:37'>2021-11-06 16:15</time>
+            发布时间 : <time class="date" title='最后更新: 2021-11-06 16:15:37'>2021-11-06 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.3k</span>
+        <span>字数:1.4k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1048,7 +1053,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%EF%BC%8C%E5%AE%89%E8%A3%85"><span class="toc-text">一，安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E9%85%8D%E7%BD%AEmy-ini"><span class="toc-text">1.1配置my.ini</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">1.2.初始化数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%EF%BC%8C%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A0%81%E5%92%8C%E5%AF%86%E7%A0%81%E8%AE%A4%E8%AF%81%E6%8F%92%E4%BB%B6"><span class="toc-text">二，更改密码和密码认证插件</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-text">使用教程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1064,142 +1069,229 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>下载zip安装包：</p>
-<p>　　MySQL8.0 For Windows zip包下载地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/file/?id=476233%EF%BC%8C%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E5%90%8E%E5%8F%AF%E4%BB%A5%E4%B8%8D%E7%99%BB%E5%BD%95%E3%80%82%E5%90%8E%E7%82%B9%E5%87%BB%E5%BA%95%E9%83%A8%E2%80%9CNo">https://dev.mysql.com/downloads/file/?id=476233，进入页面后可以不登录。后点击底部“No</a> thanks, just start my download.”即可开始下载。</p>
-<p>　　或直接下载：<a target="_blank" rel="noopener" href="https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip">https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-winx64.zip</a></p>
-<h2 id="一，安装"><a href="#一，安装" class="headerlink" title="一，安装"></a>一，安装</h2><p>　　比如我的安装目录是：C:\Program Files\MySQL</p>
-<h2 id="1-1配置my-ini"><a href="#1-1配置my-ini" class="headerlink" title="1.1配置my.ini"></a>1.1配置my.ini</h2><p>​        我们发现解压后的目录并没有my.ini文件，没关系可以自行创建。在安装根目录下添加 my.ini，比如我这里是：C:\Program Files\MySQL\my.ini，写入基本配置：</p>
-<pre><code>[mysqld]
-# 设置3306端口
-port=3306
-# 设置mysql的安装目录
-basedir=C:\Program Files\MySQL\MySQL8
-# 设置mysql数据库的数据的存放目录
-datadir=E:\Program Files\MySQL\Data
-# 允许最大连接数
-max_connections=200
-# 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
-max_connect_errors=10
-# 服务端使用的字符集默认为UTF8
-character-set-server=utf8
-# 创建新表时将使用的默认存储引擎
-default-storage-engine=INNODB
-# 默认使用“mysql_native_password”插件认证
-default_authentication_plugin=mysql_native_password
-[mysql]
-# 设置mysql客户端默认字符集
-default-character-set=utf8
-[client]
-# 设置mysql客户端连接服务端时默认使用的端口
-port=3306
-default-character-set=utf8
+        <h1 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h1><p>使用前提docker+hadoop_node.tar.gz+JDK</p>
+<p>1.把load.sh和master.sh和slave1.sh、slave2.sh、slave3.sh上传到项目里</p>
+<p>2.进入/mnt/cgshare目录</p>
+<p>3.执行./load.sh</p>
+<p>4.打开另外三个窗口并进入容器 </p>
+<pre><code>docker exec -it --privileged slave1 /bin/bash
+docker exec -it --privileged slave2 /bin/bash
+docker exec -it --privileged slave3 /bin/bash
 </code></pre>
-<p>注意，里面的 basedir 是我本地的安装目录，datadir 是我数据库数据文件要存放的位置，各项配置需要根据自己的环境进行配置。</p>
-<p>查看所有的配置项，可参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html">https://dev.mysql.com/doc/refman/8.0/en/mysqld-option-tables.html</a></p>
-<h2 id="1-2-初始化数据库"><a href="#1-2-初始化数据库" class="headerlink" title="1.2.初始化数据库"></a>1.2.初始化数据库</h2><p>进入bin安装目录 </p>
-<pre><code>mysqld --initialize --console
+<p>5.执行./master.sh 出现  密码输入密码83953588abc 出现yes输入yes</p>
+<p>6.在另外三个窗口 执行./slave1.sh、./slave2.sh、./slave3.sh</p>
+<p>7.所有容器执行一遍   source ~/.bashrc</p>
+<p>在master执行如下语句</p>
+<pre><code>hdfs namenode -format  (只首次需要！！！)|
+start-dfs.sh
+start-yarn.sh
+mr-jobhistory-daemon.sh start historyserver
 </code></pre>
-<p><img src="C:/Users/Elder/AppData/Roaming/Typora/typora-user-images/image-20210724232012925.png" alt="image-20210724232012925"></p>
-<p>得到初始用户名和密码  root@localhost: (%I&lt;(49r9Ekh</p>
-<p>要是你手贱，关快了，或者没记住，那也没事，删掉初始化的 datadir 目录，再执行一遍初始化命令，又会重新生成的。当然，也可以使用安全工具，强制改密码，用什么方法，自己随意。</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html">https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization-mysqld.html</a></p>
-<pre><code>mysqld --install [服务名] 或者 .\mysqld --install
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>load.sh</p>
+<pre><code class="shell">
+
+docker load &lt; /cg/images/hadoop_node.tar.gz
+
+docker run --name master --privileged --hostname master --ip 172.18.0.2 --add-host=slave1:172.18.0.3  --add-host=slave2:172.18.0.4 --add-host=slave3:172.18.0.5 -itd -v /cgsrc:/cgsrc:ro -v /headless/course/:/course hadoop_node /service_start.sh
+
+docker run --name slave1 --privileged --hostname slave1 --ip 172.18.0.3 --add-host=master:172.18.0.2  --add-host=slave2:172.18.0.4 --add-host=slave3:172.18.0.5  -itd -v /cgsrc:/cgsrc:ro hadoop_node /service_start.sh
+
+docker run --name slave2 --privileged --hostname slave2 --ip 172.18.0.4 --add-host=master:172.18.0.2 --add-host=slave1:172.18.0.3  --add-host=slave3:172.18.0.5 -itd -v /cgsrc:/cgsrc:ro hadoop_node /service_start.sh
+
+docker run --name slave3 --privileged --hostname slave3 --ip 172.18.0.5 --add-host=master:172.18.0.2 --add-host=slave1:172.18.0.3  --add-host=slave2:172.18.0.4 -itd -v /cgsrc:/cgsrc:ro hadoop_node /service_start.sh
+
+docker start master
+docker start slave1
+docker start slave2
+docker start slave3
+
+docker cp  master.sh master:/
+docker cp  slave1.sh slave1:/
+docker cp  slave2.sh slave2:/
+docker cp  slave3.sh slave3:/
+
+# docker cp  tool.sh master:/
+# docker cp  tool.sh slave1:/
+# docker cp  tool.sh slave2:/
+# docker cp  tool.sh slave3:/
+
+echo &quot;docker exec -it --privileged slave1 /bin/bash&quot;
+echo &quot;docker exec -it --privileged slave2 /bin/bash&quot;
+echo &quot;docker exec -it --privileged slave3 /bin/bash&quot;
+
+docker exec -it --privileged master /bin/bash
 </code></pre>
-<p>如果出现</p>
-<p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/20210724233107.png"></p>
-<p>使用win+Q搜索cmd，右键“用管理员身份打开cmd命令</p>
-<p>后面的服务名可以不写，默认的名字为 mysql。当然，如果你的电脑上需要安装多个MySQL服务，就可以用不同的名字区分了，比如 mysql5 和 mysql8。</p>
-<pre><code>安装完成之后，就可以通过命令net start mysql启动MySQL的服务了。
+<p>master.sh</p>
+<pre><code class="shell">mkdir /usr/local/java
+cp /cgsrc/jdk-8u171-linux-x64.tar.gz /usr/local/java/
+cd /usr/local/java/
+tar -zxvf jdk-8u171-linux-x64.tar.gz
+rm -f jdk-8u171-linux-x64.tar.gz
+echo &#39;export JAVA_HOME=/usr/local/java/jdk1.8.0_171
+export CLASSPATH=.:$&#123;JAVA_HOME&#125;/jre/lib/rt.jar:$&#123;JAVA_HOME&#125;/lib/dt.jar:$&#123;JAVA_HOME&#125;/lib/tools.jar
+export PATH=$PATH:$&#123;JAVA_HOME&#125;/bin&#39;&gt;&gt;~/.bashrc
+
+ping master -c 3
+ping slave1 -c 3
+ping slave2 -c 3
+ping slave3 -c 3
+echo &quot;-----------网络目前已经联通--------------&quot;
+
+echo &quot;-----------配置无密码登录--------------&quot;
+echo &quot;-----------下面需要三个回车  --------------&quot;
+cd ~/.ssh
+rm -f ./id_rsa*
+ssh-keygen -t rsa
+
+cat ./id_rsa.pub &gt;&gt; ./authorized_keys
+echo &quot;-----------下面需要输入密码 83953588abc  --------------&quot;
+
+scp ~/.ssh/id_rsa.pub root@slave1:/root
+scp ~/.ssh/id_rsa.pub root@slave2:/root
+scp ~/.ssh/id_rsa.pub root@slave3:/root
+
+ssh-keyscan localhost &gt;&gt; ~/.ssh/known_hosts
+
+cp /cgsrc/hadoop-2.7.1.tar.gz /usr/local/
+cd /usr/local
+tar -zxvf hadoop-2.7.1.tar.gz
+rm -f hadoop-2.7.1.tar.gz
+
+mv hadoop-2.7.1/ hadoop
+
+echo &#39;export PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin&#39;&gt;&gt;~/.bashrc
+source ~/.bashrc
+
+echo $JAVA_HOME
+java -version
+echo &quot;-----------java环境配置成功-------------&quot;
+hadoop version
+echo &quot;-----------hadoop安装成功--------------&quot;
+
+cd /usr/local/hadoop/etc/hadoop
+
+echo &#39;slave1
+slave2
+slave3&#39;&gt;slaves
+
+echo &quot;设置slaves成功-&gt;&gt;&quot;
+cat slaves
+
+echo &#39;&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.defaultFS&lt;/name&gt;
+        &lt;value&gt;hdfs://master:9000&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+        &lt;value&gt;file:/usr/local/hadoop/tmp&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;&#39;&gt;core-site.xml
+
+echo &#39;&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
+        &lt;value&gt;master:50090&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;3&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+        &lt;value&gt;file:/usr/local/hadoop/tmp/dfs/name&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+        &lt;value&gt;file:/usr/local/hadoop/tmp/dfs/date&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;&#39;&gt;hdfs-site.xml
+
+cp mapred-site.xml.template mapred-site.xml
+
+echo &#39;&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+        &lt;value&gt;yarn&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
+        &lt;value&gt;master:10020&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;
+        &lt;value&gt;master:19888&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;&#39;&gt;mapred-site.xml
+
+echo &#39;&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+        &lt;value&gt;master&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage&lt;/name&gt;
+        &lt;value&gt;98.5&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;&#39;&gt;yarn-site.xml
+echo &quot;-------------hadoop配置成功-----------------&quot;
+
+cd /usr/local
+rm -rf ./hadoop/tmp                         #删除临时文件
+rm -rf ./hadoop/logs/*                      #删除日志文件
+
+tar -zcf ~/hadoop.master.tar.gz ./hadoop
+cd ~
+scp ./hadoop.master.tar.gz root@slave1:/root
+scp ./hadoop.master.tar.gz root@slave2:/root
+scp ./hadoop.master.tar.gz root@slave3:/root
+
+echo &quot;-------------hadoop全部配置完毕，需要你在master启动
+source ~/.bashrc
+hdfs namenode -format  (只首次需要！！！)|
+start-dfs.sh
+start-yarn.sh
+mr-jobhistory-daemon.sh start historyserver
+-----------------&quot;
+# ./tool.sh
 </code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234135.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html">https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html</a></p>
-<h2 id="二，更改密码和密码认证插件"><a href="#二，更改密码和密码认证插件" class="headerlink" title="二，更改密码和密码认证插件"></a>二，更改密码和密码认证插件</h2><p>在MySQL安装目录的 bin 目录下执行命令：</p>
-<pre><code>mysql -u root -p
+<p>slave1.sh slave2.sh  slave3.sh  一样</p>
+<pre><code class="shell">mkdir /usr/local/java
+cp /cgsrc/jdk-8u171-linux-x64.tar.gz /usr/local/java/
+cd /usr/local/java/
+tar -zxvf jdk-8u171-linux-x64.tar.gz
+rm -f jdk-8u171-linux-x64.tar.gz
+echo &#39;export JAVA_HOME=/usr/local/java/jdk1.8.0_171
+export CLASSPATH=.:$&#123;JAVA_HOME&#125;/jre/lib/rt.jar:$&#123;JAVA_HOME&#125;/lib/dt.jar:$&#123;JAVA_HOME&#125;/lib/tools.jar
+export PATH=$PATH:$&#123;JAVA_HOME&#125;/bin&#39;&gt;&gt;~/.bashrc
+
+ping master -c 3
+ping slave1 -c 3
+ping slave2 -c 3
+ping slave3 -c 3
+echo &quot;-----------网络目前已经联通--------------&quot;
+echo $JAVA_HOME
+java -version
+echo &quot;-----------java环境配置成功-------------&quot;
+
+mkdir -p ~/.ssh
+cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+rm -f ~/id_rsa.pub
+
+rm -rf /usr/local/hadoop
+tar -zxf ~/hadoop.master.tar.gz -C /usr/local
+rm -f ~/hadoop.master.tar.gz
+
+echo &quot;-------------hadoop全部配置完毕，需要你在master启动
+source ~/.bashrc
+
+-----------------&quot;
+# ./tool.sh
 </code></pre>
-<p>　　这时候会提示输入密码，记住了上面第1.3步安装时的密码，填入即可登录成功，进入MySQL命令模式。</p>
-<p>在MySQL8.0.4以前，执行</p>
-<p>SET PASSWORD=PASSWORD(‘[修改的密码]’);<br>就可以更改密码，但是MySQL8.0.4开始，这样默认是不行的。因为之前，MySQL的密码认证插件是“mysql_native_password”，而现在使用的是“caching_sha2_password”。</p>
-<p>　　因为当前有很多数据库工具和链接包都不支持“caching_sha2_password”，为了方便，我暂时还是改回了“mysql_native_password”认证插件。</p>
-<p>修改用户密码，在MySQL中执行命令：</p>
-<pre><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;新密码&#39;;
-</code></pre>
-<p>修改密码验证插件，同时修改密码。</p>
-<p>　　如果想默认使用“mysql_native_password”插件认证，可以在配置文件中配置default_authentication_plugin项。</p>
-<p><strong>[mysqld]</strong><br><strong>default_authentication_plugin=mysql_native_password</strong></p>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724234609.png"></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password">https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password</a></p>
-<p>　　到此，安装部署就完成了。官方说测试速度MySQL8比5快两倍。</p>
-<p>　　可以用 命令查看一下默认安装的数据库：</p>
-<pre><code>show databases;
-
-use mysql;
-
-show tables;
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.01 sec)
-
-mysql&gt;
-</code></pre>
-<p>看到默认初始化了mysql数据库，其中user表里面存储MySQL用户信息。我们可以看一下默认MySQL用户：</p>
-<p> select user,host,authentication_string from mysql.user;</p>
-<pre><code>mysql&gt; select user,host,authentication_string from mysql.user;
-+------------------+-----------+-------------------------------------------+
-| user             | host      | authentication_string                     |
-+------------------+-----------+-------------------------------------------+
-| mysql.infoschema | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.session    | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| mysql.sys        | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
-| root             | localhost | *27C237A977F4F44D3F551F1A673BE14DFD232961 |
-+------------------+-----------+-------------------------------------------+
-4 rows in set (0.00 sec)
-
-mysql&gt;
-</code></pre>
-<pre><code>管理员root的host是localhost，代表仅限localhost登录访问。如果要允许开放其他ip登录，则需要添加新的host。如果要允许所有ip访问，可以直接修改成“%”
-
-创建用户：
-
-CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;;
-
-#(需要注意：mysql8.0加密方式修改了)
-#检查用户
-
-select user, host, plugin, authentication_string from user\G;
-
-授权远程数据库
-
-#授权所有权限
-GRANT ALL PRIVILEGES ON *.* TO &#39;xxh&#39;@&#39;%&#39;；
-#授权基本的查询修改权限，按需求设置
-GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON *.* TO &#39;xxh&#39;@&#39;%&#39;;
-
-查看用户权限
-show grants for &#39;xxh&#39;@&#39;%&#39;;
-
- 
-
-示例：
-mysql&gt; use mysql;
-Database changed
-mysql&gt; CREATE USER &#39;xxh&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;xxh123!@#&#39;; #创建用户(注意：mysql8.0加密方式修改了)
-Query OK, 0 rows affected (0.07 sec)
-mysql&gt;
-</code></pre>
-<p>查看密码加密方式：</p>
-<pre><code>select user, host, plugin, authentication_string from user;
-</code></pre>
-<p><img src="https://zhanghaooss.oss-cn-beijing.aliyuncs.com/blogImg/20210724235136.png"></p>
-<p>另外，如果需要新增账户，或者本机以外的其他人访问MySQL则还需要设置内置账户的host，具体可以参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sos-blue/p/6852945.html">MySQL创建用户与授权</a></p>
-<p>参考链接</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiongzaiqiren/p/8970203.html">https://www.cnblogs.com/xiongzaiqiren/p/8970203.html</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
