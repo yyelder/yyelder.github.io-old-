@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>4.MapReduce编程 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" 大数据 ">
+  <meta name="description" content="4.MapReduce编程 | 月夜魂归的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http://example.com/tags/index.html">
+<meta property="og:site_name" content="月夜魂归的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-23T12:46:18.000Z">
+<meta property="article:modified_time" content="2021-07-23T12:53:25.777Z">
+<meta property="article:author" content="Elder">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Elder</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/gumugwen"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:gumuX@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1245516932&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(47)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="工具">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        工具
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="工具<--->开发工具">
+                                        
+                                        开发工具
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="工具<--->hexo">
+                                        
+                                        hexo
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        数据库
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="数据库<--->Mysql">
+                                        
+                                        Mysql
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="大数据">
+                        
+                        大数据
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="单片机">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        单片机
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="单片机<--->ESP32">
+                                        
+                                        ESP32
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="单片机<--->ESP8266">
+                                        
+                                        ESP8266
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="区块链">
+                        
+                        区块链
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="网站">
+                        
+                        网站
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="微信">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        微信
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="微信<--->微信公众号">
+                                        
+                                        微信公众号
+                                        
+                                            <small>(1
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="GO笔记">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        GO笔记
+                        <small>(23)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="GO笔记<--->学习blog">
+                                        
+                                        学习blog
+                                        
+                                            <small>(15
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="GO笔记<--->docker">
+                                        
+                                        docker
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="linux">
+                        
+                        linux
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="nas">
+                        
+                        nas
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Vue">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        Vue
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="Vue<--->vueShop项目">
+                                        
+                                        vueShop项目
+                                        
+                                            <small>(3
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="47">
+<input type="hidden" id="yelog_site_word_count" value="70.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>大数据</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>单片机</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反向代理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>工具</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>区块链</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>微信</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docke</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ES6</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Go</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>GO</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>goblog</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hadoop</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jenkins</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nas</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vueshop</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="全部文章 GO笔记 "
+           href="/posts/cf42190b/"
+           data-tag="Go"
+           data-author="" >
+            <span class="post-title" title="go语言练习">go语言练习</span>
+            <span class="post-date" title="2021-10-16 00:00:00">2021/10/16</span>
+        </a>
+        
+        <a id="top" class="全部文章 单片机 ESP32 "
+           href="/posts/b48794b/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="(标准)程序学习区">(标准)程序学习区</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a id="top" class="全部文章 工具 hexo "
+           href="/posts/8ab3b61c/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="hexo安装文档">hexo安装文档</span>
+            <span class="post-date" title="2020-07-30 00:00:00">2020/07/30</span>
+        </a>
+        
+        <a id="top" class="全部文章 单片机 ESP32 "
+           href="/posts/405f27aa/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="esp课件">esp课件</span>
+            <span class="post-date" title="2020-07-30 00:00:00">2020/07/30</span>
+        </a>
+        
+        <a  class="全部文章 数据库 Mysql "
+           href="/posts/e98702bb/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MysqlZIP安装">MysqlZIP安装</span>
+            <span class="post-date" title="2021-11-19 12:34:22">2021/11/19</span>
+        </a>
+        
+        <a  class="全部文章 数据库 Mysql "
+           href="/posts/b4bda597/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="navicat安装">navicat安装</span>
+            <span class="post-date" title="2021-11-19 12:34:22">2021/11/19</span>
+        </a>
+        
+        <a  class="全部文章 数据库 Mysql "
+           href="/posts/6e261748/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="配置ssl连接">配置ssl连接</span>
+            <span class="post-date" title="2021-11-19 12:34:22">2021/11/19</span>
+        </a>
+        
+        <a  class="全部文章 工具 开发工具 "
+           href="/posts/452f3b9c/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ngrok使用">ngrok使用</span>
+            <span class="post-date" title="2021-11-19 12:34:22">2021/11/19</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/edd76011/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="4.go处理文件">4.go处理文件</span>
+            <span class="post-date" title="2021-11-19 12:34:22">2021/11/19</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/55989ea1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2.GO出现问题">2.GO出现问题</span>
+            <span class="post-date" title="2021-11-19 12:34:22">2021/11/19</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/20a2197f/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="1.Go环境配置">1.Go环境配置</span>
+            <span class="post-date" title="2021-11-19 12:34:22">2021/11/19</span>
+        </a>
+        
+        <a  class="全部文章 区块链 "
+           href="/posts/ed4c7a5c/"
+           data-tag="区块链"
+           data-author="" >
+            <span class="post-title" title="oracle区块链战略">oracle区块链战略</span>
+            <span class="post-date" title="2021-11-09 00:00:00">2021/11/09</span>
+        </a>
+        
+        <a  class="全部文章 大数据 "
+           href="/posts/754f0640/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="3.hadoop自动化部署脚本文件">3.hadoop自动化部署脚本文件</span>
+            <span class="post-date" title="2021-11-06 00:00:00">2021/11/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 docker "
+           href="/posts/2f78bc79/"
+           data-tag="jenkins"
+           data-author="" >
+            <span class="post-title" title="jenkins+docker+gitee自动部署">jenkins+docker+gitee自动部署</span>
+            <span class="post-date" title="2021-11-06 00:00:00">2021/11/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/a485763a/"
+           data-tag="GO"
+           data-author="" >
+            <span class="post-title" title="go语言实现数据库导成model">go语言实现数据库导成model</span>
+            <span class="post-date" title="2021-11-03 00:00:00">2021/11/03</span>
+        </a>
+        
+        <a  class="全部文章 网站 "
+           href="/posts/c9490295/"
+           data-tag="反向代理"
+           data-author="" >
+            <span class="post-title" title="宝塔反向代理">宝塔反向代理</span>
+            <span class="post-date" title="2021-11-01 00:00:00">2021/11/01</span>
+        </a>
+        
+        <a  class="全部文章 区块链 "
+           href="/posts/a8f7a421/"
+           data-tag="区块链"
+           data-author="" >
+            <span class="post-title" title="区块链和oracle">区块链和oracle</span>
+            <span class="post-date" title="2021-10-26 00:00:00">2021/10/26</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/fcb04d9d/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="15.Go语言开发参考标准方式">15.Go语言开发参考标准方式</span>
+            <span class="post-date" title="2021-10-05 00:00:00">2021/10/05</span>
+        </a>
+        
+        <a  class="全部文章 微信 微信公众号 "
+           href="/posts/ae53d71f/"
+           data-tag="微信"
+           data-author="" >
+            <span class="post-title" title="公众号开发">公众号开发</span>
+            <span class="post-date" title="2021-10-01 00:00:00">2021/10/01</span>
+        </a>
+        
+        <a  class="全部文章 Vue "
+           href="/posts/d73c0d37/"
+           data-tag="ES6"
+           data-author="" >
+            <span class="post-title" title="ES6">ES6</span>
+            <span class="post-date" title="2021-09-23 00:00:00">2021/09/23</span>
+        </a>
+        
+        <a  class="全部文章 Vue vueShop项目 "
+           href="/posts/e2f4c9ee/"
+           data-tag="vueshop"
+           data-author="" >
+            <span class="post-title" title="3.项目优化">3.项目优化</span>
+            <span class="post-date" title="2021-09-13 08:42:48">2021/09/13</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 docker "
+           href="/posts/c56ee665/"
+           data-tag="docke"
+           data-author="" >
+            <span class="post-title" title="Docker入门学习笔记">Docker入门学习笔记</span>
+            <span class="post-date" title="2021-09-02 00:00:00">2021/09/02</span>
+        </a>
+        
+        <a  class="全部文章 Vue vueShop项目 "
+           href="/posts/153a865a/"
+           data-tag="vueshop"
+           data-author="" >
+            <span class="post-title" title="2.前端知识碎片">2.前端知识碎片</span>
+            <span class="post-date" title="2021-08-30 07:48:44">2021/08/30</span>
+        </a>
+        
+        <a  class="全部文章 Vue vueShop项目 "
+           href="/posts/df38a864/"
+           data-tag="vueshop"
+           data-author="" >
+            <span class="post-title" title="1.基本项目安装">1.基本项目安装</span>
+            <span class="post-date" title="2021-08-22 08:42:48">2021/08/22</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/4ceab5f8/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="14.Go语言打包">14.Go语言打包</span>
+            <span class="post-date" title="2021-08-21 11:28:08">2021/08/21</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/d32991df/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="12.Go重构代码">12.Go重构代码</span>
+            <span class="post-date" title="2021-08-06 14:49:08">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/27d14625/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="13.GO文章实现后台代码(uuid)">13.GO文章实现后台代码(uuid)</span>
+            <span class="post-date" title="2021-08-06 14:49:08">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/ae7f427f/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="11.Go语言Time时间修改格式">11.Go语言Time时间修改格式</span>
+            <span class="post-date" title="2021-08-06 10:25:03">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/ae9ea94a/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="10.实现文章分类">10.实现文章分类</span>
+            <span class="post-date" title="2021-08-06 08:21:03">2021/08/06</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/c9bd5e20/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="9.GO获得路由参数信息">9.GO获得路由参数信息</span>
+            <span class="post-date" title="2021-08-03 19:51:03">2021/08/03</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/3d83c12e/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="8.前端开发">8.前端开发</span>
+            <span class="post-date" title="2021-08-02 09:51:03">2021/08/02</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/ebccff4c/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="7.Vueblog">7.Vueblog</span>
+            <span class="post-date" title="2021-08-02 06:51:23">2021/08/02</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/988c9994/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="6.blog修改返回json格式及封装HTTP返回">6.blog修改返回json格式及封装HTTP返回</span>
+            <span class="post-date" title="2021-08-01 19:23:07">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/c0988f99/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="5.blog实现用户中间件">5.blog实现用户中间件</span>
+            <span class="post-date" title="2021-08-01 18:32:19">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/fa48f225/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="4.blog实现JWT认证">4.blog实现JWT认证</span>
+            <span class="post-date" title="2021-08-01 15:22:45">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/77f78a77/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="3.blog实现用户登录(密码加密解密)">3.blog实现用户登录(密码加密解密)</span>
+            <span class="post-date" title="2021-08-01 10:58:03">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/83b04df8/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="2.blog 项目重构">2.blog 项目重构</span>
+            <span class="post-date" title="2021-08-01 09:12:03">2021/08/01</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 学习blog "
+           href="/posts/6638504c/"
+           data-tag="goblog"
+           data-author="" >
+            <span class="post-title" title="1.blog实现用户注册">1.blog实现用户注册</span>
+            <span class="post-date" title="2021-07-31 08:52:03">2021/07/31</span>
+        </a>
+        
+        <a  class="全部文章 大数据 "
+           href="/posts/69284df1/"
+           data-tag="hadoop"
+           data-author="" >
+            <span class="post-title" title="1.hadoop安装实验">1.hadoop安装实验</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 大数据 "
+           href="/posts/b1ce8748/"
+           data-tag="hadoop"
+           data-author="" >
+            <span class="post-title" title="2.hadoop命令操作">2.hadoop命令操作</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 GO笔记 "
+           href="/posts/f0d6498e/"
+           data-tag="Go"
+           data-author="" >
+            <span class="post-title" title="5.Go热重载">5.Go热重载</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 工具 开发工具 "
+           href="/posts/1055d9da/"
+           data-tag="工具"
+           data-author="" >
+            <span class="post-title" title="Idea2021.2旗舰版安装破解方法">Idea2021.2旗舰版安装破解方法</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 工具 开发工具 "
+           href="/posts/230490ec/"
+           data-tag="工具"
+           data-author="" >
+            <span class="post-title" title="VsCode">VsCode</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 linux "
+           href="/posts/9211474f/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux">linux</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 大数据 "
+           href="/posts/cb2e29d1/"
+           data-tag="大数据"
+           data-author="" >
+            <span class="post-title" title="4.MapReduce编程">4.MapReduce编程</span>
+            <span class="post-date" title="2020-09-11 00:00:00">2020/09/11</span>
+        </a>
+        
+        <a  class="全部文章 nas "
+           href="/posts/8332ac56/"
+           data-tag="nas"
+           data-author="" >
+            <span class="post-title" title="我家nas安装">我家nas安装</span>
+            <span class="post-date" title="2020-07-11 00:00:00">2020/07/11</span>
+        </a>
+        
+        <a  class="全部文章 单片机 ESP8266 "
+           href="/posts/9385ce0d/"
+           data-tag="单片机"
+           data-author="" >
+            <span class="post-title" title="获得网络时间">获得网络时间</span>
+            <span class="post-date" title="2020-04-08 00:00:00">2020/04/08</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-4.MapReduce编程" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">4.MapReduce编程</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="大数据">大数据</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">大数据</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-11-19 12:34:22'>2020-09-11 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:11.3k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MapReduce%E7%BC%96%E7%A8%8B"><span class="toc-text">MapReduce编程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MapReduce%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86"><span class="toc-text">MapReduce组成原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WrodCount%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B"><span class="toc-text">WrodCount处理过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8Hadoop%E9%9B%86%E7%BE%A4"><span class="toc-text">启动Hadoop集群</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="toc-text">工作目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A44%E3%80%90%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E3%80%91WordCount"><span class="toc-text">步骤4【实验步骤】WordCount</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">一、准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">1. 新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%87%86%E5%A4%87%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE"><span class="toc-text">2. 准备测试数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0-MapReduce-%E7%BC%96%E7%A8%8B%E6%A1%86%E6%9E%B6"><span class="toc-text">3. 添加 MapReduce 编程框架</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Map%E8%BF%87%E7%A8%8B"><span class="toc-text">二、Map过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Reduce%E8%BF%87%E7%A8%8B"><span class="toc-text">三、Reduce过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%89%A7%E8%A1%8CMapReduce%E4%BB%BB%E5%8A%A1"><span class="toc-text">四、执行MapReduce任务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-text">五、实验结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A45%E3%80%90%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E3%80%91%E7%A5%96%E5%AD%99%E8%BE%88%E5%85%B3%E7%B3%BB"><span class="toc-text">步骤5【实验步骤】祖孙辈关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C-1"><span class="toc-text">一、准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE-1"><span class="toc-text">1. 新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%87%86%E5%A4%87relation-dat"><span class="toc-text">2. 准备relation.dat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0-MapReduce-%E7%BC%96%E7%A8%8B%E6%A1%86%E6%9E%B6-1"><span class="toc-text">3. 添加 MapReduce 编程框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-MyMap"><span class="toc-text">(1).MyMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MyReduce"><span class="toc-text">(2).MyReduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-MyRunner"><span class="toc-text">(3).MyRunner</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Map%E8%BF%87%E7%A8%8B-1"><span class="toc-text">二、Map过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Reduce%E8%BF%87%E7%A8%8B-1"><span class="toc-text">三、Reduce过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%89%A7%E8%A1%8CMapReduce%E4%BB%BB%E5%8A%A1-1"><span class="toc-text">四、执行MapReduce任务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C-1"><span class="toc-text">五、实验结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A46%E3%80%90%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E3%80%91%E7%B4%A2%E5%BC%95%E5%80%92%E6%8E%92"><span class="toc-text">步骤6【实验步骤】索引倒排</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C-2"><span class="toc-text">一、准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE-2"><span class="toc-text">1.新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%87%86%E5%A4%87-input-dat"><span class="toc-text">2.准备 input.dat</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Map%E8%BF%87%E7%A8%8B-2"><span class="toc-text">二、Map过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Combine%E8%BF%87%E7%A8%8B"><span class="toc-text">三、Combine过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Reduce%E8%BF%87%E7%A8%8B"><span class="toc-text">四、Reduce过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%89%A7%E8%A1%8CMapReduce%E8%BF%87%E7%A8%8B"><span class="toc-text">五、执行MapReduce过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-text">六、实验结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A47%E3%80%90%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4%E3%80%91PageRank"><span class="toc-text">步骤7【实验步骤】PageRank</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C-3"><span class="toc-text">一、准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE-3"><span class="toc-text">1.新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BE%93%E5%85%A5%E6%A0%B7%E6%9C%AC"><span class="toc-text">2.输入样本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Map%E8%BF%87%E7%A8%8B-3"><span class="toc-text">二、Map过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Reduce%E8%BF%87%E7%A8%8B-2"><span class="toc-text">三、Reduce过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%89%A7%E8%A1%8CMapReduce%E4%BB%BB%E5%8A%A1-2"><span class="toc-text">四、执行MapReduce任务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C-2"><span class="toc-text">五、实验结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A48%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A%E3%80%91%E7%AE%80%E5%8D%95%E6%B5%81%E9%87%8F%E7%BB%9F%E8%AE%A1"><span class="toc-text">步骤8【实验作业】简单流量统计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A49%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A%E3%80%91%E7%B4%A2%E5%BC%95%E5%80%92%E6%8E%92%E8%BE%93%E5%87%BA%E8%A1%8C%E5%8F%B7"><span class="toc-text">步骤9【实验作业】索引倒排输出行号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A410%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A%E3%80%91%E6%95%B0%E5%AD%97%E9%9B%86%E5%90%88%E9%97%AE%E9%A2%98"><span class="toc-text">步骤10【实验作业】数字集合问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A411%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A%E3%80%91%E4%BA%8C%E5%BA%A6%E4%BA%BA%E8%84%89"><span class="toc-text">步骤11【实验作业】二度人脉</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A412%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A%E3%80%91N%E5%BA%A6%E4%BA%BA%E8%84%89"><span class="toc-text">步骤12【实验作业】N度人脉</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A413%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A%E3%80%91%E6%95%B0%E5%AD%97%E9%9B%86%E5%90%88%E9%97%AE%E9%A2%98-%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-text">步骤13【实验作业】数字集合问题-二进制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A414%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A%E3%80%91MapReduce%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB"><span class="toc-text">步骤14【实验作业】MapReduce论文阅读</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MapReduce编程"><a href="#MapReduce编程" class="headerlink" title="MapReduce编程"></a>MapReduce编程</h1><ol>
+<li><p>实验内容</p>
+<p>本实验利用 Hadoop 提供的 Java API 进行编程进行 MapReduce 编程。</p>
+</li>
+<li><p>实验目标</p>
+<p>掌握MapReduce编程。</p>
+<p>理解MapReduce原理。</p>
+</li>
+<li><p>实验知识点</p>
+<p>Hadoop Java API</p>
+<p>MapReduce 编程</p>
+</li>
+<li><p>实验环境</p>
+<p>Hadoop 2.7.1</p>
+<p>IDEA 11.0.10</p>
+<p>CourseGrading在线实验环境</p>
+<p>工作目录：~/Desktop/workspace/mapreduce</p>
+</li>
+<li><p>预备知识</p>
+<p>Hadoop 基本操作</p>
+<p>MapReduce 编程基础</p>
+<p>HDFS 基本操作</p>
+<p>Java 编程基础</p>
+</li>
+</ol>
+<h1 id="MapReduce组成原理"><a href="#MapReduce组成原理" class="headerlink" title="MapReduce组成原理"></a>MapReduce组成原理</h1><p>最简单的MapReduce应用程序至少包含 3 个部分：一个 Map 函数、一个 Reduce 函数和一个 main 函数。在运行一个mapreduce计算任务时候，任务过程被分为两个阶段：map阶段和reduce阶段，每个阶段都是用键值对（key/value）作为输入（input）和输出（output）。main 函数将作业控制和文件输入/输出结合起来。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580952724.png" alt="img"></p>
+<p>并行读取文本中的内容，然后进行MapReduce操作。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580952749.png" alt="img"></p>
+<p>Map过程：并行读取文本，对读取的单词进行map操作，每个词都以<code>&lt;key,value&gt;</code>形式生成。</p>
+<p>一个有三行文本的文件进行MapReduce操作。</p>
+<p>读取第一行<code>Hello World Bye World</code> ，分割单词形成Map。</p>
+<pre><code>&lt;Hello,1&gt; &lt;World,1&gt; &lt;Bye,1&gt; &lt;World,1&gt;
+</code></pre>
+<p>读取第二行<code>Hello Hadoop Bye Hadoop</code>，分割单词形成Map。</p>
+<pre><code>&lt;Hello,1&gt; &lt;Hadoop,1&gt; &lt;Bye,1&gt; &lt;Hadoop,1&gt;
+</code></pre>
+<p>读取第三行<code>Bye Hadoop Hello Hadoop</code>，分割单词形成Map。</p>
+<pre><code>&lt;Bye,1&gt; &lt;Hadoop,1&gt; &lt;Hello,1&gt; &lt;Hadoop,1&gt;
+</code></pre>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580952892.png" alt="img"></p>
+<p>Reduce操作是对map的结果进行排序，合并，最后得出词频。</p>
+<p>经过进一步处理(<code>combiner</code>),将形成的Map根据相同的key组合成value数组。</p>
+<pre><code>&lt;Bye,1,1,1&gt; &lt;Hadoop,1,1,1,1&gt; &lt;Hello,1,1,1&gt; &lt;World,1,1&gt;
+</code></pre>
+<p>循环执行Reduce(K,V[])，分别统计每个单词出现的次数。</p>
+<pre><code>&lt;Bye,3&gt; &lt;Hadoop,4&gt; &lt;Hello,3&gt; &lt;World,2&gt;
+</code></pre>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580952793.png" alt="img"></p>
+<h1 id="WrodCount处理过程"><a href="#WrodCount处理过程" class="headerlink" title="WrodCount处理过程"></a>WrodCount处理过程</h1><p>1.将文件拆分成splits，由于测试用的文件较小，所以每个文件为一个split，并将文件按行分割形成<code>&lt;key,value&gt;</code>对，如下图所示。这一步由MapReduce框架自动完成，其中偏移量（即key值）包括了回车所占的字符数（Windows和Linux环境会不同）。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580953001.png" alt="img"></p>
+<p>2.将分割好的<code>&lt;key,value&gt;</code>对交给用户定义的map方法进行处理，生成新的<code>&lt;key,value&gt;</code>对，如下图所示。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580953044.png" alt="img"></p>
+<p>3.得到map方法输出的<code>&lt;key,value&gt;</code>对后，Mapper会将它们按照key值进行排序，并执行Combine过程，将key至相同value值累加，得到Mapper的最终输出结果，如下图所示。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580953062.png" alt="img"></p>
+<p>4.Reducer先对从Mapper接收的数据进行排序，再交由用户自定义的reduce方法进行处理，得到新的<code>&lt;key,value&gt;</code>对，并作为WordCount的输出结果，如下图所示。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580953111.png" alt="img"></p>
+<h1 id="启动Hadoop集群"><a href="#启动Hadoop集群" class="headerlink" title="启动Hadoop集群"></a>启动Hadoop集群</h1><p>实验环境的桌面上提供了三个图标，分别为：</p>
+<ul>
+<li>start-cluster，启动大数据集群，集群包括1主3从4个节点，启动集群将启动这4个节点。</li>
+<li>stop-cluster，关闭大数据集群，关闭集群将关闭集群的4个节点。</li>
+<li>reset-cluster，重置大数据集群，将删除大数据集群的4个节点，然后重新创建4个节点并启动这4个节点。此操作慎重使用。</li>
+</ul>
+<p>双击start-cluster图标并等待执行完毕，初次运行由于需要加载镜像，运行时间大概需要6分钟。</p>
+<p>如果集群成功启动，使用docker ps命令，将看到如下结果：</p>
+<pre><code>root@cg:~/Desktop# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+69c55467b2cd        slave3:v1.0.1       &quot;/bin/bash&quot;         29 seconds ago      Up 28 seconds                           slave3
+9e57b7585f31        slave2:v1.0.1       &quot;/bin/bash&quot;         29 seconds ago      Up 28 seconds                           slave2
+4e71dc565ef5        slave1:v1.0.1       &quot;/bin/bash&quot;         30 seconds ago      Up 29 seconds                           slave1
+fd9d980a9d72        master:v1.0.1       &quot;/bin/bash&quot;         35 seconds ago      Up 29 seconds                           master
+root@cg:~/Desktop#
+</code></pre>
+<p>即可以看到4个正在运行的容器：master、slave1、slave2、slave3.</p>
+<p>后续再次通过start-cluster启动大数据集群时，由于不需要再次加载镜像，启动集群的速度只需5秒左右。</p>
+<p>在集群中的4个节点都启动后，接下来就可以启动大数据服务了。在桌面上点击鼠标右键，点击“Open Terminal Here”打开终端，如下图所示。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623905708.png" alt="img"></p>
+<p>终端打开后，在终端上点击鼠标右键，点击“Open Tab”，重复上述操作，一共打开5个Tab.。后续将用第一个Tab作为云桌面的终端，后四个Tab依次登录master、slave1、slave2、slave3，如下图所示。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623905793.png" alt="img"></p>
+<p>小提示：使用“Alt+数字键”可快速切换Tab，例如用“Alt+2”可切换到第二个Tab，用“Alt+5”可切换到第5个Tab。</p>
+<p>接下来，在 Tab2、Tab3、Tab4、Tab5 终端上依次使用如下命令登录4个节点：</p>
+<pre><code>&gt; docker exec -it master /bin/bash     # login master
+&gt; docker exec -it slave1 /bin/bash     # login slave1
+&gt; docker exec -it slave2 /bin/bash     # login slave2
+&gt; docker exec -it slave3 /bin/bash     # login slave3
+</code></pre>
+<p>4个节点都登录后的效果如下图所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623905923.png" alt="img"></p>
+<p>在Tab2、Tab3、Tab4、Tab5终端上依次执行如下命令来启动大数据集群：</p>
+<pre><code>&gt; bash /start-service.sh
+</code></pre>
+<p><strong>注意，启动时有依赖关系</strong>：要先等master上的start-service.sh脚本执行完毕后，再执行slave1上的start-service.sh，等slave1上的脚本执行完毕后再执行slave2上的start-service.sh脚本，依次类推。</p>
+<p>在slave节点上运行 start-service.sh 命令后，需要再敲一次回车键即可回到光标闪动等到命令的状态。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623905996.png" alt="img"></p>
+<p>在上述命令全部执行完毕后，可通过检查进程数量确认大数据服务是否全部正确启动，依次在4个大数据节点上执行进程数量检查命令：</p>
+<pre><code>&gt; jps | wc -l
+</code></pre>
+<p>如果master节点的输出结果为14，slave1~slave3的输出结果皆为9，则说明大数据服务已正确启动。</p>
+<p>master节点上的进程数量如下图所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623906031.png" alt="img"></p>
+<p>slave节点上的进程数量如下图所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623906046.png" alt="img"></p>
+<p>如果进程数量不正确，可依次在master、slave1、slave2、slave3上执行关闭大数据服务的脚本：</p>
+<pre><code>&gt; bash /stop-service.sh
+</code></pre>
+<p>执行stop-service.sh的目的是清理上次运行时遗留的大数据进程，这些大数据进程会影响大数据服务的启动。待所有节点的stop-service.sh脚本执行完毕后，再依次执行 bash /start-service.sh 命令启动大数据服务即可。</p>
+<p>同时，建议在使用桌面上的“stop-cluster图标”关闭大数据集群之前，首先在集群各节点上使用 bash /stop-service 命令关闭大数据服务。这是一种良好的操作习惯，可确保大数据集群关闭前，内存中的数据得到可靠存储。</p>
+<p>下面实验操作在云桌面终端，即Tab1终端上执行。</p>
+<hr>
+<h1 id="工作目录"><a href="#工作目录" class="headerlink" title="工作目录"></a>工作目录</h1><p>本实验的工作目录为<code>~/Desktop/workspace/mapreduce</code>，使用以下命令创建和初始化工作目录：</p>
+<pre><code>root@cg:~/Desktop# mkdir -p ~/Desktop/workspace/mapreduce
+root@cg:~/Desktop# cd ~/Desktop/workspace/mapreduce
+root@cg:~/Desktop/workspace/mapreduce# 
+</code></pre>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624001743.png" alt="img"></p>
+<h1 id="步骤4【实验步骤】WordCount"><a href="#步骤4【实验步骤】WordCount" class="headerlink" title="步骤4【实验步骤】WordCount"></a>步骤4【实验步骤】WordCount</h1><h1 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h1><h2 id="1-新建项目"><a href="#1-新建项目" class="headerlink" title="1. 新建项目"></a>1. 新建项目</h2><p>启动IDEA环境。</p>
+<p>依次点击：<code>File-&gt;New-&gt;Project-&gt;Maven-&gt;Next</code>。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623921632.png" alt="img"></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623921643.png" alt="img"></p>
+<p>在项目名称（Project Name）处填入<code>WordCount</code>，将工程位置选择为本实验的工作目录，再点击<code>Finish</code>。</p>
+<p>如下图所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624009599.png" alt="img"></p>
+<p><strong>导入依赖</strong></p>
+<p>依次点击：<code>File -&gt; Project Structure...</code></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623922021.png" alt="img"></p>
+<p>Modules -&gt; Dependencies, 点击+号添加 JARs or Directories…</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623922332.png" alt="img"></p>
+<p>依次添加以下文件：</p>
+<ul>
+<li>/root/IdeaProjects/hadoop_test/lib/common</li>
+<li>/root/IdeaProjects/hadoop_test/lib/common/lib</li>
+<li>/root/IdeaProjects/hadoop_test/lib/hdfs</li>
+<li>/root/IdeaProjects/hadoop_test/lib/httpfs</li>
+<li>/root/IdeaProjects/hadoop_test/lib/kms</li>
+<li>/root/IdeaProjects/hadoop_test/lib/mapreduce</li>
+<li>/root/IdeaProjects/hadoop_test/lib/tools</li>
+<li>/root/IdeaProjects/hadoop_test/lib/yarn</li>
+</ul>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623934101.png" alt="img"></p>
+<h2 id="2-准备测试数据"><a href="#2-准备测试数据" class="headerlink" title="2. 准备测试数据"></a>2. 准备测试数据</h2><p>新建终端，使用如下命令新建一个文本文件：</p>
+<pre><code>root@cg:~/Desktop# cd ~/Desktop/workspace/mapreduce/WordCount/ 
+root@cg:~/Desktop/workspace/mapreduce/WordCount# mkdir target
+root@cg:~/Desktop/workspace/mapreduce/WordCount# mkdir data
+root@cg:~/Desktop/workspace/mapreduce/WordCount# cd data
+root@cg:~/Desktop/workspace/mapreduce/WordCount/data# echo &quot;Hello World&quot; &gt;&gt; file1.txt
+root@cg:~/Desktop/workspace/mapreduce/WordCount/data# echo &quot;Hello MapReduce&quot; &gt;&gt; file2.txt
+root@cg:~/Desktop/workspace/mapreduce/WordCount/data# 
+</code></pre>
+<p>使用如下命令新建目录，并将文本文件上传到目录：</p>
+<pre><code>root@cg:~/Desktop/workspace/mapreduce/WordCount/data# hadoop fs -mkdir -p /mapreduce/WordCount/input
+root@cg:~/Desktop/workspace/mapreduce/WordCount/data# hadoop fs -put file1.txt file2.txt /mapreduce/WordCount/input
+root@cg:~/Desktop/workspace/mapreduce/WordCount/data# hadoop fs -ls /mapreduce/WordCount/input
+Found 2 items
+-rw-r--r--   4 root supergroup         12 2021-06-18 09:52 /mapreduce/WordCount/input/file1.txt
+-rw-r--r--   4 root supergroup         16 2021-06-18 09:52 /mapreduce/WordCount/input/file2.txt
+root@cg:~/Desktop/workspace/mapreduce/WordCount/data# 
+</code></pre>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624010025.png" alt="img"></p>
+<h2 id="3-添加-MapReduce-编程框架"><a href="#3-添加-MapReduce-编程框架" class="headerlink" title="3. 添加 MapReduce 编程框架"></a>3. 添加 MapReduce 编程框架</h2><p>MapReduce 编程框架分为三个部分，请在 IDEA 中的 <code>WordCount/src/main/java</code> 下分别创建如下三个类，方式为：右击java -&gt; New -&gt; Java Class 。类名及内容分别如下：</p>
+<p>(1).WcMap</p>
+<pre><code>public class WcMap extends Mapper&lt;LongWritable, Text, Text, LongWritable&gt;&#123;
+    //重写map这个方法
+    //mapreduce框架每读一行数据就调用一次该方法
+    protected void map(LongWritable key, Text value, Context context)
+            throws IOException, InterruptedException &#123;
+        //具体业务逻辑就写在这个方法体中，而且我们业务要处理的数据已经被框架传递进来，在方法的参数中key-value
+        //key是这一行数据的起始偏移量，value是这一行的文本内容
+    &#125;
+&#125;
+</code></pre>
+<p>(2).WcReduce</p>
+<pre><code>public class WcReduce extends Reducer&lt;Text, LongWritable, Text, LongWritable&gt;&#123;
+
+    //继承Reducer之后重写reduce方法
+    //第一个参数是key，第二个参数是集合。
+    //框架在map处理完成之后，将所有key-value对缓存起来，进行分组，然后传递一个组&lt;key,valus&#123;&#125;&gt;，调用一次reduce方法
+    protected void reduce(Text key, Iterable&lt;LongWritable&gt; values,Context context) 
+            throws IOException, InterruptedException &#123;
+            
+    &#125;
+&#125;
+</code></pre>
+<p>(3).WcRunner</p>
+<pre><code>public class WcRunner &#123;
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException &#123;
+        //创建配置文件
+        Configuration conf = new Configuration();
+        //获取一个作业
+        Job job = Job.getInstance(conf);
+        
+        //设置整个job所用的那些类在哪个jar包
+        job.setJarByClass(WcRunner.class);
+        
+        //本job使用的mapper和reducer的类
+        job.setMapperClass(WcMap.class);
+        job.setReducerClass(WcReduce.class);
+        
+        //指定reduce的输出数据key-value类型
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(LongWritable.class);
+        
+        
+        //指定mapper的输出数据key-value类型
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(LongWritable.class);
+        
+        //指定要处理的输入数据存放路径
+        FileInputFormat.setInputPaths(job, new Path(&quot;hdfs://master:9000/user/cg/input&quot;));
+        
+        //指定处理结果的输出数据存放路径
+        FileOutputFormat.setOutputPath(job, new Path(&quot;hdfs://master:9000/user/cg/output&quot;));
+        
+        //将job提交给集群运行 
+        job.waitForCompletion(true);
+    &#125; 
+&#125;
+</code></pre>
+<hr>
+<h1 id="二、Map过程"><a href="#二、Map过程" class="headerlink" title="二、Map过程"></a>二、Map过程</h1><p>Map过程需要继承<code>org.apache.hadoop.mapreduce</code>包中<code>Mapper</code>类，并重写其<code>map</code>方法。通过在<code>map</code>方法中添加两句把<code>key</code>值和<code>value</code>值输出到控制台的代码，可以发现<code>map</code>方法中<code>value</code>值存储的是文本文件中的一行（以回车符为行结束标记），而<code>key</code>值为该行的首字母相对于文本文件的首地址的偏移量。然后<code>StringTokenizer</code>类将每一行拆分成为一个个的单词，并将<code>&lt;word,1&gt;</code>作为<code>map</code>方法的结果输出，其余的工作都交有<code>MapReduce</code>框架处理。</p>
+<p>完整代码与解析如下：</p>
+<pre><code>import java.io.IOException;
+import org.apache.commons.lang.StringUtils;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+/***
+ * 
+ * @author Administrator
+ * 1：4个泛型中，前两个是指定mapper输入数据的类型，KEYIN是输入的key的类型，VALUEIN是输入的value的值
+ *       KEYOUT是输入的key的类型，VALUEOUT是输入的value的值 
+ * 2：map和reduce的数据输入和输出都是以key-value的形式封装的。
+ * 3：默认情况下，框架传递给我们的mapper的输入数据中，key是要处理的文本中一行的起始偏移量，这一行的内容作为value
+ * 4：key-value数据是在网络中进行传递，节点和节点之间互相传递，在网络之间传输就需要序列化，但是jdk自己的序列化很冗余
+ *    所以使用hadoop自己封装的数据类型，而不要使用jdk自己封装的数据类型；
+ *    Long---&gt;LongWritable
+ *    String---&gt;Text    
+ */
+public class WcMap extends Mapper&lt;LongWritable, Text, Text, LongWritable&gt;&#123;
+    //重写map这个方法
+    //mapreduce框架每读一行数据就调用一次该方法
+    @Override
+    protected void map(LongWritable key, Text value, Context context)
+            throws IOException, InterruptedException &#123;
+        //具体业务逻辑就写在这个方法体中，而且我们业务要处理的数据已经被框架传递进来，在方法的参数中key-value
+        //key是这一行数据的起始偏移量，value是这一行的文本内容
+        
+        //1:
+        String str = value.toString();
+        //2:切分单词,空格隔开,返回切分开的单词
+        String[] words = StringUtils.split(str,&quot; &quot;);
+        //3:遍历这个单词数组，输出为key-value的格式，将单词发送给reduce
+        for(String word : words)&#123;
+            //输出的key是Text类型的，value是LongWritable类型的
+            context.write(new Text(word), new LongWritable(1));
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h1 id="三、Reduce过程"><a href="#三、Reduce过程" class="headerlink" title="三、Reduce过程"></a>三、Reduce过程</h1><p><code>Reduce</code>过程需要继承<code>org.apache.hadoop.mapreduce</code>包中<code>Reducer</code>类，并重写其<code>reduce</code>方法。<code>Map</code>过程输出<code>&lt;key,values&gt;</code>中<code>key</code>为单个单词，而<code>values</code>是对应单词的计数值所组成的列表，<code>Map</code>的输出就是<code>Reduce</code>的输入，所以<code>reduce</code>方法只要遍历<code>values</code>并求和，即可得到某个单词的总次数。</p>
+<p>完整代码与解析如下：</p>
+<pre><code>import java.io.IOException;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+/***
+ * 
+ * @author Administrator
+ * 1:reduce的四个参数，第一个key-value是map的输出作为reduce的输入,第二个key-value是输出单词和次数，所以
+ *      是Text,LongWritable的格式；
+ */
+public class WcReduce extends Reducer&lt;Text, LongWritable, Text, LongWritable&gt;&#123;
+    //继承Reducer之后重写reduce方法
+    //第一个参数是key，第二个参数是集合。
+    //框架在map处理完成之后，将所有key-value对缓存起来，进行分组，然后传递一个组&lt;key,valus&#123;&#125;&gt;，调用一次reduce方法
+    //&lt;hello,&#123;1,1,1,1,1,1.....&#125;&gt;
+    @Override
+    protected void reduce(Text key, Iterable&lt;LongWritable&gt; values,Context context) 
+            throws IOException, InterruptedException &#123;
+        //将values进行累加操作，进行计数
+        long count = 0;
+        //遍历value的list，进行累加求和
+        for(LongWritable value : values)&#123;
+            
+            count += value.get();
+        &#125;
+        
+        //输出这一个单词的统计结果
+        //输出放到hdfs的某一个目录上面，输入也是在hdfs的某一个目录
+        context.write(key, new LongWritable(count));
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h1 id="四、执行MapReduce任务"><a href="#四、执行MapReduce任务" class="headerlink" title="四、执行MapReduce任务"></a>四、执行MapReduce任务</h1><p>在MapReduce中，由<code>Job</code>对象负责管理和运行一个计算任务，并通过<code>Job</code>的一些方法对任务的参数进行相关的设置。此处设置了使用<code>TokenizerMapper</code>完成<code>Map</code>过程中的处理和使用<code>IntSumReducer</code>完成<code>Combine</code>和<code>Reduce</code>过程中的处理。还设置了<code>Map</code>过程和<code>Reduce</code>过程的输出类型：<code>key</code>的类型为<code>Text</code>，<code>value</code>的类型为<code>IntWritable</code>。任务的输出和输入路径则由命令行参数指定，并由<code>FileInputFormat</code>和<code>FileOutputFormat</code>分别设定。完成相应任务的参数设定后，即可调用<code>job.waitForCompletion()</code>方法执行任务。</p>
+<p>完整代码及解析如下：</p>
+<pre><code>import java.io.IOException;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import java.util.Scanner;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import java.net.URI;
+/***
+ * 1:用来描述一个特定的作业
+ *       比如,该作业使用哪个类作为逻辑处理中的map,那个作为reduce
+ * 2:还可以指定该作业要处理的数据所在的路径
+ *        还可以指定改作业输出的结果放到哪个路径
+ * @author Administrator
+ *
+ */
+public class WcRunner&#123;
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException &#123;
+        //创建配置文件
+        Configuration conf = new Configuration();
+        //获取一个作业
+        Job job = Job.getInstance(conf);
+        
+        //设置整个job所用的那些类在哪个jar包
+        job.setJarByClass(WcRunner.class);
+        
+        //本job使用的mapper和reducer的类
+        job.setMapperClass(WcMap.class);
+        job.setReducerClass(WcReduce.class);
+        
+        //指定reduce的输出数据key-value类型
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(LongWritable.class);
+        
+        
+        //指定mapper的输出数据key-value类型
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(LongWritable.class);
+                
+                Scanner sc = new Scanner(System.in);
+        System.out.print(&quot;inputPath:&quot;);
+        String inputPath = sc.next();
+        System.out.print(&quot;outputPath:&quot;);
+        String outputPath = sc.next();
+                
+        //指定要处理的输入数据存放路径
+        FileInputFormat.setInputPaths(job, new Path(&quot;hdfs://master:9000&quot;+inputPath));
+        
+        //指定处理结果的输出数据存放路径
+        FileOutputFormat.setOutputPath(job, new Path(&quot;hdfs://master:9000&quot;+outputPath));
+        
+        //将job提交给集群运行 
+        job.waitForCompletion(true);
+                
+        //输出结果
+                
+        try &#123;
+            FileSystem fs = FileSystem.get(new URI(&quot;hdfs://master:9000&quot;), new Configuration());
+            Path srcPath = new Path(outputPath+&quot;/part-r-00000&quot;);
+
+            FSDataInputStream is = fs.open(srcPath);
+            System.out.println(&quot;Results:&quot;);
+            while(true) &#123;
+                    String line = is.readLine();
+                    if(line == null) &#123;
+                            break;
+                    &#125;
+                    System.out.println(line);
+            &#125;
+            is.close();
+        &#125;catch(Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125; 
+&#125;
+</code></pre>
+<hr>
+<h1 id="五、实验结果"><a href="#五、实验结果" class="headerlink" title="五、实验结果"></a>五、实验结果</h1><p>右击WcRunner -&gt; Run 运行程序。</p>
+<p>输入：</p>
+<pre><code>inputPath:/mapreduce/WordCount/input
+outputPath:/mapreduce/WordCount/output
+</code></pre>
+<p>运行结果如下：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624010742.png" alt="img"></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624010754.png" alt="img"></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624011631.png" alt="img"></p>
+<p>结果无误。</p>
+<h1 id="步骤5【实验步骤】祖孙辈关系"><a href="#步骤5【实验步骤】祖孙辈关系" class="headerlink" title="步骤5【实验步骤】祖孙辈关系"></a>步骤5【实验步骤】祖孙辈关系</h1><h1 id="一、准备工作-1"><a href="#一、准备工作-1" class="headerlink" title="一、准备工作"></a>一、准备工作</h1><h2 id="1-新建项目-1"><a href="#1-新建项目-1" class="headerlink" title="1. 新建项目"></a>1. 新建项目</h2><p>启动IDEA环境。</p>
+<p>依次点击：<code>File-&gt;New-&gt;Project-&gt;Maven-&gt;Next</code>。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623921632.png" alt="img"></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623921643.png" alt="img"></p>
+<p>在项目名称（Project Name）处填入<code>Relation</code>，将工程位置选择为本实验的工作目录，再点击<code>Finish</code>。</p>
+<p>如下图所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624016042.png" alt="img"></p>
+<p><strong>导入依赖</strong></p>
+<p>依次点击：<code>File -&gt; Project Structure...</code></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623922021.png" alt="img"></p>
+<p>Modules -&gt; Dependencies, 点击+号添加 JARs or Directories…</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623922332.png" alt="img"></p>
+<p>依次添加以下文件：</p>
+<ul>
+<li>/root/IdeaProjects/hadoop_test/lib/common</li>
+<li>/root/IdeaProjects/hadoop_test/lib/common/lib</li>
+<li>/root/IdeaProjects/hadoop_test/lib/hdfs</li>
+<li>/root/IdeaProjects/hadoop_test/lib/httpfs</li>
+<li>/root/IdeaProjects/hadoop_test/lib/kms</li>
+<li>/root/IdeaProjects/hadoop_test/lib/mapreduce</li>
+<li>/root/IdeaProjects/hadoop_test/lib/tools</li>
+<li>/root/IdeaProjects/hadoop_test/lib/yarn</li>
+</ul>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623934101.png" alt="img"></p>
+<p>点击右侧链接下载<code>log4j</code>配置文件：<a target="_blank" rel="noopener" href="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_3/639ll1584707598.txt">log4j.properties.txt</a></p>
+<p>然后将该文件上传至实验环境内的“Relation”项目的<code>src/main/java</code>目录下，并将文件重命名为<code>log4j.properties</code>。</p>
+<h2 id="2-准备relation-dat"><a href="#2-准备relation-dat" class="headerlink" title="2. 准备relation.dat"></a>2. 准备relation.dat</h2><p>在IDEA的Relation目录上，单击右键-&gt;New-&gt;Directory，填入data，创建数据目录，如下所示。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624016201.png" alt="img"></p>
+<p>在data目录上，单击右键-&gt;New-&gt;File，填入relation.dat，创建数据文件，数据文件内容如下：</p>
+<pre><code>Tom Lucy
+Tom Jack
+Jone Lucy
+Jone Jack
+Lucy Mary
+Lucy Ben
+Jack Alice
+Jack Jesse
+Terry Alice
+Terry Jesse
+Philip Terry
+Philip Alma
+Mark Terry
+Mark Alma
+</code></pre>
+<p>创建后的数据文件效果图如下所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624016367.png" alt="img"></p>
+<p>接着，在HDFS创建目录，将数据上传到该目录，</p>
+<p>在云桌面终端执行的命令和效果如下：</p>
+<pre><code>root@cg:~/Desktop# cd ~/Desktop/workspace/mapreduce/Relation/data #进入数据目录
+root@cg:~/Desktop/workspace/mapreduce/Relation/data# hadoop fs -mkdir -p /mapreduce/relation/input #在HDFS上创建目录
+root@cg:~/Desktop/workspace/mapreduce/Relation/data# hadoop fs -put relation.dat /mapreduce/relation/input #上传数据到HDFS
+root@cg:~/Desktop/workspace/mapreduce/Relation/data# hadoop fs -ls /mapreduce/relation/input #查看数据
+Found 1 items
+-rw-r--r--   4 root supergroup        148 2021-06-18 11:43 /mapreduce/relation/input/relation.dat
+root@cg:~/Desktop/workspace/mapreduce/Relation/data# 
+</code></pre>
+<h2 id="3-添加-MapReduce-编程框架-1"><a href="#3-添加-MapReduce-编程框架-1" class="headerlink" title="3. 添加 MapReduce 编程框架"></a>3. 添加 MapReduce 编程框架</h2><p>MapReduce 编程框架分为三个部分，请在 IDEA 中的 Relation/src/main/java 下分别创建如下三个类，方式为：右击java -&gt; New -&gt; Java Class 。类名及内容分别如下：</p>
+<h3 id="1-MyMap"><a href="#1-MyMap" class="headerlink" title="(1).MyMap"></a>(1).MyMap</h3><pre><code>public class MyMap extends Mapper&lt;LongWritable, Text, Text, LongWritable&gt;&#123;
+    //重写map这个方法
+    //mapreduce框架每读一行数据就调用一次该方法
+    protected void map(LongWritable key, Text value, Context context)
+            throws IOException, InterruptedException &#123;
+        //具体业务逻辑就写在这个方法体中，而且我们业务要处理的数据已经被框架传递进来，在方法的参数中key-value
+        //key是这一行数据的起始偏移量，value是这一行的文本内容
+    &#125;
+&#125;
+</code></pre>
+<h3 id="2-MyReduce"><a href="#2-MyReduce" class="headerlink" title="(2).MyReduce"></a>(2).MyReduce</h3><pre><code>public class MyReduce extends Reducer&lt;Text, LongWritable, Text, LongWritable&gt;&#123;
+
+    //继承Reducer之后重写reduce方法
+    //第一个参数是key，第二个参数是集合。
+    //框架在map处理完成之后，将所有key-value对缓存起来，进行分组，然后传递一个组&lt;key,valus&#123;&#125;&gt;，调用一次reduce方法
+    protected void reduce(Text key, Iterable&lt;LongWritable&gt; values,Context context) 
+            throws IOException, InterruptedException &#123;
+            
+    &#125;
+&#125;
+</code></pre>
+<h3 id="3-MyRunner"><a href="#3-MyRunner" class="headerlink" title="(3).MyRunner"></a>(3).MyRunner</h3><pre><code>public class MyRunner &#123;
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException &#123;
+        //创建配置文件
+        Configuration conf = new Configuration();
+        //获取一个作业
+        Job job = Job.getInstance(conf);
+        
+        //设置整个job所用的那些类在哪个jar包
+        job.setJarByClass(MyRunner.class);
+        
+        //本job使用的mapper和reducer的类
+        job.setMapperClass(MyMap.class);
+        job.setReducerClass(MyReduce.class);
+        
+        //指定reduce的输出数据key-value类型
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(LongWritable.class);
+        
+        
+        //指定mapper的输出数据key-value类型
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(LongWritable.class);
+        
+        //指定要处理的输入数据存放路径
+        FileInputFormat.setInputPaths(job, new Path(&quot;hdfs://master:9000/user/cg/input&quot;));
+        
+        //指定处理结果的输出数据存放路径
+        FileOutputFormat.setOutputPath(job, new Path(&quot;hdfs://master:9000/user/cg/output&quot;));
+        
+        //将job提交给集群运行 
+        job.waitForCompletion(true);
+    &#125; 
+&#125;
+</code></pre>
+<hr>
+<h1 id="二、Map过程-1"><a href="#二、Map过程-1" class="headerlink" title="二、Map过程"></a>二、Map过程</h1><p>在<code>src</code>上，单击右键<code>-&gt;New-&gt;Class-&gt;Name</code>处填<code>MyMap-&gt;Finish</code>，<code>MyMap</code>的完整代码与解析如下：</p>
+<pre><code>import java.io.IOException;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.mapreduce.Mapper;
+
+/***
+ * 
+ * 1：4个泛型中，前两个是指定mapper输入数据的类型，KEYIN是输入的key的类型，VALUEIN是输入的value的值
+ *       KEYOUT是输入的key的类型，VALUEOUT是输入的value的值 
+ * 2：map和reduce的数据输入和输出都是以key-value的形式封装的。
+ * 3：默认情况下，框架传递给我们的mapper的输入数据中，key是要处理的文本中一行的起始偏移量，这一行的内容作为value
+ * 4：key-value数据是在网络中进行传递，节点和节点之间互相传递，在网络之间传输就需要序列化，但是jdk自己的序列化很冗余
+ *    所以使用hadoop自己封装的数据类型，而不要使用jdk自己封装的数据类型；
+ *    Long---&gt;LongWritable
+ *    String---&gt;Text    
+ */
+
+public class MyMap extends Mapper&lt;LongWritable, Text, Text, Text&gt; &#123;
+    //重写map这个方法
+    //mapreduce框架每读一行数据就调用一次该方法
+    public void map(LongWritable key, Text value, Context context)
+        throws IOException, InterruptedException &#123;
+        //具体业务逻辑就写在这个方法体中，而且我们业务要处理的数据已经被框架传递进来，在方法的参数中key-value
+        //key是这一行数据的起始偏移量，value是这一行的文本内容
+        
+        //1:切分名字，用空格隔开，前面的是孩子，后面的是父母
+        String child = value.toString().split(&quot; &quot;)[0];
+        String parent = value.toString().split(&quot; &quot;)[1];
+        //2:产生正序与逆序的key-value同时压入context
+        context.write(new Text(child), new Text(&quot;-&quot; + parent));
+        context.write(new Text(parent), new Text(&quot;+&quot; + child));
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h1 id="三、Reduce过程-1"><a href="#三、Reduce过程-1" class="headerlink" title="三、Reduce过程"></a>三、Reduce过程</h1><p>在<code>/src/main/java</code>上，单击右键<code>-&gt;New-&gt;Class-&gt;Name</code>处填<code>MyReduce-&gt;Finish</code>，<code>MyReduce</code>的完整代码与解析如下：</p>
+<pre><code>import java.io.IOException;
+import java.util.ArrayList;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+/***
+ * 
+ * 1:reduce的四个参数，第一个key-value是map的输出作为reduce的输入,第二个key-value是输出祖父母和孩子的关系，所以
+ *      是Text,Text的格式；
+ */
+public class MyReduce extends Reducer&lt;Text, Text, Text, Text&gt; &#123;
+    //继承Reducer之后重写reduce方法
+    //第一个参数是key，第二个参数是集合。
+    //框架在map处理完成之后，将所有key-value对缓存起来，进行分组，然后传递一个组&lt;key,valus&#123;&#125;&gt;，调用一次reduce方法
+    
+    public void reduce(Text key, Iterable&lt;Text&gt; values, Context context)
+            throws IOException, InterruptedException &#123;
+        //1:创建两个List保存祖父母和孩子
+        ArrayList&lt;Text&gt; grandparent = new ArrayList&lt;Text&gt;();
+        ArrayList&lt;Text&gt; grandchild = new ArrayList&lt;Text&gt;();
+        
+        //2:对各个values中的值进行处理,key的父母保存到祖父母列表中，key的子女保存在孩子孩子列表中
+        for (Text t : values) &#123;
+            String s = t.toString();
+            if (s.startsWith(&quot;-&quot;)) &#123;
+                grandparent.add(new Text(s.substring(1)));
+            &#125; else &#123;
+                grandchild.add(new Text(s.substring(1)));
+            &#125;
+        &#125;
+        //3:再将grandparent与grandchild中的东西，一一对应输出。
+        for (int i = 0; i &lt; grandchild.size(); i++) &#123;
+            for (int j = 0; j &lt; grandparent.size(); j++) &#123;
+                context.write(new Text(grandchild.get(i) + &quot; &quot;), grandparent.get(j));
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h1 id="四、执行MapReduce任务-1"><a href="#四、执行MapReduce任务-1" class="headerlink" title="四、执行MapReduce任务"></a>四、执行MapReduce任务</h1><p>在<code>src</code>上，单击右键<code>-&gt;New-&gt;Class-&gt;Name</code>处填<code>MyRunner-&gt;Finish</code>，<code>MyRunner</code>的完整代码与解析如下：</p>
+<pre><code>import java.io.IOException;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import java.util.Scanner;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import java.net.URI;
+
+public class MyRunner &#123;
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException &#123;
+        //创建配置文件
+        Configuration conf = new Configuration();
+        //获取一个作业
+        Job job = Job.getInstance(conf);
+        
+        //设置整个job所用的那些类在哪个jar包
+        job.setJarByClass(MyRunner.class);
+        
+        //本job使用的mapper和reducer的类
+        job.setMapperClass(MyMap.class);
+        job.setReducerClass(MyReduce.class);
+        
+        //指定reduce的输出数据key-value类型
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
+        
+        
+        //指定mapper的输出数据key-value类型
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.print(&quot;inputPath:&quot;);
+        String inputPath = sc.next();
+        System.out.print(&quot;outputPath:&quot;);
+        String outputPath = sc.next();
+                
+        //指定要处理的输入数据存放路径
+         FileInputFormat.setInputPaths(job, new Path(&quot;hdfs://master:9000&quot;+inputPath));
+        
+        //指定处理结果的输出数据存放路径
+        FileOutputFormat.setOutputPath(job, new Path(&quot;hdfs://master:9000&quot;+outputPath));
+        
+        //将job提交给集群运行 
+        job.waitForCompletion(true);
+                
+        try &#123;
+            FileSystem fs = FileSystem.get(new URI(&quot;hdfs://master:9000&quot;), new Configuration());
+            Path srcPath = new Path(outputPath+&quot;/part-r-00000&quot;);
+
+            FSDataInputStream is = fs.open(srcPath);
+            System.out.println(&quot;Results:&quot;);
+            while(true) &#123;
+                String line = is.readLine();
+                if(line == null) &#123;
+                    break;
+                &#125;
+                System.out.println(line);
+            &#125;
+            is.close();
+        &#125;catch(Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125; 
+&#125;
+</code></pre>
+<hr>
+<h1 id="五、实验结果-1"><a href="#五、实验结果-1" class="headerlink" title="五、实验结果"></a>五、实验结果</h1><p>右击MyRunner -&gt; Run 运行程序。</p>
+<p>输入：</p>
+<pre><code>inputPath:/mapreduce/relation/input
+outputPath:/mapreduce/relation/output
+</code></pre>
+<p>运行结果如下：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624015852.png" alt="img"></p>
+<p>可见结果符合预期</p>
+<h1 id="步骤6【实验步骤】索引倒排"><a href="#步骤6【实验步骤】索引倒排" class="headerlink" title="步骤6【实验步骤】索引倒排"></a>步骤6【实验步骤】索引倒排</h1><h1 id="一、准备工作-2"><a href="#一、准备工作-2" class="headerlink" title="一、准备工作"></a>一、准备工作</h1><h2 id="1-新建项目-2"><a href="#1-新建项目-2" class="headerlink" title="1.新建项目"></a>1.新建项目</h2><p>启动IDEA环境。</p>
+<p>依次点击：<code>File-&gt;New-&gt;Project-&gt;Maven-&gt;Next</code>。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623921632.png" alt="img"></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623921643.png" alt="img"></p>
+<p>在项目名称（Project Name）处填入<code>Inverted</code>，将工程位置选择为本实验的工作目录，再点击<code>Finish</code>。</p>
+<p>如下图所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624016917.png" alt="img"></p>
+<p><strong>导入依赖</strong></p>
+<p>依次点击：<code>File -&gt; Project Structure...</code></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623922021.png" alt="img"></p>
+<p>Modules -&gt; Dependencies, 点击+号添加 JARs or Directories…</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623922332.png" alt="img"></p>
+<p>依次添加以下文件：</p>
+<ul>
+<li>/root/IdeaProjects/hadoop_test/lib/common</li>
+<li>/root/IdeaProjects/hadoop_test/lib/common/lib</li>
+<li>/root/IdeaProjects/hadoop_test/lib/hdfs</li>
+<li>/root/IdeaProjects/hadoop_test/lib/httpfs</li>
+<li>/root/IdeaProjects/hadoop_test/lib/kms</li>
+<li>/root/IdeaProjects/hadoop_test/lib/mapreduce</li>
+<li>/root/IdeaProjects/hadoop_test/lib/tools</li>
+<li>/root/IdeaProjects/hadoop_test/lib/yarn</li>
+</ul>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623934101.png" alt="img"></p>
+<h2 id="2-准备-input-dat"><a href="#2-准备-input-dat" class="headerlink" title="2.准备 input.dat"></a>2.准备 input.dat</h2><p>在<code>Inverted</code>项目下分别创建<code>data</code>目录和<code>target</code>目录，从终端进入<code>data</code>目录，使用如下命令生成3个文本文件：<code>1.txt</code>,<code>2.txt</code>,<code>3.txt</code></p>
+<pre><code>root@cg:~/Desktop# mkdir ~/Desktop/workspace/mapreduce/Inverted/data/
+root@cg:~/Desktop# mkdir ~/Desktop/workspace/mapreduce/Inverted/target/
+root@cg:~/Desktop# cd ~/Desktop/workspace/mapreduce/Inverted/data/
+root@cg:~/Desktop/workspace/mapreduce/Inverted/data# echo &quot;MapReduce is simple&quot; &gt; 1.txt
+root@cg:~/Desktop/workspace/mapreduce/Inverted/data# echo &quot;MapReduce is powerful and simple&quot; &gt; 2.txt
+root@cg:~/Desktop/workspace/mapreduce/Inverted/data# echo &quot;Hello MapReduce bye MapReduce&quot; &gt; 3.txt
+root@cg:~/Desktop/workspace/mapreduce/Inverted/data# ls
+1.txt  2.txt  3.txt
+root@cg:~/Desktop/workspace/mapreduce/Inverted/data# 
+</code></pre>
+<p>在IDEA的<code>Inverted</code>项目目录上，右键<code>-&gt;Reload from Disk</code>效果图如下：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624017224.png" alt="img"></p>
+<p>在HDFS上创建目录，并将3个文件上传至HDFS上：</p>
+<pre><code>root@cg:~/Desktop/workspace/mapreduce/Inverted/data# hadoop fs -mkdir -p /mapreduce/inverted/input
+root@cg:~/Desktop/workspace/mapreduce/Inverted/data# hadoop fs -put *.txt /mapreduce/inverted/input
+root@cg:~/Desktop/workspace/mapreduce/Inverted/data# hadoop fs -ls /mapreduce/inverted/input
+Found 3 items
+-rw-r--r--   4 root supergroup         20 2021-06-18 11:55 /mapreduce/inverted/input/1.txt
+-rw-r--r--   4 root supergroup         33 2021-06-18 11:55 /mapreduce/inverted/input/2.txt
+-rw-r--r--   4 root supergroup         30 2021-06-18 11:55 /mapreduce/inverted/input/3.txt
+root@cg:~/Desktop/workspace/mapreduce/Inverted/data# 
+</code></pre>
+<hr>
+<h1 id="二、Map过程-2"><a href="#二、Map过程-2" class="headerlink" title="二、Map过程"></a>二、Map过程</h1><p>首先使用默认的 <code>TextInputFormat</code> 类对输入文本进行处理，得到文本中每行的偏移量及其内容。随后，<code>Map</code>过程分析输入的<code>&lt;key,value&gt;</code>对，得到倒排索引需要的三个信息：单词，文件名，词频，如下图所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1581077469.png" alt="img"></p>
+<p>存在两个问题，第一：<code>&lt;key,value&gt;</code> 对只能有两个值，在不使用 Hadoop 自定义数据类型的情况下，需要根据情况将其中的两个值合并成一个值，作为<code>value</code>或<code>key</code>值；第二：通过一个<code>Reduce</code>过程无法同时完成词频统计和生成文档列表，所以必须增加一个<code>Combine</code>过程完成词频统计。</p>
+<p>完整的Map过程代码如下：</p>
+<pre><code>import java.io.*;
+import java.util.StringTokenizer;
+import org.apache.hadoop.io.*;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;
+
+public class MyMapper extends Mapper&lt;Object,Text,Text,Text&gt;&#123;
+    
+    //1:声明输出的key，value变量和文件路径变量
+    private Text keyInfo = new Text();
+    private Text valueInfo = new Text();
+    private FileSplit split;
+    
+    //2:重写map函数
+    public void map(Object key,Text value,Context context) 
+            throws IOException,InterruptedException&#123;
+        //3:获取当前任务分割的单词所在的文件路径
+        split = (FileSplit)context.getInputSplit();
+        //4:声明StringTokenizer变量，用于分割单词
+        StringTokenizer itr = new StringTokenizer(value.toString());
+        while(itr.hasMoreTokens())&#123;
+            //5:key值设定为“单词+文件名”
+            keyInfo.set(itr.nextToken()+&quot; &quot;+split.getPath().getName().toString());
+            //6:value值设定为字符“1”（不是数字1）
+            valueInfo.set(&quot;1&quot;); 
+            context.write(keyInfo,valueInfo);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>在项目的<code>src/main/java</code>下面创建<code>MyMapper</code>类，并填入以上代码。</p>
+<hr>
+<h1 id="三、Combine过程"><a href="#三、Combine过程" class="headerlink" title="三、Combine过程"></a>三、Combine过程</h1><p>将<code>key</code>值相同的<code>value</code>值累加，得到一个单词在文档中的词频，如图：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580955111.png" alt="img"></p>
+<p><code>Combine</code>过程的完整代码如下所示：</p>
+<pre><code>import java.io.*;
+import org.apache.hadoop.io.*;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class MyCombiner extends Reducer&lt;Text,Text,Text,Text&gt;&#123;
+    
+    //1:声明输出的value变量
+    private Text info = new Text();
+    
+    public void reduce(Text key,Iterable&lt;Text&gt;values,Context context) 
+            throws IOException, InterruptedException&#123;
+        //2:声明计数变量sum并初始化为0，统计一个文件中每一个单词的出现次数
+        int sum = 0;
+        for(Text value:values)&#123;
+            sum += Integer.parseInt(value.toString());
+        &#125;
+        //3:将从Map函数传过来的key值分割成单词和文件名保存在str中
+        String record = key.toString();
+        String[] str = record.split(&quot; &quot;);
+        //4:新的key值设为单词，value设为“文件名+词频”
+        key.set(str[0]);
+        info.set(str[1]+&quot;:&quot;+sum);    
+        context.write(key,info);
+    &#125;
+&#125;
+</code></pre>
+<p>在<code>src/main/java</code>下创建<code>MyCombiner</code>类，并填入以上代码。</p>
+<hr>
+<h1 id="四、Reduce过程"><a href="#四、Reduce过程" class="headerlink" title="四、Reduce过程"></a>四、Reduce过程</h1><p>经过上述两个过程后，<code>Reduce</code>过程只需将相同<code>key</code>值的<code>value</code>值组合成倒排索引文件所需的格式即可，剩下的事就可以直接交给MapReduce框架进行处理了。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_2/639ll1580955213.png" alt="img"></p>
+<p><code>Reduce</code> 过程的完整代码如下：</p>
+<pre><code>import java.io.IOException;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class MyReducer extends Reducer&lt;Text,Text,Text,Text&gt;&#123;
+    private Text result = new Text();
+    public void reduce(Text key,Iterable&lt;Text&gt;values,Context context) throws 
+
+IOException, InterruptedException&#123;
+        String value =new String();
+        for(Text value1:values)&#123;
+            value += value1.toString()+&quot; ; &quot;;
+        &#125;
+        result.set(value);
+        context.write(key,result);
+    &#125;
+&#125;
+</code></pre>
+<p>在<code>src/main/java</code>下创建<code>MyReducer</code>类，并填入以上代码。</p>
+<hr>
+<h1 id="五、执行MapReduce过程"><a href="#五、执行MapReduce过程" class="headerlink" title="五、执行MapReduce过程"></a>五、执行MapReduce过程</h1><p>完整代码与解析如下：</p>
+<pre><code>import java.io.IOException;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import java.util.Scanner;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import java.net.URI;
+
+public class MyRunner &#123;
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException &#123;
+        //创建配置文件
+        Configuration conf = new Configuration();
+        //获取一个作业
+        Job job = Job.getInstance(conf);
+        
+        //设置整个job所用的那些类在哪个jar包
+        job.setJarByClass(MyRunner.class);
+        
+        //本job使用的mapper、combiner和reducer的类
+        job.setMapperClass(MyMapper.class);
+        job.setReducerClass(MyReducer.class);
+        job.setCombinerClass(MyCombiner.class);
+        
+        //指定reduce的输出数据key-value类型
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
+        
+        
+        //指定mapper的输出数据key-value类型
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
+        
+                
+        Scanner sc = new Scanner(System.in);
+        System.out.print(&quot;inputPath:&quot;);
+        String inputPath = sc.next();
+        System.out.print(&quot;outputPath:&quot;);
+        String outputPath = sc.next();
+                
+        //指定要处理的输入数据存放路径
+        FileInputFormat.setInputPaths(job, new Path(&quot;hdfs://master:9000&quot;+inputPath));
+        
+        //指定处理结果的输出数据存放路径
+        FileOutputFormat.setOutputPath(job, new Path(&quot;hdfs://master:9000&quot;+outputPath));
+        
+        //将job提交给集群运行 
+        job.waitForCompletion(true);
+                
+        try &#123;
+            FileSystem fs = FileSystem.get(new URI(&quot;hdfs://master:9000&quot;), new Configuration());
+            Path srcPath = new Path(outputPath+&quot;/part-r-00000&quot;);
+
+            FSDataInputStream is = fs.open(srcPath);
+            System.out.println(&quot;Results:&quot;);
+            while(true) &#123;
+                String line = is.readLine();
+                if(line == null) &#123;
+                    break;
+                &#125;
+                System.out.println(line);
+            &#125;
+            is.close();
+        &#125;catch(Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+
+    &#125; 
+&#125;
+</code></pre>
+<p>在<code>src/main/java</code>下创建<code>MyRunner</code>类，并填入以上代码。</p>
+<hr>
+<h1 id="六、实验结果"><a href="#六、实验结果" class="headerlink" title="六、实验结果"></a>六、实验结果</h1><p>右击MyRunner -&gt; Run 运行程序。</p>
+<p>输入：</p>
+<pre><code>inputPath:/mapreduce/inverted/input
+outputPath:/mapreduce/inverted/output
+</code></pre>
+<p>运行结果如下：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624017965.png" alt="img"></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624018017.png" alt="img"></p>
+<p>可见，结果无误。</p>
+<h1 id="步骤7【实验步骤】PageRank"><a href="#步骤7【实验步骤】PageRank" class="headerlink" title="步骤7【实验步骤】PageRank"></a>步骤7【实验步骤】PageRank</h1><h1 id="一、准备工作-3"><a href="#一、准备工作-3" class="headerlink" title="一、准备工作"></a>一、准备工作</h1><h2 id="1-新建项目-3"><a href="#1-新建项目-3" class="headerlink" title="1.新建项目"></a>1.新建项目</h2><p>启动IDEA环境。</p>
+<p>依次点击：<code>File-&gt;New-&gt;Project-&gt;Maven-&gt;Next</code>。</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623921632.png" alt="img"></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623921643.png" alt="img"></p>
+<p>在项目名称（Project Name）处填入<code>PageRank</code>，将工程位置选择为本实验的工作目录，再点击<code>Finish</code>。</p>
+<p>如下图所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624020339.png" alt="img"></p>
+<p><strong>导入依赖</strong></p>
+<p>依次点击：<code>File -&gt; Project Structure...</code></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623922021.png" alt="img"></p>
+<p>Modules -&gt; Dependencies, 点击+号添加 JARs or Directories…</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623922332.png" alt="img"></p>
+<p>依次添加以下文件：</p>
+<ul>
+<li>/root/IdeaProjects/hadoop_test/lib/common</li>
+<li>/root/IdeaProjects/hadoop_test/lib/common/lib</li>
+<li>/root/IdeaProjects/hadoop_test/lib/hdfs</li>
+<li>/root/IdeaProjects/hadoop_test/lib/httpfs</li>
+<li>/root/IdeaProjects/hadoop_test/lib/kms</li>
+<li>/root/IdeaProjects/hadoop_test/lib/mapreduce</li>
+<li>/root/IdeaProjects/hadoop_test/lib/tools</li>
+<li>/root/IdeaProjects/hadoop_test/lib/yarn</li>
+</ul>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1623934101.png" alt="img"></p>
+<p>在本实验工作目录下创建文件夹<code>PageRank</code>。</p>
+<p>在<code>idea</code>中新建<code>maven</code>项目。</p>
+<p>在项目名称（Project Name）处填入<code>PageRank</code>。</p>
+<h2 id="2-输入样本"><a href="#2-输入样本" class="headerlink" title="2.输入样本"></a>2.输入样本</h2><p>基于实验原理，我们设计的输入样本为：</p>
+<pre><code>A 0.25 B C D
+B 0.25 A D
+C 0.25 C
+D 0.25 B C
+</code></pre>
+<p>其中每一行中第一列为网页i，第二列为该网页的<code>pagerank</code> 值，之后的列均为网页 i 链接的网页。</p>
+<p>在PageRank上右键，创建<code>data</code>目录和<code>target</code>目录。</p>
+<p>在data目录下新建文件<code>input.dat</code>，并写入以上样本内容。如下图所示：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624020701.png" alt="img"></p>
+<p>在HDFS上新建<code>PageRank</code>项目的数据目录，并将数据传入HDFS上。</p>
+<pre><code>root@cg:~/Desktop# cd ~/Desktop/workspace/mapreduce/PageRank/data/
+root@cg:~/Desktop/workspace/mapreduce/PageRank/data# ls
+input.dat
+root@cg:~/Desktop/workspace/mapreduce/PageRank/data# hadoop fs -mkdir -p /mapreduce/PageRank/input
+root@cg:~/Desktop/workspace/mapreduce/PageRank/data# hadoop fs -put input.dat /mapreduce/PageRank/input
+root@cg:~/Desktop/workspace/mapreduce/PageRank/data# 
+</code></pre>
+<p>因为我们要迭代的计算<code>PageRank</code>值，那么每次MapReduce 的输出要和输入的格式是一样的，这样才能使得Mapreduce 的输出用来作为下一轮MapReduce 的输入。</p>
+<p>那么我们每次得到的输出，应该是这样的：</p>
+<pre><code>A 0.15 B C D
+B 0.22 A D
+C 0.42 C
+D 0.22 B C
+</code></pre>
+<hr>
+<h1 id="二、Map过程-3"><a href="#二、Map过程-3" class="headerlink" title="二、Map过程"></a>二、Map过程</h1><p><code>Map</code>过程需要完成以下工作：</p>
+<ol>
+<li>对每一行文本进行解析，获得当前网页、当前网页的<code>PageRank</code>值、当前网页要链接到的其他网页</li>
+</ol>
+<p>2.计算出要链接到的其他网友的个数，然后求出当前网页对其他网页的贡献值。</p>
+<p>3.输出设计时，要输出两种：</p>
+<p>第一种输出的<code>&lt; key ,value&gt;</code>中的<code>key</code> 表示其他网页，<code>value</code> 表示当前网页对其他网页的贡献值。</p>
+<p>第二种输出的<code>&lt; key ,value&gt;</code>中的<code>key</code> 表示当前网页，<code>value</code> 表示所有其他网页。</p>
+<p>并且，为了区别这两种输出，第一种输出的<code>value</code>里加入<code>@</code>，第二种输出的<code>value</code>里加入<code>&amp;</code></p>
+<p>经过<code>Map</code>过程之后，会得到如下结果：</p>
+<pre><code>B @0.0833
+C @0.0833
+D @0.0833
+A &amp;B C D
+A @0.125
+D @0.125
+B &amp;A D
+C @0.25
+C &amp;C
+B @0.125
+C @0.125
+D &amp;B C
+</code></pre>
+<p><code>Map</code>结果输出之后，经过<code>Shuffle</code>过程排序并合并（系统自动实现），结果如下：</p>
+<pre><code>A &lt;&amp;B C D,@0.125&gt;
+B &lt;&amp;A D,@0.125,@0.0833&gt;
+C &lt;@0.25,&amp;C,@0.125,@0.0833&gt;
+D &lt;@0.125,@0,0833,&amp;B C&gt;
+</code></pre>
+<p>由<code>Shuffle</code>结果可知，<code>Shuffle</code>过程输出<code>key</code>表示一个网页，输出<code>value</code>表示一个列表，里面有两类：一类是从其他网页获得的贡献值，一类是该网页的所有出链网页。</p>
+<p>在项目的src/main/java下面创建MyMapper类，并填入以下代码。</p>
+<p>完整代码如下：</p>
+<pre><code>import java.io.IOException;
+import java.util.StringTokenizer;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+/*map过程*/
+public class MyMapper extends Mapper&lt;Object,Text,Text,Text&gt;&#123;        
+    private String id;
+    private float pr;       
+    private int count;
+    private float average_pr;       
+    public void map(Object key,Text value,Context context)
+        throws IOException,InterruptedException&#123;            
+        StringTokenizer str = new StringTokenizer(value.toString());//对value进行解析
+        id =str.nextToken();//id为解析的第一个词，代表当前网页
+        pr = Float.parseFloat(str.nextToken());//pr为解析的第二个词，转换为float类型，代表PageRank值
+    count = str.countTokens();//count为剩余词的个数，代表当前网页的出链网页个数
+    average_pr = pr/count;//求出当前网页对出链网页的贡献值
+    String linkids =&quot;&amp;&quot;;//下面是输出的两类，分别有&#39;@&#39;和&#39;&amp;&#39;区分
+    while(str.hasMoreTokens())&#123;
+        String linkid = str.nextToken();
+        context.write(new Text(linkid),new Text(&quot;@&quot;+average_pr));//输出的是&lt;出链网页，获得的贡献值&gt;
+        linkids +=&quot; &quot;+ linkid;
+    &#125;       
+    context.write(new Text(id), new Text(linkids));//输出的是&lt;当前网页，所有出链网页&gt;
+    &#125;       
+&#125;
+</code></pre>
+<hr>
+<h1 id="三、Reduce过程-2"><a href="#三、Reduce过程-2" class="headerlink" title="三、Reduce过程"></a>三、Reduce过程</h1><p>1.<code>shuffule</code>的输出也即是<code>reduce</code>的输入。</p>
+<p>2.<code>reduce</code>输入的<code>key</code> 直接作为输出的<code>key</code></p>
+<p>3.对<code>reduce</code>输入的<code>value</code> 进行解析，它是一个列表，</p>
+<pre><code>a.若列表里的值里包含`@`，就把该值`@`后面的字符串转化成`float`型加起来
+
+b.若列表里的值里包含`&amp;`，就把该值`&amp;`后面的字符串提取出来
+
+c.把所有贡献值的加总，和提取的字符串进行连接，作为`reduce`的输出`value`
+</code></pre>
+<p>在项目的src/main/java下面创建MyReducer类，并填入以下代码。</p>
+<p>完整实验代码如下：</p>
+<pre><code>import java.io.IOException;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+/*reduce过程*/
+public class MyReducer extends Reducer&lt;Text,Text,Text,Text&gt;&#123;     
+    public void reduce(Text key,Iterable&lt;Text&gt; values,Context context)
+            throws IOException,InterruptedException&#123;            
+        String lianjie = &quot;&quot;;
+        float pr = 0;
+        /*对values中的每一个val进行分析，通过其第一个字符是&#39;@&#39;还是&#39;&amp;&#39;进行判断
+        通过这个循环，可以 求出当前网页获得的贡献值之和，也即是新的PageRank值；同时求出当前
+        网页的所有出链网页 */
+        for(Text val:values)&#123;
+            if(val.toString().substring(0,1).equals(&quot;@&quot;))&#123;
+                pr += Float.parseFloat(val.toString().substring(1));
+            &#125;
+            else if(val.toString().substring(0,1).equals(&quot;&amp;&quot;))&#123;
+                lianjie += val.toString().substring(1);
+            &#125;
+        &#125;
+
+        pr = 0.8f*pr + 0.2f*0.25f;//加入跳转因子，进行平滑处理           
+        String result = pr+lianjie;
+        context.write(key, new Text(result));           
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h1 id="四、执行MapReduce任务-2"><a href="#四、执行MapReduce任务-2" class="headerlink" title="四、执行MapReduce任务"></a>四、执行MapReduce任务</h1><p>完成 <code>PageRank</code> 的计算通常需要迭代30-40次才能达到收敛，但是本次示例为了减少运行时间，选择迭代5次，</p>
+<p>在项目的src/main/java下面创建MyRunner类，并填入以下代码。</p>
+<p>完整的实验代码如下：</p>
+<pre><code>import java.io.IOException;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import java.util.Scanner;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import java.net.URI;
+
+public class MyRunner &#123;
+    public static void main(String[] args) 
+        throws IOException, ClassNotFoundException, InterruptedException &#123;
+        //创建配置文件
+        Configuration conf = new Configuration();
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.print(&quot;inputPath:&quot;);
+        String inputPath = sc.next();
+        System.out.print(&quot;outputPath:&quot;);
+        String outputPath = sc.next();
+        
+        //加入循环迭代
+        for (int i = 1; i &lt;= 5; i++) &#123;
+            //获取一个作业
+            Job job = Job.getInstance(conf);
+            //设置整个job所用的那些类在哪个jar包
+            job.setJarByClass(MyRunner.class);
+            //本job使用的mapper、combiner和reducer的类
+            job.setMapperClass(MyMapper.class);
+            job.setReducerClass(MyReducer.class);
+            //指定reduce的输出数据key-value类型
+            job.setOutputKeyClass(Text.class);
+            job.setOutputValueClass(Text.class);
+            //指定mapper的输出数据key-value类型
+            job.setMapOutputKeyClass(Text.class);
+            job.setMapOutputValueClass(Text.class);
+            //指定要处理的输入数据存放路径
+            FileInputFormat.setInputPaths(job, new Path(&quot;hdfs://master:9000&quot;+inputPath));
+            //指定处理结果的输出数据存放路径
+            FileOutputFormat.setOutputPath(job, new Path(&quot;hdfs://master:9000&quot;+outputPath));
+            //把输出地址改为下次输入地址
+            inputPath = outputPath;
+            outputPath = outputPath + i;
+            //将job提交给集群运行 
+            job.waitForCompletion(true);
+    &#125;
+    
+    try &#123;
+            FileSystem fs = FileSystem.get(new URI(&quot;hdfs://master:9000&quot;), new Configuration());
+            Path srcPath = new Path(outputPath.substring(0,outputPath.length()-1)+&quot;/part-r-00000&quot;);
+
+            FSDataInputStream is = fs.open(srcPath);
+            System.out.println(&quot;Results:&quot;);
+            while(true) &#123;
+                String line = is.readLine();
+                if(line == null) &#123;
+                    break;
+                &#125;
+                System.out.println(line);
+            &#125;
+            is.close();
+        &#125;catch(Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    
+    &#125; 
+&#125;
+</code></pre>
+<hr>
+<h1 id="五、实验结果-2"><a href="#五、实验结果-2" class="headerlink" title="五、实验结果"></a>五、实验结果</h1><p>右击MyRunner -&gt; Run 运行程序。</p>
+<p>输入：</p>
+<pre><code>inputPath:/mapreduce/PageRank/input
+outputPath:/mapreduce/PageRank/output
+</code></pre>
+<p>运行结果如下：</p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624022662.png" alt="img"></p>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624022678.png" alt="img"></p>
+<p>翻看输出结果信息中可以看到，MapReduce迭代运行了5次。</p>
+<p>查看目录，</p>
+<pre><code>root@cg:~/Desktop/workspace/mapreduce/PageRank/data# hadoop fs -ls /mapreduce/PageRank
+Found 6 items
+drwxr-xr-x   - root supergroup          0 2021-06-18 12:53 /mapreduce/PageRank/input
+drwxr-xr-x   - root supergroup          0 2021-06-18 13:18 /mapreduce/PageRank/output
+drwxr-xr-x   - root supergroup          0 2021-06-18 13:18 /mapreduce/PageRank/output1
+drwxr-xr-x   - root supergroup          0 2021-06-18 13:18 /mapreduce/PageRank/output12
+drwxr-xr-x   - root supergroup          0 2021-06-18 13:18 /mapreduce/PageRank/output123
+drwxr-xr-x   - root supergroup          0 2021-06-18 13:18 /mapreduce/PageRank/output1234
+root@cg:~/Desktop/workspace/mapreduce/PageRank/data# 
+</code></pre>
+<p><img src="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2021_6/2766ll1624022817.png" alt="img"> 由于每迭代一次，会使用上一次的输出目录作为当前的输入目录，在代码中，使用后缀递增的方式创建新目录，从以上信息中可以看出计算过程中生成的目录。</p>
+<p>结果无误。</p>
+<h1 id="步骤8【实验作业】简单流量统计"><a href="#步骤8【实验作业】简单流量统计" class="headerlink" title="步骤8【实验作业】简单流量统计"></a>步骤8【实验作业】简单流量统计</h1><p>有如下这样的日志文件：</p>
+<pre><code>13726230503    00-FD-07-A4-72-B8:CMCC    120.196.100.82    i02.c.aliimg.com    2481    24681    200
+13726230513    00-FD-07-A4-72-B8:CMCC    120.196.40.8    i02.c.aliimg.com    248    0    200
+13826230523    00-FD-07-A4-72-B8:CMCC    120.196.100.82    i02.c.aliimg.com    2481    24681    200
+13726230533    00-FD-07-A4-72-B8:CMCC    120.196.100.82    i02.c.aliimg.com    2481    24681    200
+13726230543    00-FD-07-A4-72-B8:CMCC    120.196.100.82    Video website    1527    2106    200
+13926230553    00-FD-07-A4-72-B8:CMCC    120.196.100.82    i02.c.aliimg.com    2481    24681    200
+13826230563    00-FD-07-A4-72-B8:CMCC    120.196.100.82    i02.c.aliimg.com    2481    24681    200
+13926230573    00-FD-07-A4-72-B8:CMCC    120.196.100.82    i02.c.aliimg.com    2481    24681    200
+18912688533    00-FD-07-A4-72-B8:CMCC    220.196.100.82    Integrated portal    1938    2910    200
+18912688533    00-FD-07-A4-72-B8:CMCC    220.196.100.82    i02.c.aliimg.com    3333    21321    200
+13726230503    00-FD-07-A4-72-B8:CMCC    120.196.100.82    Search Engines    9531    9531    200
+13826230523    00-FD-07-A4-72-B8:CMCC    120.196.100.82    i02.c.aliimg.com    2481    24681    200
+13726230503    00-FD-07-A4-72-B8:CMCC    120.196.100.82    i02.c.aliimg.com    2481    24681    200
+</code></pre>
+<p>该日志文件记录了每个手机用户在一段时间内的网络流量信息，具体字段含义为：</p>
+<pre><code>手机号码    MAC地址    IP地址    域名    上行流量（字节数）    下行流量（字节数）    套餐类型
+</code></pre>
+<p>根据以上日志，统计出每个手机用户在该时间段内的总流量（上行流量+下行流量），统计结果的格式为：</p>
+<pre><code>手机号码    字节数量
+</code></pre>
+<h1 id="步骤9【实验作业】索引倒排输出行号"><a href="#步骤9【实验作业】索引倒排输出行号" class="headerlink" title="步骤9【实验作业】索引倒排输出行号"></a>步骤9【实验作业】索引倒排输出行号</h1><p>在索引倒排实验中，我们可以得到每个单词分布在哪些文件中，以及在每个文件中出现的次数，修改以上实现，在输出的倒排索引结果中可以得到每个单词在每个文件中的具体行号信息。输出结果的格式如下：</p>
+<pre><code>单词    文件名：行号，文件名：行号，文件名：行号
+</code></pre>
+<h1 id="步骤10【实验作业】数字集合问题"><a href="#步骤10【实验作业】数字集合问题" class="headerlink" title="步骤10【实验作业】数字集合问题"></a>步骤10【实验作业】数字集合问题</h1><p>有两个文本文件：</p>
+<pre><code>    int1.txt
+
+    int2.txt
+</code></pre>
+<p>其中，文本文件中存储着一系列随机整数，每个整数占一行，整数的范围为1到1千万，整数的数量可达到2千万个。不可避免地，两个文本文件中会出现一些重复的数字。编写MapReduce程序实现：</p>
+<p>输出这两个文本中所有整数的并集，按照整数大小从小到大输出，每个数字占1行。</p>
+<p>输出这两个文本中所有整数的交集，按照整数大小从小到大输出，每个数字占1行。</p>
+<h1 id="步骤11【实验作业】二度人脉"><a href="#步骤11【实验作业】二度人脉" class="headerlink" title="步骤11【实验作业】二度人脉"></a>步骤11【实验作业】二度人脉</h1><p>在QQ，微信上存在着大量的好友关系，</p>
+<p>如果A和B是好友，我们说A和B是一度人脉；</p>
+<p>如果A和B是好友，B和C也是好友，我们说A和C是二度人脉。</p>
+<p>以下为一系列朋友关系，每行出现两个姓名，以空格隔开，表示两人为朋友关系。</p>
+<pre><code>A B
+B C
+C D
+B F
+A F
+F G
+F H
+H A
+H D
+B G
+D F
+D G
+H G
+H C
+</code></pre>
+<p>根据以上的朋友关系，使用MapReduce编程计算出所有的二度人脉关系。</p>
+<h1 id="步骤12【实验作业】N度人脉"><a href="#步骤12【实验作业】N度人脉" class="headerlink" title="步骤12【实验作业】N度人脉"></a>步骤12【实验作业】N度人脉</h1><p>在QQ，微信上存在着大量的好友关系，</p>
+<p>如果A和B是好友，我们说A和B是一度人脉；</p>
+<p>如果A和B是好友，B和C也是好友，我们说A和C是二度人脉。</p>
+<p>以下为一系列朋友关系，每行出现两个姓名，以空格隔开，表示两人为朋友关系。</p>
+<pre><code>A B
+B C
+C D
+B F
+A F
+F G
+F H
+H A
+H D
+B G
+D F
+D G
+H G
+H C
+</code></pre>
+<p>根据以上的朋友关系，使用MapReduce编程计算出任意两个人之间的人脉为几度。</p>
+<p>提示：可考虑使用迭代MapReduce作业来完成。</p>
+<h1 id="步骤13【实验作业】数字集合问题-二进制"><a href="#步骤13【实验作业】数字集合问题-二进制" class="headerlink" title="步骤13【实验作业】数字集合问题-二进制"></a>步骤13【实验作业】数字集合问题-二进制</h1><p>有两个二进制文件：</p>
+<pre><code>    int1.dat
+
+    int2.dat
+</code></pre>
+<p>其中，文本文件中存储着一系列随机整数，每个整数占4个字节，整数的范围为1到1千万，整数的数量可达到2千万个。不可避免地，这两个文件中会出现一些重复的数字。编写MapReduce程序实现：</p>
+<p>输出这两个文件中所有整数的并集，输出结果要求为二进制文件存储，每个整数占4个字节。</p>
+<p>输出这两个文件中所有整数的交集，输出结果要求为二进制文件存储，每个整数占4个字节。</p>
+<h1 id="步骤14【实验作业】MapReduce论文阅读"><a href="#步骤14【实验作业】MapReduce论文阅读" class="headerlink" title="步骤14【实验作业】MapReduce论文阅读"></a>步骤14【实验作业】MapReduce论文阅读</h1><p>MapReduce编程模型最早由Google的Jeff Dean在论文《MapReduce: Simplified data processing on large clusters》中提出，Hadoop MapReduce是该模型的一种实现。</p>
+<p>除了Hadoop MapReduce外，还有大量的其他的开源MapReduce实现。其中，较为有影响力的是stanford大学做的基于SMP共享内存式的MapReduce实现，该论文标题为《Evaluating mapreduce for multi-core and multiprocessor systems》。</p>
+<p>点击下载Google的MapReduce论文， 详细阅读改论文，并撰写论文阅读报告。</p>
+<p><a target="_blank" rel="noopener" href="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_7/1ll1593872528.pdf">mapreduce.pdf</a></p>
+<p>点击下载Stanford的MapReduce论文，详细阅读该论文，并撰写论文阅读报告。</p>
+<p><a target="_blank" rel="noopener" href="https://cstlab.jsnu.edu.cn/userfiles/markdown/exp/2020_7/1ll1593872538.pdf">smp mapreduce.pdf</a></p>
+<p>论文阅读报告中包含以下内容：</p>
+<ol>
+<li>要解决什么问题。</li>
+<li>该问题是否重要。</li>
+<li>该问题当前的解决程度（现有解决方案）。</li>
+<li>如何解决的。</li>
+<li>达到了怎样的效果。</li>
+<li>对你有什么启示。</li>
+</ol>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry"><span class="miit">
+                <img src="/img/gov.png" title="中华人民共和国工业和信息化部">
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备19062340号-2</a>
+        </span>
+    
+    ©Alisa&amp;Elder
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 562px;
+    }
+    .nav.fullscreen {
+        margin-left: -562px;
+    }
+    .nav-left {
+        width: 140px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 522px;
+        }
+        .nav.fullscreen {
+            margin-left: -522px;
+        }
+        .nav-left {
+            width: 130px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 522px;
+            margin-left: -522px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
