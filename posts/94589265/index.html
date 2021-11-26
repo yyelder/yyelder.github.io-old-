@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>公众号开发 | 月夜魂归的博客</title>
-  <meta name="keywords" content=" 微信 ">
-  <meta name="description" content="公众号开发 | 月夜魂归的博客">
+  <title>go语言递归实现多级目录 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" Go ">
+  <meta name="description" content="go语言递归实现多级目录 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -1080,9 +1080,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-公众号开发" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-go语言递归实现多级目录" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">公众号开发</h1>
+        <h1 class="article-title">go语言递归实现多级目录</h1>
     
     <div class="article-meta">
         
@@ -1092,9 +1092,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="微信">微信</a> > 
-            
-            <a  data-rel="微信&lt;---&gt;微信公众号">微信公众号</a>
+            <a  data-rel="GO笔记">GO笔记</a>
             
         </span>
         
@@ -1102,19 +1100,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">微信</a>
+            <a class="color3">Go</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-11-26 20:35:50'>2021-10-01 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2021-11-26 20:35:50'>2021-11-26 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:556</span>
+        <span>字数:644</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1133,7 +1131,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#go%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E5%85%AC%E4%BC%97%E5%8F%B7%E7%AE%80%E5%8D%95%E7%9A%84%E7%94%A8%E6%88%B7%E6%B6%88%E6%81%AF%E6%8E%A5%E6%94%B6"><span class="toc-text">go语言配置公众号简单的用户消息接收</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BE%AE%E4%BF%A1%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-text">2.微信端配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%A8%8B%E5%BA%8F%E9%85%8D%E7%BD%AE%EF%BC%88%E9%87%87%E7%94%A8go%E8%AF%AD%E8%A8%80%EF%BC%89"><span class="toc-text">3.服务端程序配置（采用go语言）</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8E%9F%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-text">1.原表结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%9C%80%E8%A6%81%E5%AE%9E%E7%8E%B0json%E7%BB%93%E6%9E%84"><span class="toc-text">2.需要实现json结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84%E5%8C%85"><span class="toc-text">3.使用到的包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0"><span class="toc-text">4.递归函数</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1149,74 +1147,68 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="go语言配置公众号简单的用户消息接收"><a href="#go语言配置公众号简单的用户消息接收" class="headerlink" title="go语言配置公众号简单的用户消息接收"></a>go语言配置公众号简单的用户消息接收</h2><p>学习地址  <a target="_blank" rel="noopener" href="https://www.topgoer.cn/docs/gowechat/gowechat-1cb49i4ees248">https://www.topgoer.cn/docs/gowechat/gowechat-1cb49i4ees248</a></p>
-<h3 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1.基本介绍"></a>1.基本介绍</h3><blockquote>
-<p>ip白名单:  服务器的IP地址</p>
-<p>服务器地址： 外网域名地址，可以使用ngrok转发 测试</p>
-<p>token令牌: 微信与服务器程序共同配置token进行验证，自定义，</p>
-<p>解码秘钥：随机生成：安全用的</p>
-</blockquote>
-<p>以上信息会生成access_token  时长2小时  用来微信用户 和服务器进行通信</p>
-<h3 id="2-微信端配置"><a href="#2-微信端配置" class="headerlink" title="2.微信端配置"></a>2.微信端配置</h3><p><img src="https://gitee.com/gumuX/figurebed/raw/master/images/image-20211001224127831.png" alt="image-20211001224127831"></p>
-<h3 id="3-服务端程序配置（采用go语言）"><a href="#3-服务端程序配置（采用go语言）" class="headerlink" title="3.服务端程序配置（采用go语言）"></a>3.服务端程序配置（采用go语言）</h3><pre><code class="go">package main
-
-import (
-    &quot;fmt&quot;
-    &quot;net/http&quot;
-
-    wechat &quot;github.com/silenceper/wechat/v2&quot;
-    &quot;github.com/silenceper/wechat/v2/cache&quot;
-    offConfig &quot;github.com/silenceper/wechat/v2/officialaccount/config&quot;
-    &quot;github.com/silenceper/wechat/v2/officialaccount/message&quot;
-)
-
-func serveWechat(rw http.ResponseWriter, req *http.Request) &#123;
-    wc := wechat.NewWechat()
-    //这里本地内存保存access_token，也可选择redis，memcache或者自定cache
-    memory := cache.NewMemory()
-    cfg := &amp;offConfig.Config&#123;
-        AppID:     &quot;xxx&quot;,
-        AppSecret: &quot;xxx&quot;,
-        Token:     &quot;xxx&quot;,
-        EncodingAESKey: &quot;xxx&quot;,
-        Cache: memory,
-    &#125;
-    officialAccount := wc.GetOfficialAccount(cfg)
-
-    // 传入request和responseWriter
-    server := officialAccount.GetServer(req, rw)
-    //设置接收消息的处理方法
-    server.SetMessageHandler(func(msg *message.MixMessage) *message.Reply &#123;
-        //TODO
-        //回复消息：演示回复用户发送的消息
-        //fmt.Println(msg.MsgType)
-        text := message.NewText(msg.Content)
-        return &amp;message.Reply&#123;MsgType: message.MsgTypeText, MsgData: text&#125;
-    &#125;)
-
-    //处理消息接收以及回复
-    err := server.Serve()
-    if err != nil &#123;
-        fmt.Println(err)
-        return
-    &#125;
-    //发送回复的消息
-    server.Send()
-&#125;
-
-func main() &#123;
-    http.HandleFunc(&quot;/&quot;, serveWechat)
-    fmt.Println(&quot;wechat server listener at&quot;, &quot;:8001&quot;)
-    err := http.ListenAndServe(&quot;:8080&quot;, nil)
-    if err != nil &#123;
-        fmt.Printf(&quot;start server error , err=%v&quot;, err)
-    &#125;
+        <h2 id="1-原表结构"><a href="#1-原表结构" class="headerlink" title="1.原表结构"></a>1.原表结构</h2><p><img src="C:/Users/Elder/AppData/Roaming/Typora/typora-user-images/image-20211126201933361.png" alt="image-20211126201933361"></p>
+<h2 id="2-需要实现json结构"><a href="#2-需要实现json结构" class="headerlink" title="2.需要实现json结构"></a>2.需要实现json结构</h2><pre><code class="go">type ProMenuReturn struct &#123;
+    MenuID     int64     `gorm:&quot;primaryKey;column:menu_id;type:bigint(20);not null&quot; json:&quot;-&quot;`  // 菜单ID
+    MenuName   string    `gorm:&quot;column:menu_name;type:varchar(50);not null&quot; json:&quot;menuName&quot;`   // 菜单名称
+    ParentID   int64     `gorm:&quot;column:parent_id;type:bigint(20);default:0&quot; json:&quot;parentId&quot;`   // 父菜单ID
+    OrderNum   int       `gorm:&quot;column:order_num;type:int(4);default:0&quot; json:&quot;orderNum&quot;`       // 显示顺序
+    URL        string    `gorm:&quot;column:url;type:varchar(200);default:#&quot; json:&quot;url&quot;`            // 请求地址
+    Target     string    `gorm:&quot;column:target;type:varchar(20);default:&#39;&#39;&quot; json:&quot;target&quot;`      // 打开方式（menuItem页签 menuBlank新窗口）
+    MenuType   string    `gorm:&quot;column:menu_type;type:char(1);default:&#39;&#39;&quot; json:&quot;menuType&quot;`     // 菜单类型（M目录 C菜单 F按钮）
+    Visible    string    `gorm:&quot;column:visible;type:char(1);default:0&quot; json:&quot;visible&quot;`         // 菜单状态（0显示 1隐藏）
+    IsRefresh  string    `gorm:&quot;column:is_refresh;type:char(1);default:1&quot; json:&quot;isRefresh&quot;`    // 是否刷新（0刷新 1不刷新）
+    Perms      string    `gorm:&quot;column:perms;type:varchar(100)&quot; json:&quot;perms&quot;`                  // 权限标识
+    Icon       string    `gorm:&quot;column:icon;type:varchar(100);default:#&quot; json:&quot;icon&quot;`          // 菜单图标
+    CreateBy   string    `gorm:&quot;column:create_by;type:varchar(64);default:&#39;&#39;&quot; json:&quot;createBy&quot;` // 创建者
+    CreateTime time.Time `gorm:&quot;column:create_time;type:datetime&quot; json:&quot;createTime&quot;`           // 创建时间
+    UpdateBy   string    `gorm:&quot;column:update_by;type:varchar(64);default:&#39;&#39;&quot; json:&quot;updateBy&quot;` // 更新者
+    UpdateTime time.Time `gorm:&quot;column:update_time;type:datetime&quot; json:&quot;updateTime&quot;`           // 更新时间
+    Remark     string    `gorm:&quot;column:remark;type:varchar(500);default:&#39;&#39;&quot; json:&quot;remark&quot;`     // 备注
+    Children   []*ProMenuReturn `json:&quot;children&quot;`
 &#125;
 </code></pre>
-<p>消息成功回复内容&gt;&gt;微信公众号发送你好</p>
-<pre><code>time=&quot;2021-10-01T21:27:37+08:00&quot; level=debug msg=&quot;validate signature, timestamp=1633094857, nonce=2145463938&quot;
-time=&quot;2021-10-01T21:27:37+08:00&quot; level=debug msg=&quot;request msg =&lt;xml&gt;&lt;ToUserName&gt;&lt;![CDATA[gh_f999fb3c7feb]]&gt;&lt;/ToUserName&gt;\n&lt;FromUserName&gt;&lt;![CDATA[ozOXq0yl1jasrqLSXG1T2EE0s5_c]]&gt;&lt;/FromUserName&gt;\n&lt;CreateTime&gt;1633094857&lt;/CreateTime&gt;\n&lt;MsgType&gt;&lt;![CDATA[text]]&gt;&lt;/MsgType&gt;\n&lt;Content&gt;&lt;![CDATA[你好]]&gt;&lt;/Content&gt;\n&lt;MsgId&gt;23380294507500735&lt;/MsgId&gt;\n&lt;/xml&gt;&quot;
-time=&quot;2021-10-01T21:27:37+08:00&quot; level=debug msg=&quot;response msg =&amp;&#123;CommonToken:&#123;XMLName:&#123;Space: Local:&#125; ToUserName:ozOXq0yl1jasrqLSXG1T2EE0s5_c FromUserName:gh_f999fb3c7feb CreateTime:1633094857 MsgType:text&#125; Content:你好&#125;&quot;
+<h2 id="3-使用到的包"><a href="#3-使用到的包" class="headerlink" title="3.使用到的包"></a>3.使用到的包</h2><pre><code class="go">&quot;github.com/jinzhu/copier&quot;  //结构体   原结构体-》》新结构体
+</code></pre>
+<pre><code class="go">//查找原表数据
+var menus []model.ProMenu
+    m.DB.Where(&quot;menu_type = ? &quot;,&quot;M&quot;).Or(&quot;menu_type = ? &quot;,&quot;C&quot;).Find(&amp;menus)
+    var  total int
+    m.DB.Where(&quot;menu_type = ? &quot;,&quot;M&quot;).Or(&quot;menu_type = ? &quot;,&quot;C&quot;).Find(&amp;menus).Count(&amp;total)
+//组成新表
+var menusList []*ProMenuReturn  //所有数据列表
+var menusReturn []*ProMenuReturn //返回组装后的列表  开始为空
+for _, menu := range menus &#123;
+   var menuItem ProMenuReturn
+   copier.Copy(&amp;menuItem,&amp;menu)
+   menusList = append(menusList, &amp;menuItem)
+&#125;
+</code></pre>
+<pre><code class="go">menusReturnOk := walk(menusReturn,menusList,total)  //递归操作
+</code></pre>
+<h2 id="4-递归函数"><a href="#4-递归函数" class="headerlink" title="4.递归函数"></a>4.递归函数</h2><pre><code class="go">func walk(menusReturn,menusList []*ProMenuReturn ,count int) []*ProMenuReturn &#123;
+    if count == len(menusList) &#123;  //第一次初始化第一个父节点
+        for _, menu := range menusList &#123;
+            if menu.ParentID == 0 &#123;
+                menusReturn = append(menusReturn, menu)
+                count--
+            &#125;
+        &#125;
+    &#125;
+    for _, mep := range menusReturn  &#123;  //递归父节点
+        for _, mec := range menusList &#123;  //遍历节点表
+            if mep.MenuID == mec.ParentID &#123; //父节点有孩子
+                mep.Children = append(mep.Children, mec) //添加孩子
+                count--  //孩子添加完一个
+                if count == 0 &#123;
+                    return menusReturn  //孩子添加完了返回
+                &#125;
+                walk(mep.Children,menusList,count)  //继续递归父节点孩子
+            &#125;
+        &#125;
+    &#125;
+    return menusReturn //孩子添加完了返回
+&#125;
 </code></pre>
 
       
