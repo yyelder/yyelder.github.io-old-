@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>11.Go语言Time时间修改格式 | 月夜魂归的博客</title>
-  <meta name="keywords" content=" goblog ">
-  <meta name="description" content="11.Go语言Time时间修改格式 | 月夜魂归的博客">
+  <title>Go热重载 | 月夜魂归的博客</title>
+  <meta name="keywords" content=" Go ">
+  <meta name="description" content="Go热重载 | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Go与Vue联手干掉MCU">
 <meta property="og:type" content="website">
@@ -1114,9 +1114,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-11.Go语言Time时间修改格式" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Go热重载" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">11.Go语言Time时间修改格式</h1>
+        <h1 class="article-title">Go热重载</h1>
     
     <div class="article-meta">
         
@@ -1128,7 +1128,7 @@
             
             <a  data-rel="GO笔记">GO笔记</a> > 
             
-            <a  data-rel="GO笔记&lt;---&gt;学习blog">学习blog</a>
+            <a  data-rel="GO笔记&lt;---&gt;好用的go工具包">好用的go工具包</a>
             
         </span>
         
@@ -1136,19 +1136,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color2">goblog</a>
+            <a class="color3">Go</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-11-26 20:38:22'>2021-08-06 10:25</time>
+            发布时间 : <time class="date" title='最后更新: 2021-11-26 20:38:22'>2020-09-11 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:188</span>
+        <span>字数:99</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1167,7 +1167,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%AD%E5%8A%A0%E8%BD%BD"><span class="toc-text">热加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="toc-text">运行项目</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1183,53 +1183,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code class="go">const timeFormat = &quot;2006-01-02 15:04:05&quot;
-const timezone = &quot;Asia/Shanghai&quot;
-
-type Time time.Time
-
-func (t Time) MarshalJSON() ([]byte, error) &#123;
-    b := make([]byte, 0, len(timeFormat)+2)
-    b = append(b, &#39;&quot;&#39;)
-    b = time.Time(t).AppendFormat(b, timeFormat)
-    b = append(b, &#39;&quot;&#39;)
-    return b, nil
-&#125;
-
-func (t *Time) UnmarshalJSON(data []byte) (err error) &#123;
-    now, err := time.ParseInLocation(`&quot;`+timeFormat+`&quot;`, string(data), time.Local)
-    *t = Time(now)
-    return
-&#125;
-
-func (t Time) String() string &#123;
-    return time.Time(t).Format(timeFormat)
-&#125;
-
-func (t Time) local() time.Time &#123;
-    loc, _ := time.LoadLocation(timezone)
-    return time.Time(t).In(loc)
-&#125;
-
-func (t Time) Value() (driver.Value, error) &#123;
-    var zeroTime time.Time
-    var ti = time.Time(t)
-    if ti.UnixNano() == zeroTime.UnixNano() &#123;
-        return nil, nil
-    &#125;
-    return ti, nil
-&#125;
-
-func (t *Time) Scan(v interface&#123;&#125;) error &#123;
-    value, ok := v.(time.Time)
-    if ok &#123;
-        *t = Time(value)
-        return nil
-    &#125;
-    return fmt.Errorf(&quot;can not convert %v to timestamp&quot;, v)
-&#125;
+        <h2 id="热加载"><a href="#热加载" class="headerlink" title="热加载"></a>热加载</h2><p>网址</p>
+<pre><code class="go">https://github.com/cosmtrek/air
 </code></pre>
-<p>在模型里使用</p>
+<p>安装</p>
+<pre><code class="go">go get -u github.com/cosmtrek/air
+</code></pre>
+<p>在项目根目录创建一个名为 .air.conf 的配置文件。创建完毕之后，在文件中写入你应用运行的命令如：</p>
+<pre><code>go build main.go
+</code></pre>
+<h3 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h3><pre><code class="go">air -c .air.conf
+</code></pre>
+<p>项目运行后，我们再次编辑项目中的文件，项目的服务会自动重启了。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 gumuX@qq.com </span>
