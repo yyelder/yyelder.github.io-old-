@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>3.blog实现用户登录(密码加密解密) | 月夜魂归的博客</title>
-  <meta name="keywords" content=" goblog ">
-  <meta name="description" content="3.blog实现用户登录(密码加密解密) | 月夜魂归的博客">
+  <title>Go_structTojson | 月夜魂归的博客</title>
+  <meta name="keywords" content=" Go ">
+  <meta name="description" content="Go_structTojson | 月夜魂归的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -1182,9 +1182,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-3.blog实现用户登录(密码加密解密)" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Go_structTojson" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">3.blog实现用户登录(密码加密解密)</h1>
+        <h1 class="article-title">Go_structTojson</h1>
     
     <div class="article-meta">
         
@@ -1196,7 +1196,7 @@
             
             <a  data-rel="GO笔记">GO笔记</a> > 
             
-            <a  data-rel="GO笔记&lt;---&gt;学习blog">学习blog</a>
+            <a  data-rel="GO笔记&lt;---&gt;学习记录">学习记录</a>
             
         </span>
         
@@ -1204,19 +1204,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color2">goblog</a>
+            <a class="color3">Go</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-03-19 18:00:48'>2021-08-01 10:58</time>
+            发布时间 : <time class="date" title='最后更新: 2022-03-19 18:00:48'>2022-03-19 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:126</span>
+        <span>字数:167</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1235,7 +1235,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95"><span class="toc-text">1.实现用户登录</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -1251,20 +1251,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-实现用户登录"><a href="#1-实现用户登录" class="headerlink" title="1.实现用户登录"></a>1.实现用户登录</h2><p>登录需要token</p>
-<p>所以修改注册  添加登录发放token</p>
-<p>在register里</p>
-<pre><code class="go">//需要对密码进行加密采用hasedPassword
-hasedPassword,err := bcrypt.GenerateFromPassword([]byte(password),bcrypt.DefaultCost)
-if err != nil &#123;
-    ctx.JSON(http.StatusInternalServerError,gin.H&#123;&quot;code&quot;:500,&quot;msg&quot;:&quot;加密失败&quot;&#125;)
+        <pre><code class="go">//创建全节点类型
+type Node struct &#123;
+    Tokens  int    `json:&quot;tokens&quot;`  //持币数量
+    Days    int    `json:&quot;days&quot;`    //持币时间
+    Address string `json:&quot;address&quot;` //地址
 &#125;
-</code></pre>
-<p>在login里</p>
-<pre><code class="go">//判断密码是否正确  user密码和password对比
-if err := bcrypt.CompareHashAndPassword([]byte(user.Password),[]byte(password)); err !=nil&#123;
-    ctx.JSON(http.StatusBadRequest,gin.H&#123;&quot;code&quot;:400,&quot;msg&quot;:&quot;密码错误&quot;&#125;)
-    return
+
+//实现pos挖矿的原理
+type Block struct &#123;
+    Index     int    `json:&quot;index&quot;`
+    Data      string `json:&quot;data&quot;` //
+    PreHash   string `json:&quot;pre_hash&quot;`
+    Hash      string `json:&quot;hash&quot;`
+    Timestamp string `json:&quot;timestamp&quot;`
+    //记录挖矿节点
+    Validator *Node
+&#125;
+
+//结构体转JSON
+func structToJSON() &#123;
+   Block := Block&#123;
+      Index:     1,
+      Data:      &quot;jack&quot;,
+      PreHash:   &quot;18&quot;,
+      Hash:      &quot;2001-08-15&quot;,
+      Timestamp: &quot;itbsl@gmail.com&quot;,
+      Validator: &amp;Node&#123;
+         Tokens:  0,
+         Days:    0,
+         Address: &quot;0x12345&quot;,
+      &#125;,
+   &#125;
+   data, err := json.Marshal(Block)
+   if err != nil &#123;
+      fmt.Println(&quot;json.marshal failed, err:&quot;, err)
+      return
+   &#125;
+   fmt.Printf(&quot;%s\n&quot;, string(data))
 &#125;
 </code></pre>
 
