@@ -1,7 +1,7 @@
 ---
 title: 宝塔反向代理
 date: '2023-10-12 20:06:30'
-updated: '2023-10-12 20:39:53'
+updated: '2023-10-12 22:03:20'
 permalink: /post/pagoda-reverse-proxy-zawokb.html
 comments: true
 toc: true
